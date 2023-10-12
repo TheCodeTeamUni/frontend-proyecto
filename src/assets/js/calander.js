@@ -7,7 +7,7 @@ $(document).ready(function () {
 			{
 				startDate: new Date(new Date().setHours(new Date().getHours() + 24)).toDateString(),
 				endDate: new Date(new Date().setHours(new Date().getHours() + 25)).toISOString(),
-				summary: 'Conference with teachers'
+				summary: 'Conference with companies'
 			},
 			// generate new event for yesterday at noon
 			{

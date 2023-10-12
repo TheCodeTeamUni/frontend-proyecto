@@ -3,7 +3,7 @@
 $(document).ready(function() {
 
 	// Area chart
-	
+
 	if ($('#apexcharts-area').length > 0) {
 	var options = {
 		chart: {
@@ -20,10 +20,10 @@ $(document).ready(function() {
 			curve: "smooth"
 		},
 		series: [{
-			name: "Teachers",
+			name: "companies",
 			data: [45, 60, 75, 51, 42, 42, 30]
 		}, {
-			name: "Students",
+			name: "applicants",
 			color: '#FFBC53',
 			data: [24, 48, 56, 32, 34, 52, 25]
 		}],
@@ -39,7 +39,7 @@ $(document).ready(function() {
 	}
 
 	// Bar chart
-	
+
 	if ($('#bar').length > 0) {
 	var optionsBar = {
 		chart: {
@@ -102,9 +102,9 @@ $(document).ready(function() {
 		}
 
 	}
-  
+
 	var chartBar = new ApexCharts(document.querySelector('#bar'), optionsBar);
 	chartBar.render();
 	}
-  
+
 });

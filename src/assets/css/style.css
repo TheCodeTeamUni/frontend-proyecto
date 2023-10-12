@@ -21,13 +21,13 @@ Version      : 1.0
 12. Login
 13. Notifications
 14. Dashboard
-15. Student Details
+15. Details
 16. Event
 17. Inbox
 18. Error
 19. Profile
-20. Teacher Dashboard
-21. Student Dashboard
+20. Dashboard 1
+21. Dashboard 2
 22. Settings
 23. Blog
 24. Blog Details
@@ -290,7 +290,7 @@ table.table td h2 span {
     background-color: #f8f9fa;
     border-color: #eff2f7;
 }
-.table .student-thread th {
+.table .aspirant-thread th {
     color: #000;
     background-color: #f8f9fa;
     border-color: #eff2f7;
@@ -2666,7 +2666,6 @@ footer p {
 }
 .login-wrapper .loginbox .login-left:before {
 	content: "";
-	background-image: url(../img/login-icon-01.png);
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -3236,20 +3235,20 @@ footer p {
 .circle-gray {
 	background: #EBEBEB;
 }
-.chart-list-out.student-ellips {
+.chart-list-out.aspirant-ellips {
 	margin-left: auto;
 }
-.star-student.table-striped tbody tr:nth-of-type(even) {
+.star-aspirant.table-striped tbody tr:nth-of-type(even) {
     background-color: #FAFAFA;
 }
-.star-student.table-striped tbody tr:nth-of-type(odd) {
+.star-aspirant.table-striped tbody tr:nth-of-type(odd) {
     background-color: transparent;
 }
-.star-student.table-striped tbody tr td,
-.star-student.table-striped tbody tr td a {
+.star-aspirant.table-striped tbody tr td,
+.star-aspirant.table-striped tbody tr td a {
 	color: #666;
 }
-.star-student.table-striped tbody tr td img {
+.star-aspirant.table-striped tbody tr td img {
 	margin-right: 10px;
 }
 .activity-awards {
@@ -3317,7 +3316,7 @@ footer p {
 }
 
 /*-----------------
-	15. Student Details
+	15. aspirant Details
 -----------------------*/
 
 .about-info img {
@@ -3721,14 +3720,14 @@ table.table-inbox tbody tr.checked {
     z-index: 2;
     position: relative;
 }
-.search-student-btn .btn-primary {
+.search-aspirant-btn .btn-primary {
 	min-width: 135px;
 	font-size: 14px;
 	font-weight: 700;
 	text-transform: uppercase;
 	padding: 11px 15px;
 }
-.student-profile-head {
+.aspirant-profile-head {
 	background: #F7F7FA;
 	border-radius: 10px;
 	margin-bottom: 40px;
@@ -3819,13 +3818,13 @@ table.table-inbox tbody tr.checked {
 	-webkit-justify-content: space-between;
 	-ms-flex-pack: space-between;
 }
-.students-follows h5 {
+.applicants-follows h5 {
 	color: #808191;
 	font-size: 14px;
 	font-weight: 400;
 	margin-bottom: 0;
 }
-.students-follows h4 {
+.applicants-follows h4 {
 	color: #000000;
 	font-size: 22px;
 	font-weight: 600;
@@ -3889,7 +3888,7 @@ table.table-inbox tbody tr.checked {
 .personal-icons i {
 	color: #3D5EE1;
 }
-.student-personals-grp .card {
+.aspirant-personals-grp .card {
 	border: 2px solid rgba(220, 220, 220, 0.3);
 	border-radius: 10px;
 	box-shadow: none;
@@ -3975,24 +3974,24 @@ table.table-inbox tbody tr.checked {
 .form-group.local-forms {
 	margin-bottom: 40px;
 }
-.students-files {
+.applicants-files {
 	margin-bottom: 30px;
 }
-.students-files h5 {
+.applicants-files h5 {
 	font-size: 16px;
 	font-weight: 500;
 }
-.student-submit .btn-primary {
+.aspirant-submit .btn-primary {
 	min-width: 160px;
 	border-radius: 10px;
 	background: #3D5EE1;
 	border: 1px solid #3D5EE1;
 }
-.student-submit .btn-primary:hover {
+.aspirant-submit .btn-primary:hover {
 	background: #18aefa;
 	border: 1px solid #18aefa;
 }
-.form-title.student-info,
+.form-title.aspirant-info,
 .about-info h4 {
 	display: -webkit-box;
     display: -ms-flexbox;
@@ -4005,7 +4004,7 @@ table.table-inbox tbody tr.checked {
 	-ms-flex-pack: space-between;
 }
 .about-info h4 i,
-.form-title.student-info i{
+.form-title.aspirant-info i{
 	color: #8C8C8C;
 }
 .about-info {
@@ -4023,11 +4022,11 @@ table.table-inbox tbody tr.checked {
     right: 15px;
     bottom: 10px;
 }
-.students-up-files label {
+.applicants-up-files label {
 	font-size: 15px;
     font-weight: 500;
 }
-.students-up-files label.file-upload.image-upbtn {
+.applicants-up-files label.file-upload.image-upbtn {
 	background: #444;
     border: 1px solid #444;
     border-radius: 8px;
@@ -4037,15 +4036,15 @@ table.table-inbox tbody tr.checked {
     font-weight: 500;
     cursor: pointer;
 }
-.students-up-files label.file-upload.image-upbtn:hover {
+.applicants-up-files label.file-upload.image-upbtn:hover {
 	background: #000;
     border: 1px solid #000;
 }
-.students-up-files label.file-upload {
+.applicants-up-files label.file-upload {
     position: relative;
     overflow: hidden;
 }
-.students-up-files label.file-upload input[type="file"] {
+.applicants-up-files label.file-upload input[type="file"] {
     position: absolute;
     top: 0;
     right: 0;
@@ -4060,36 +4059,36 @@ table.table-inbox tbody tr.checked {
     cursor: inherit;
     display: block;
 }
-.student-pro-list .card {
+.aspirant-pro-list .card {
 	border: 2px solid rgba(220, 220, 220, 0.3);
     border-radius: 10px;
 	margin-bottom: 25px;
 	width: 100%;
 }
-.student-img {
+.aspirant-img {
     position: relative;
     text-align: center;
 }
-.student-img img {
+.aspirant-img img {
     border-radius: 50%;
 }
-.student-content {
+.aspirant-content {
     padding: 15px 0px;
     text-align: center;
 }
-.student-content h5 {
+.aspirant-content h5 {
 	font-size: 18px;
 }
-.student-pro-list.profile-edit-icon .card {
+.aspirant-pro-list.profile-edit-icon .card {
 	border: 2px solid rgba(220, 220, 220, 0.3);
     border-radius: 50px;
 }
-.students-up-files.profile-edit-icon label.file-upload.profile-upbtn {
+.applicants-up-files.profile-edit-icon label.file-upload.profile-upbtn {
     cursor: pointer;
 }
 
 /*-----------------
-	20. Teacher Dashboard
+	20. Dashboard 1
 -----------------------*/
 
 .bg-five {
@@ -4208,20 +4207,20 @@ table.table-inbox tbody tr.checked {
 	background: #3652bf;
 	border: 1px solid #3652bf;
 }
-.teacher-date-list {
+.company-date-list {
 	display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
 	margin-bottom: 0;
 }
-.teacher-date-list li {
+.company-date-list li {
 	color: #A098AE;
 	font-size: 14px;
 }
-.teacher-date-list li:first-child {
+.company-date-list li:first-child {
 	margin-right: 12px;
 }
-.teacher-date-list li:last-child {
+.company-date-list li:last-child {
 	margin-left: 12px;
 }
 .lesson-confirm {
@@ -4491,7 +4490,7 @@ table.table-inbox tbody tr.checked {
 }
 
 /*-----------------
-	21. Student Dashboard
+	21. Dashboard 2
 -----------------------*/
 
 .dash-widget1 {
@@ -8600,7 +8599,7 @@ body[data-layout-mode=dark] .alertify .ajs-footer .ajs-buttons .ajs-button.ajs-o
 	.follow-group {
 		padding: 0px 10px;
 	}
-	.students-follows h4 {
+	.applicants-follows h4 {
 		font-size: 18px;
 	}
 	.follow-btn-group {
@@ -8618,7 +8617,7 @@ body[data-layout-mode=dark] .alertify .ajs-footer .ajs-buttons .ajs-button.ajs-o
 	.profile-edit-icon i {
 		font-size: 12px;
 	}
-	.search-student-btn .btn-primary {
+	.search-aspirant-btn .btn-primary {
 		min-width: 95px;
 	}
 }
@@ -8792,7 +8791,7 @@ body[data-layout-mode=dark] .alertify .ajs-footer .ajs-buttons .ajs-button.ajs-o
 	.follow-group {
 		padding: 0px 10px;
 	}
-	.students-follows h4 {
+	.applicants-follows h4 {
 		font-size: 18px;
 	}
 	.follow-btn-group {
@@ -8810,7 +8809,7 @@ body[data-layout-mode=dark] .alertify .ajs-footer .ajs-buttons .ajs-button.ajs-o
 	.profile-edit-icon i {
 		font-size: 12px;
 	}
-	.search-student-btn {
+	.search-aspirant-btn {
 		margin-bottom: 20px;
 	}
 }
@@ -9237,10 +9236,10 @@ body[data-layout-mode=dark] .alertify .ajs-footer .ajs-buttons .ajs-button.ajs-o
 		font-size: 20px;
 	}
 	.activity-feed .feed-item ,
-	.teacher-date-list {
+	.company-date-list {
 		display: block !important;
 	}
-	.teacher-date-list li:last-child {
+	.company-date-list li:last-child {
 		margin-left: 0;
 	}
 	.skip-group .skip-btn {
@@ -9262,7 +9261,7 @@ body[data-layout-mode=dark] .alertify .ajs-footer .ajs-buttons .ajs-button.ajs-o
 	.follow-group {
 		padding: 0px 10px;
 	}
-	.students-follows h4 {
+	.applicants-follows h4 {
 		font-size: 18px;
 	}
 	.follow-btn-group {
@@ -9283,20 +9282,20 @@ body[data-layout-mode=dark] .alertify .ajs-footer .ajs-buttons .ajs-button.ajs-o
 	.user-img .user-text {
 		display: none;
 	}
-	.star-student.table-striped tbody tr td,
-	.star-student.table-striped tbody tr td a {
+	.star-aspirant.table-striped tbody tr td,
+	.star-aspirant.table-striped tbody tr td a {
 		font-size: 14px;
 	}
 	.social-boxs img {
 		max-width: 25px;
 	}
-	.teacher-date-list li:nth-child(2) {
+	.company-date-list li:nth-child(2) {
 		display: none;
 	}
 	.activity-btns .btn-info {
 		min-width: 125px;
 	}
-	.teacher-date-list {
+	.company-date-list {
 		margin: 10px 0px;
 	}
 	.chart-list-out span {
@@ -9309,11 +9308,11 @@ body[data-layout-mode=dark] .alertify .ajs-footer .ajs-buttons .ajs-button.ajs-o
 	.chart-list-out li {
 		margin-right: 5px;
 	}
-	.search-student-btn .btn-primary {
+	.search-aspirant-btn .btn-primary {
 		min-width: 120px;
 		padding: 6px 15px;
 	}
-	.search-student-btn {
+	.search-aspirant-btn {
 		margin-bottom: 20px;
 	}
 	.btn-outline-gray {
