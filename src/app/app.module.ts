@@ -17,6 +17,7 @@ import { ReactiveFormsModule } from "@angular/forms";
 import {MatGridListModule} from '@angular/material/grid-list';
 import { AuthenticationGuard } from "./core/auth/authentication.guard";
 import { RegisterTypeComponent } from './register-type/register-type.component';
+import { RegisterComponent } from "./register/register.component";
 
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -28,6 +29,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     AppComponent,
     LoginComponent,
     RegisterTypeComponent,
+    RegisterComponent
    ],
   imports: [
     BrowserModule,

@@ -1,13 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
-
-
-export interface Tile {
-  color: string;
-  cols: number;
-  rows: number;
-  text: string;
-}
 
 @Component({
   selector: 'app-register-type',
@@ -16,16 +9,19 @@ export interface Tile {
 })
 export class RegisterTypeComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router,
+  ) { }
 
   ngOnInit() {
   }
 
-  tiles: Tile[] = [
-    {text: 'One', cols: 4, rows: 1, color: 'lightblue'},
-    {text: 'Three', cols: 1, rows: 1, color: 'lightpink'},
-    {text: 'Four', cols: 2, rows: 1, color: '#DDBDF1'},
-    {text: 'Six', cols: 1, rows: 1, color: '#DDBDF1'},
-  ];
+
+  aspirantRegister(){
+    localStorage.setItem('type', "1");
+    this.router.navigate(['/register']);
+  }
+
+
 
 }
