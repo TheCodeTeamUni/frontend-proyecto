@@ -1,25 +1,22 @@
-
 .container {
   max-width: 50%;
-
-
+  padding-top: 5%;
 }
 
 .type-header {
   max-width: 700px;
 }
 
-.register{
-  font-family: 'Roboto', sans-serif;
-  color: #AAAAAA;
+.register {
+  font-family: "Roboto", sans-serif;
+  color: #aaaaaa;
   font-size: 16px;
-
 }
 
 .img {
-
   width: 80px;
 }
 
-a { color: #18AEFA; }
-
+a {
+  color: #18aefa;
+}

@@ -17,7 +17,9 @@ export class LoginComponent implements OnInit {
   public CustomControler: any;
   public subscription: Subscription;
   form = new UntypedFormGroup({
-    email: new UntypedFormControl('e.tapia@unaindes.edu.co', [Validators.required]),
+    email: new UntypedFormControl('e.tapia@unaindes.edu.co', [
+      Validators.required,
+    ]),
     password: new UntypedFormControl('123456', [Validators.required]),
   });
 

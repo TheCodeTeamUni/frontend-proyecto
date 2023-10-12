@@ -2635,7 +2635,7 @@ footer p {
     display: table;
     height: 100vh;
     min-height: 100vh;
-   
+
 
 }
 .login-wrapper {
@@ -2648,7 +2648,7 @@ footer p {
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-	display: flex;
+	  display: flex;
     margin: 1.875rem auto;
     max-width: 800px;
     min-height: 500px;
@@ -2657,7 +2657,7 @@ footer p {
 .login-wrapper .loginbox .login-left {
 	align-items: center;
     background: #ffffff;
-    border: rgb(162, 162, 162) 1px solid;
+    border: #18AEFA 1px solid;
     flex-direction: column;
     justify-content: end;
     width: 400px;

@@ -51,6 +51,7 @@ export class RegisterComponent implements OnInit {
     } else {
       this.isvalidconfirmpassword = false;
       this.registerService.register(this.register).subscribe((data) => {});
+      localStorage.removeItem('type');
     }
   }
 

@@ -1,24 +1,23 @@
-import { BrowserModule } from "@angular/platform-browser";
-import { NgModule } from "@angular/core";
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from "./app-routing.module";
-import { AppComponent } from "./app.component";
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
 
-import { DataTablesModule } from "angular-datatables";
-import { PerfectScrollbarModule } from "ngx-perfect-scrollbar";
-import { PERFECT_SCROLLBAR_CONFIG } from "ngx-perfect-scrollbar";
-import { PerfectScrollbarConfigInterface } from "ngx-perfect-scrollbar";
-import { LoginComponent } from "./login/login.component";
-import { HttpClientModule } from "@angular/common/http";
-import { ToastrModule } from "ngx-toastr";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { DataTablesModule } from 'angular-datatables';
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
+import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+import { LoginComponent } from './login/login.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgCircleProgressModule } from 'ng-circle-progress';
-import { ReactiveFormsModule } from "@angular/forms";
-import {MatGridListModule} from '@angular/material/grid-list';
-import { AuthenticationGuard } from "./core/auth/authentication.guard";
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { AuthenticationGuard } from './core/auth/authentication.guard';
 import { RegisterTypeComponent } from './register-type/register-type.component';
-import { RegisterComponent } from "./register/register.component";
-
+import { RegisterComponent } from './register/register.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -29,8 +28,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     AppComponent,
     LoginComponent,
     RegisterTypeComponent,
-    RegisterComponent
-   ],
+    RegisterComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -43,24 +42,24 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 
     ToastrModule.forRoot({
       timeOut: 1500,
-      positionClass: "toast-bottom-right",
+      positionClass: 'toast-bottom-right',
       preventDuplicates: true,
     }),
     NgCircleProgressModule.forRoot({
       radius: 100,
       outerStrokeWidth: 16,
       innerStrokeWidth: 8,
-      outerStrokeColor: "#78C000",
-      innerStrokeColor: "#C7E596",
-      animationDuration: 300
-    })
+      outerStrokeColor: '#78C000',
+      innerStrokeColor: '#C7E596',
+      animationDuration: 300,
+    }),
   ],
   providers: [
     {
       provide: PERFECT_SCROLLBAR_CONFIG,
       useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG,
     },
-    AuthenticationGuard
+    AuthenticationGuard,
   ],
   bootstrap: [AppComponent],
 })

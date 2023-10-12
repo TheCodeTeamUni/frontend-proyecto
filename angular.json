@@ -11,6 +11,15 @@
       "sourceRoot": "src",
       "projectType": "application",
       "prefix": "app",
+      "i18n": {
+        "sourceLocale": "en-US",
+        "locales": {
+          "es": {
+            "translation": "src/locale/messages.xlf",
+            "baseHref": ""
+          }
+        }
+      },
       "schematics": {},
       "architect": {
         "build": {
@@ -52,6 +61,12 @@
             "namedChunks": true
           },
           "configurations": {
+
+            "es": {
+              "localize": ["es"],
+              "outputPath": "dist/abcjobs-es/",
+              "i18nMissingTranslation": "error"
+           },
             "production": {
               "fileReplacements": [
                 {
@@ -87,6 +102,9 @@
             "browserTarget": "abcjobs:build"
           },
           "configurations": {
+            "es": {
+              "browserTarget": "abcjobs:build:es"
+            },
             "production": {
               "browserTarget": "abcjobs:build:production"
             }
