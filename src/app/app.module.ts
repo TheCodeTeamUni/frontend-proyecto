@@ -16,6 +16,7 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
 import { ReactiveFormsModule } from "@angular/forms";
 import {MatGridListModule} from '@angular/material/grid-list';
 import { AuthenticationGuard } from "./core/auth/authentication.guard";
+import { RegisterTypeComponent } from './register-type/register-type.component';
 
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -26,6 +27,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   declarations: [
     AppComponent,
     LoginComponent,
+    RegisterTypeComponent,
    ],
   imports: [
     BrowserModule,
@@ -36,6 +38,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     DataTablesModule,
     HttpClientModule,
     ReactiveFormsModule,
+
     ToastrModule.forRoot({
       timeOut: 1500,
       positionClass: "toast-bottom-right",
