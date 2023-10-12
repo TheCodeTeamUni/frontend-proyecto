@@ -22,6 +22,11 @@ export class RegisterTypeComponent implements OnInit {
     this.router.navigate(['/register']);
   }
 
+  companyRegister(){
+    localStorage.setItem('type', "2");
+    this.router.navigate(['/register']);
+  }
+
 
 
 }
