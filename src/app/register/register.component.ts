@@ -38,7 +38,6 @@ export class RegisterComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-
     this.typename = localStorage.getItem('type')
     this.type();
   }
@@ -48,7 +47,7 @@ export class RegisterComponent implements OnInit {
       username: this.form.value.username,
       email: this.form.value.email,
       password: this.form.value.password,
-      type: this.typename
+      type: localStorage.getItem('type')
     };
 
     if (this.form.value.password != this.form.value.confirmPassword) {
@@ -67,16 +66,10 @@ export class RegisterComponent implements OnInit {
   }
 
   type(){
-
-    if(this.typename == "1"){
-
-      this.name = "Aspirant"
-
-
-    } else{
-
-      this.name = "Company"
-
+     if(this.typename == "1"){
+       this.name = "Aspirant"
+     } else{
+       this.name = "Company"
     }
   }
 }
