@@ -9,16 +9,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v1
       - name: Use Node.js 14.x
-        uses: actions/setup-node@v3
-        env:
-          cache-name: cache-node-modules
+        uses: actions/setup-node@v1
         with:
             node-version: 14.x
-
       - name: Setup
         run: npm install
       - name: Test
-        run: ng test --no-watch --no-progress --browsers=ChromeHeadless
+        run: npm test -- --configuration=ci
 
