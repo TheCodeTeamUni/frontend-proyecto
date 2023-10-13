@@ -17,5 +17,5 @@ jobs:
       - name: Setup
         run: npm install
       - name: Test
-        run: npm test -- --configuration=ci
+        run: npm test
 
