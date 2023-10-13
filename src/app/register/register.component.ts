@@ -18,6 +18,8 @@ export class RegisterComponent implements OnInit {
   public CustomControler: any;
   public Toggledata = true;
   public register: any;
+  public typename!: any;
+  public name!: string;
 
   form = new UntypedFormGroup({
     username: new UntypedFormControl('', [Validators.required]),
@@ -35,14 +37,18 @@ export class RegisterComponent implements OnInit {
     private toastr: ToastrService
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+
+    this.typename = localStorage.getItem('type')
+    this.type();
+  }
 
   submit() {
     this.register = {
       username: this.form.value.username,
       email: this.form.value.email,
       password: this.form.value.password,
-      type: localStorage.getItem('type'),
+      type: this.typename
     };
 
     if (this.form.value.password != this.form.value.confirmPassword) {
@@ -58,5 +64,19 @@ export class RegisterComponent implements OnInit {
   ngOnDestroy() {}
   iconLogle() {
     this.Toggledata = !this.Toggledata;
+  }
+
+  type(){
+
+    if(this.typename == "1"){
+
+      this.name = "Aspirant"
+
+
+    } else{
+
+      this.name = "Company"
+
+    }
   }
 }
