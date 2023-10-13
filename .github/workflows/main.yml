@@ -17,5 +17,4 @@ jobs:
       - name: Setup
         run: npm install
       - name: Test
-        run: npm test -- --no-watch --no-progress
-
+        run: npm test -- --watch=false --browsers=ChromeHeadless
