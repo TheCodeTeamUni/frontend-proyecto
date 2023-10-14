@@ -1,0 +1,23 @@
+.help{
+  color:rgb(143, 168, 190)}
+
+
+
+.main{
+  background-color: #fff ;
+  background-image: url("/assets/img/header.png");
+}
+
+h1{
+color: linear-gradient(90deg, rgba(128,120,240,1) 0%, rgba(84,84,255,1) 35%, rgba(18,205,227,1) 100%);
+
+}
+
+.text-gradient {
+  background: -webkit-linear-gradient(315deg, #8078f0 0%, #12cde3 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+

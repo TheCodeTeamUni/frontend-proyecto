@@ -47,13 +47,16 @@ html {
 	height: 100%;
 }
 body {
-	background-color: #f7f7fa;
+  background-image: url("/assets/img/wave.png");
+
 	color: #333;
 	font-family: 'Roboto', sans-serif;
 	font-size: 15px;
 	height: 100%;
 	line-height: 1.5;
-	overflow-x: hidden;
+
+  /* overflow-x: hidden;*/
+
 }
 
 h1,
@@ -2635,8 +2638,6 @@ footer p {
     display: table;
     height: 100vh;
     min-height: 100vh;
-
-
 }
 .login-wrapper {
 	width: 100%;
@@ -2647,7 +2648,9 @@ footer p {
 .login-wrapper .loginbox {
     background-color: #fff;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 6px 7px 5px 2px rgba(0,0,0,0.18);
+    -moz-box-shadow: 6px 7px 5px 2px rgba(0,0,0,0.18);
+    box-shadow: 6px 7px 5px 2px rgba(0,0,0,0.18);
 	  display: flex;
     margin: 1.875rem auto;
     max-width: 800px;
