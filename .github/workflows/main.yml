@@ -32,6 +32,3 @@ jobs:
 
     - name: Correr pruebas
       run:  npm test -- --watch=false --browsers=ChromeHeadless
-
-    - name: Cálculo de cubrimiento
-      run:  npm run coverage
