@@ -34,4 +34,4 @@ jobs:
       run:  npm test -- --watch=false --browsers=ChromeHeadless
 
     - name: Cálculo de cubrimiento
-      run: ng test --no-watch --code-coverage
+      run:  npm test --no-watch --code-coverage
