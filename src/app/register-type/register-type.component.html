@@ -1,40 +1,95 @@
-<div class="container">
-  <header>
-    <div class="type-header p-3 pb-md-4 mx-auto mt-5 text-center">
-      <h3 >Welcome to ABCJOBS</h3>
-      <p class="register">Already Registered? <a [routerLink]="'/login'">Login</a></p>
+<nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+  <div class="container px-5">
+    <a class="navbar-brand" href="index.html"
+      ><span class="fw-bolder text-primary"
+        ><img src="assets/img/logo.png" /></span
+    ></a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
+        <li class="nav-item"><a class="nav-link" [routerLink]="'/landing'">Home</a></li>
+        <li class="nav-item"><a class="nav-link" [routerLink]="'/login'">Login</a></li>
+        <li class="nav-item"><a class="nav-link" [routerLink]="'/register-type'">Sing UP</a></li>
+      </ul>
     </div>
-  </header>
+  </div>
+</nav>
 
-  <main>
-    <div class="row row-cols-1 row-cols-md-2 mb-2 text-center">
-      <div class="col">
-        <div class="card mb-4 rounded-3 shadow-sm">
-          <div class="card-header py-3">
-            <h4 class="my-0 fw-normal">Aspirant</h4>
+<!-- Main Wrapper -->
+<div class="main-wrapper login-body">
+  <div class="login-wrapper">
+    <div class="container">
+      <div class="loginbox2">
+        <header>
+          <div class="type-header  pb-md-4 mx-auto mt-5 text-center">
+            <h3 >Welcome to ABC Jobs</h3>
+            <p class="register">Already Registered? <a [routerLink]="'/login'">Login</a></p>
           </div>
-          <div class="card-body">
+        </header>
+        <main>
+          <div class="row row-cols-1 row-cols-md-2 mb-2 text-center">
+            <div class="col">
+              <div class="card mb-4 rounded-3 shadow-sm">
+                <div class="card-header py-3">
+                  <h4 class="my-0 fw-normal">Aspirant</h4>
+                </div>
+                <div class="card-body">
 
-            <ul class="list-unstyled mt-3 mb-4">
-              <img class="img" src="assets/img/usuario.png" alt="User">
-            </ul>
-            <button type="button" class="w-100 btn btn-lg btn-outline-primary" (click)="aspirantRegister()">Sign up for free</button>
+                  <ul class="list-unstyled mt-3 mb-4">
+                    <img class="img" src="assets/img/usuario.png" alt="User">
+                  </ul>
+                  <button type="button" class="w-100 btn btn-lg btn-outline-primary" (click)="aspirantRegister()">Sign up for free</button>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card mb-4 rounded-3 shadow-sm">
+                <div class="card-header py-3">
+                  <h4 class="my-0 fw-normal">Company</h4>
+                </div>
+                <div class="card-body">
+                  <ul class="list-unstyled mt-3 mb-4">
+                    <img class="img" src="assets/img/edificio.png" alt="User">
+                  </ul>
+                  <button type="button" class="w-100 btn btn-lg btn-primary"  (click)=companyRegister()>Get started</button>
+                </div>
+              </div>
+            </div>
+
           </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card mb-4 rounded-3 shadow-sm">
-          <div class="card-header py-3">
-            <h4 class="my-0 fw-normal">Company</h4>
-          </div>
-          <div class="card-body">
-            <ul class="list-unstyled mt-3 mb-4">
-              <img class="img" src="assets/img/edificio.png" alt="User">
-            </ul>
-            <button type="button" class="w-100 btn btn-lg btn-primary"  (click)=companyRegister()>Get started</button>
-          </div>
-        </div>
+          </main>
+
+
+
+
+
       </div>
 
     </div>
-
+  </div>
+</div>
+<!-- /Main Wrapper -->
+<footer class="bg-white py-4 mt-auto">
+  <div class="container px-5">
+      <div class="row align-items-center justify-content-between flex-column flex-sm-row">
+          <div class="col-auto"><div class="small m-0">Copyright &copy; The CodeTeam 2023</div></div>
+          <div class="col-auto">
+              <a class="small" href="#!">Privacy</a>
+              <span class="mx-1">&middot;</span>
+              <a class="small" href="#!">Terms</a>
+              <span class="mx-1">&middot;</span>
+              <a class="small" href="#!">Contact</a>
+          </div>
+      </div>
+  </div>
+</footer>

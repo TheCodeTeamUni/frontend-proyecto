@@ -18,18 +18,20 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { AuthenticationGuard } from './core/auth/authentication.guard';
 import { RegisterTypeComponent } from './register-type/register-type.component';
 import { RegisterComponent } from './register/register.component';
+import { LandingComponent } from './landing/landing.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
 };
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
     LoginComponent,
     RegisterTypeComponent,
     RegisterComponent,
-  ],
+      LandingComponent
+   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
