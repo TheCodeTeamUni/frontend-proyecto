@@ -1,20 +1,37 @@
-name: Angular CI
+name: Pull request to main
+
 on:
-  push:
-    branches: [ main ]
   pull_request:
+    types:
+      - labeled
+      - unlabeled
+      - synchronize
+      - opened
+      - edited
+      - ready_for_review
+      - reopened
+      - unlocked
     branches: [ main ]
-  workflow_dispatch:
+
 jobs:
-  build:
+
+  EjecutaPruebas:
+    name: EjecutaPruebas
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - name: Use Node.js 14.x
-        uses: actions/setup-node@v1
-        with:
-            node-version: 14.x
-      - name: Setup
-        run: npm install
-      - name: Test
-        run: npm test -- --watch=false --browsers=ChromeHeadless
+    - name: Checkout de repositorio
+      uses: actions/checkout@v3
+
+    - name: Configuración de entorno de Node
+      uses: actions/setup-node@v3
+      with:
+          python-version: '14.x'
+
+    - name: Instalación de librerías y dependencias
+      run: npm install
+
+    - name: Correr pruebas
+      run:  npm test -- --watch=false --browsers=ChromeHeadless
+
+    - name: Cálculo de cubrimiento
+      run: ng test --no-watch --code-coverage
