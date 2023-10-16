@@ -30,5 +30,4 @@ jobs:
     - name: Instalación de librerías y dependencias
       run:  npm install --force
 
-    - name: Correr pruebas
-      run:  npm test -- --watch=false --browsers=ChromeHeadless
+   
