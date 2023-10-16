@@ -708,7 +708,7 @@ table.table td h2 span {
 	display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-	justify-content: end;
+	justify-content: flex-end;
 	-webkit-justify-content: end;
 	-ms-flex-pack: end;
 }
@@ -2662,7 +2662,7 @@ footer p {
     background: #ffffff;
     border: #18AEFA 1px solid;
     flex-direction: column;
-    justify-content: end;
+    justify-content: flex-end;
     width: 400px;
     display: flex;
     background-blend-mode: multiply;
@@ -3205,7 +3205,7 @@ footer p {
 	-webkit-box-align: center;
 	-ms-flex-align: center;
 	align-items: center;
-	justify-content: end;
+	justify-content: flex-end;
 	-webkit-justify-content: end;
 	-ms-flex-pack: end;
 	margin-bottom: 0;
@@ -5346,7 +5346,7 @@ table.table-inbox tbody tr.checked {
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    justify-content: end;
+    justify-content: flex-end;
     -webkit-justify-content: end;
     -ms-flex-pack: end;
 }
@@ -6528,7 +6528,7 @@ table.table-inbox tbody tr.checked {
 	margin: 0;
 }
 .bank-details .modal-footer {
-	justify-content: end;
+	justify-content: flex-end;
 	padding: 30px;
 }
 .bank-details-btn .btn {

@@ -1,6 +1,10 @@
 # ABC JOBS 
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.0.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.0.
+
+## Dependency installation
+
+Run `npm install` before proceding you'll need to install npm packages. You can do this by running npm install from the root of your project to install all the necessary dependencies.
 
 ## Development server
 
@@ -17,6 +21,7 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 ## Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Run `npm test --no-watch --code-coverage` to obtain the percentage of unit test coverage
 
 ## Running end-to-end tests
 
