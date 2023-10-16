@@ -25,10 +25,10 @@ jobs:
     - name: Configuración de entorno de Node
       uses: actions/setup-node@v3
       with:
-         node-version: 15.x
+         node-version: 14.x
 
     - name: Instalación de librerías y dependencias
       run:  npm install --force
-      
+
     - name: Correr pruebas
       run:  npm test -- --watch=false --browsers=ChromeHeadless
