@@ -2,7 +2,7 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.0.
 
-# Dependency installation
+## Dependency installation
 
 Run `npm install` before proceding you'll need to install npm packages. You can do this by running npm install from the root of your project to install all the necessary dependencies.
 
