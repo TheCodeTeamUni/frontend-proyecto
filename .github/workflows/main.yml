@@ -31,4 +31,4 @@ jobs:
       run:  npm install --force
 
     - name: Correr pruebas
-      run:  npm test -- --watch=false --browsers=ChromeHeadless
+      run:  npm test -- --watch=false
