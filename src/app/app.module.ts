@@ -19,18 +19,20 @@ import { AuthenticationGuard } from './core/auth/authentication.guard';
 import { RegisterTypeComponent } from './register-type/register-type.component';
 import { RegisterComponent } from './register/register.component';
 import { LandingComponent } from './landing/landing.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
 };
 
 @NgModule({
-  declarations: [	
+  declarations: [
     AppComponent,
     LoginComponent,
     RegisterTypeComponent,
     RegisterComponent,
-      LandingComponent
+    LandingComponent,
+    NavbarComponent
    ],
   imports: [
     BrowserModule,
@@ -43,7 +45,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     ReactiveFormsModule,
 
     ToastrModule.forRoot({
-      timeOut: 1500,
+      timeOut: 3500,
       positionClass: 'toast-bottom-right',
       preventDuplicates: true,
     }),

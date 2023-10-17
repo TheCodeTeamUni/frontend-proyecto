@@ -4,8 +4,9 @@ import {
   UntypedFormGroup,
   Validators,
 } from '@angular/forms';
-import { Subscription } from 'rxjs';
-import { WebStorage } from '../core/storage/web.storage';
+import { ToastrService } from 'ngx-toastr';
+import { LoginService } from '../services/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -15,38 +16,53 @@ import { WebStorage } from '../core/storage/web.storage';
 export class LoginComponent implements OnInit {
   public Toggledata = true;
   public CustomControler: any;
-  public subscription: Subscription;
   form = new UntypedFormGroup({
-    email: new UntypedFormControl('e.tapia@unaindes.edu.co', [
-      Validators.required,
-    ]),
-    password: new UntypedFormControl('123456', [Validators.required]),
+    email: new UntypedFormControl('', [Validators.required]),
+    password: new UntypedFormControl('', [Validators.required]),
   });
 
   get f() {
     return this.form.controls;
   }
 
-  constructor(private storage: WebStorage) {
-    this.subscription = this.storage.Loginvalue.subscribe((data) => {
-      if (data != 0) {
-        this.CustomControler = data;
-      }
-    });
-  }
+  constructor(
+    private loginService: LoginService,
+    private toastr: ToastrService,
+    private router: Router,
+  ) {}
 
   ngOnInit() {
-    this.storage.Checkuser();
-    localStorage.removeItem('LoginData');
+    localStorage.removeItem('Type');
   }
 
   submit() {
-    this.storage.Login(this.form.value);
+    this.loginService.login(this.form.value).subscribe(
+      (res) => {
+        if (res.token !== undefined) {
+          this.showSuccess()
+          this.router.navigate(['/layout/dashboard/dashboard-aspirant']);
+          localStorage.setItem("Token", res.token);
+        } else {
+          this.showError()
+        }
+      },
+      (error) => {
+           this.showError()
+      }
+    );
   }
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
-  }
+
+  ngOnDestroy() {}
+
   iconLogle() {
     this.Toggledata = !this.Toggledata;
+  }
+
+  showSuccess() {
+    this.toastr.success(`Welcome to ABC Jobs`, 'Login Success');
+  }
+
+  showError() {
+    this.toastr.error(`Email or password incorrect`, 'Failed to login');
   }
 }
