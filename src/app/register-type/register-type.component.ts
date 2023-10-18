@@ -18,12 +18,12 @@ export class RegisterTypeComponent implements OnInit {
 
 
   aspirantRegister(){
-    localStorage.setItem('type', "1");
+    localStorage.setItem('Type', "1");
     this.router.navigate(['/register']);
   }
 
   companyRegister(){
-    localStorage.setItem('type', "2");
+    localStorage.setItem('Type', "2");
     this.router.navigate(['/register']);
   }
 

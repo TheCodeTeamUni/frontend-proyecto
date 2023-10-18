@@ -6,6 +6,7 @@ import {
 } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { RegisterService } from '../services/register.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -19,7 +20,8 @@ export class RegisterComponent implements OnInit {
   public Toggledata = true;
   public register: any;
   public typename!: any;
-  public name!: string;
+  public titleRegister!: string;
+  public inputName!: string;
 
   form = new UntypedFormGroup({
     username: new UntypedFormControl('', [Validators.required]),
@@ -34,11 +36,12 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private registerService: RegisterService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router: Router
   ) {}
 
   ngOnInit() {
-    this.typename = localStorage.getItem('type')
+    this.typename = localStorage.getItem('Type');
     this.type();
   }
 
@@ -47,16 +50,20 @@ export class RegisterComponent implements OnInit {
       username: this.form.value.username,
       email: this.form.value.email,
       password: this.form.value.password,
-      type: localStorage.getItem('type')
+      type: localStorage.getItem('Type'),
     };
 
+    console.log(this.register);
     if (this.form.value.password != this.form.value.confirmPassword) {
-      this.isvalidconfirmpassword = true;
-      this.toastr.error('Passwords do not match', 'Registration error');
+      this.showError();
+    } else if (this.form.value.password.length < 10) {
+      this.showErrorLength();
     } else {
       this.isvalidconfirmpassword = false;
       this.registerService.register(this.register).subscribe((data) => {});
-      localStorage.removeItem('type');
+      this.showSuccess();
+      this.router.navigate(['/login']);
+      localStorage.removeItem('Type');
     }
   }
 
@@ -65,11 +72,25 @@ export class RegisterComponent implements OnInit {
     this.Toggledata = !this.Toggledata;
   }
 
-  type(){
-     if(this.typename == "1"){
-       this.name = "Aspirant"
-     } else{
-       this.name = "Company"
+  type() {
+    if (this.typename == '1') {
+      this.titleRegister = 'Aspirant';
+      this.inputName = 'Aspirant Name';
+    } else {
+      this.titleRegister = 'Company';
+      this.inputName = 'Company Name';
     }
+  }
+
+  showSuccess() {
+    this.toastr.success(`Welcome to ABC Jobs`, 'Successful registration');
+  }
+
+  showError() {
+    this.toastr.error('Passwords do not match', 'Registration error');
+  }
+
+  showErrorLength() {
+    this.toastr.error('password too short', 'Registration error');
   }
 }
