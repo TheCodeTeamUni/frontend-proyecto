@@ -4,7 +4,7 @@ env:
     variables:
         CACHE_CONTROL: "86400"
         S3_BUCKET: "{{S3_BUCKET}}"
-        BUILD_FOLDER: "dist"
+        BUILD_FOLDER: "dist/{{PROJECT_NAME}}"
 phases:
   install:
     runtime-versions:
@@ -15,9 +15,14 @@ phases:
         - npm install -g @angular/cli
   build:
     commands:
-        - echo Build started
+        - echo Build started on `date`
         - ng build
+  post_build:
+    commands:
+        - aws s3 cp ${BUILD_FOLDER} s3://${S3_BUCKET} --recursive --acl public-read --cache-control "max-age=${CACHE_CONTROL}"
+        - echo Build completed on `date`
 artifacts:
     files:
         - '**/*'
-    base-directory: 'dist'
+    base-directory: 'dist*'
+    discard-paths: yes
