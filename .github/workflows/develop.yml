@@ -34,7 +34,7 @@ jobs:
         run:  npm install
 
       - name: Correr pruebas Unitarias
-        run:  ng test --no-watch --no-progress --watch=false --code-coverage --browsers=ChromeHeadless
+        run:  npm test --no-watch --no-progress --watch=false --code-coverage --browsers=ChromeHeadless
 
       - name: Correr pruebas e2e
         run:  npm run e2e
