@@ -37,10 +37,11 @@ jobs:
         run:  npm test -- --watch=false --browsers=ChromeHeadless
 
       - name: Correr pruebas e2e
-        uses: cypress-io/github-action@v6
+        uses: cypress-io/github-action@v5
         with:
-          build: npm run build
-          start: npm start
+          start: npm run start
+          browser: chrome
+          wait-on: 'http://localhost:4200/en'
 
 
   Automerge:
@@ -58,3 +59,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           source-branch: ${{ github.ref }}
           target-branch: develop
+
