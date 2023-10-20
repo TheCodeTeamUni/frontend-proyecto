@@ -39,9 +39,11 @@ jobs:
       - name: Correr pruebas e2e
         uses: cypress-io/github-action@v3
         with:
-          working-directory: client
-          build: npm run build
-          start: npm start
+            project: ./site
+            browser: chrome
+            build: yarn build
+            start: yarn start
+            wait-on: "http://localhost:4200/"
 
 
   Automerge:
