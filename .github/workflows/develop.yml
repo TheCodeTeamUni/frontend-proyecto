@@ -35,9 +35,12 @@ jobs:
 
       - name: Correr pruebas Unitarias
         run:  npm test -- --watch=false --browsers=ChromeHeadless
-        
+
       - name: Correr pruebas e2e
-        run:  npm run e2e
+        uses: cypress-io/github-action@v6
+        with:
+          build: npm run build
+          start: npm start
 
 
   Automerge:
