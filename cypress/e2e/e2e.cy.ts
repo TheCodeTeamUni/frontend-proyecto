@@ -6,7 +6,7 @@ Initialization
 
 describe('e2e', () => {
   beforeEach(() => {
-    cy.visit('/');
+    cy.visit('http://localhost:4200/');
     cy.wait(1000);
   });
 
