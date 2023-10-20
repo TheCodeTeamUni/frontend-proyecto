@@ -35,7 +35,8 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.app.json",
             "allowedCommonJsDependencies": [
-              "apexcharts"
+              "apexcharts",
+              "jquery"
             ],
             "assets": [
               "src/favicon.ico",

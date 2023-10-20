@@ -8,7 +8,6 @@ import { HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class UsersService {
-
   private backUrl: string = environment.baseUrl;
 
   constructor(private http: HttpClient){ }

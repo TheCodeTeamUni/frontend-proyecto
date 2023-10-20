@@ -1,6 +1,7 @@
 import { Component, OnInit, NgZone, HostListener } from "@angular/core";
 import { Router } from "@angular/router";
 
+declare const $: any;
 @HostListener("window: resize", ["$event"])
 @Component({
   selector: "app-dashboard",
@@ -25,7 +26,6 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     // Page Content Height
-
     if ($(".page-wrapper").length > 0) {
       var height:any = $(window).height();
       $(".page-wrapper").css("min-height", height);

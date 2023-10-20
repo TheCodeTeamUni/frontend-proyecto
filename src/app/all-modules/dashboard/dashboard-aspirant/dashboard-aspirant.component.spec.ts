@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { DashboardAspirantComponent } from './dashboard-aspirant.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
+import { ReactiveFormsModule } from '@angular/forms';
 
 describe('DashboardMainComponent', () => {
   let component: DashboardAspirantComponent;
@@ -8,7 +11,8 @@ describe('DashboardMainComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ DashboardAspirantComponent]
+      declarations: [ DashboardAspirantComponent],
+      imports: [ReactiveFormsModule, ToastrModule.forRoot(), HttpClientModule],
     })
     .compileComponents();
   }));
@@ -22,4 +26,5 @@ describe('DashboardMainComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
 });
