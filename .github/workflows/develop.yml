@@ -33,8 +33,14 @@ jobs:
       - name: Instalación de librerías y dependencias
         run:  npm install
 
-      - name: Correr pruebas
+      - name: Correr pruebas Unitarias
         run:  npm test -- --watch=false --browsers=ChromeHeadless
+
+      - name: Coverage
+        run:  npm test --no-watch --code-coverage
+
+      - name: Correr pruebas e2e
+        run:  npm run e2e
 
 
   Automerge:

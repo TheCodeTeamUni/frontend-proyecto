@@ -6,9 +6,11 @@
     <div class="container">
       <div class="loginbox2">
         <header>
-          <div class="type-header  pb-md-4 mx-auto mt-5 text-center">
-            <h3 >Welcome to ABC Jobs</h3>
-            <p class="register">Already Registered? <a [routerLink]="'/login'">Login</a></p>
+          <div class="type-header pb-md-4 mx-auto mt-5 text-center">
+            <h3>Welcome to ABC Jobs</h3>
+            <p class="register">
+              Already Registered? <a [routerLink]="'/login'">Login</a>
+            </p>
           </div>
         </header>
         <main>
@@ -19,11 +21,16 @@
                   <h4 class="my-0 fw-normal">Aspirant</h4>
                 </div>
                 <div class="card-body">
-
                   <ul class="list-unstyled mt-3 mb-4">
-                    <img class="img" src="assets/img/usuario.png" alt="User">
+                    <img class="img" src="assets/img/usuario.png" alt="User" />
                   </ul>
-                  <button type="button" class="w-100 btn btn-lg btn-outline-primary" (click)="aspirantRegister()">Sign up for free</button>
+                  <button
+                    type="button"
+                    class="w-100 btn btn-lg btn-outline-primary"
+                    (click)="aspirantRegister()"
+                  >
+                    Sign up for free
+                  </button>
                 </div>
               </div>
             </div>
@@ -34,37 +41,40 @@
                 </div>
                 <div class="card-body">
                   <ul class="list-unstyled mt-3 mb-4">
-                    <img class="img" src="assets/img/edificio.png" alt="User">
+                    <img class="img" src="assets/img/edificio.png" alt="User" />
                   </ul>
-                  <button type="button" class="w-100 btn btn-lg btn-primary"  (click)=companyRegister()>Get started</button>
+                  <button
+                    type="button"
+                    class="w-100 btn btn-lg btn-primary"
+                    (click)="companyRegister()"
+                  >
+                    Get started
+                  </button>
                 </div>
               </div>
             </div>
-
           </div>
-          </main>
-
-
-
-
-
+        </main>
       </div>
-
     </div>
   </div>
 </div>
 <!-- /Main Wrapper -->
 <footer class="bg-white py-4 mt-auto">
   <div class="container px-5">
-      <div class="row align-items-center justify-content-between flex-column flex-sm-row">
-          <div class="col-auto"><div class="small m-0">Copyright &copy; The CodeTeam 2023</div></div>
-          <div class="col-auto">
-              <a class="small" href="#!">Privacy</a>
-              <span class="mx-1">&middot;</span>
-              <a class="small" href="#!">Terms</a>
-              <span class="mx-1">&middot;</span>
-              <a class="small" href="#!">Contact</a>
-          </div>
+    <div
+      class="row align-items-center justify-content-between flex-column flex-sm-row"
+    >
+      <div class="col-auto">
+        <div class="small m-0">Copyright &copy; The CodeTeam 2023</div>
       </div>
+      <div class="col-auto">
+        <a class="small" href="#!">Privacy</a>
+        <span class="mx-1">&middot;</span>
+        <a class="small" href="#!">Terms</a>
+        <span class="mx-1">&middot;</span>
+        <a class="small" href="#!">Contact</a>
+      </div>
+    </div>
   </div>
 </footer>
