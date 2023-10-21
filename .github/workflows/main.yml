@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout de repositorio
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Configuración de entorno de Node
       uses: actions/setup-node@v3
@@ -33,14 +33,8 @@ jobs:
     - name: Correr pruebas Unitarias
       run:  npm test -- --watch=false --browsers=ChromeHeadless
 
-    - name: Run e2e tests
-      working-directory: packages/client
-      run: |
-        yarn install
-        yarn build
-        yarn start &
-        yarn test
-        yarn cypress:run
-      env:
-        CI: true
-        API_URI: http://localhost:4200/
+    - name: Cypress run
+      uses: cypress-io/github-action@v6
+      with:
+        build: npm run build
+        start: npm start
