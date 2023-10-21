@@ -32,3 +32,15 @@ jobs:
 
     - name: Correr pruebas Unitarias
       run:  npm test -- --watch=false --browsers=ChromeHeadless
+
+    - name: Run e2e tests
+      working-directory: packages/client
+      run: |
+        yarn install
+        yarn build
+        yarn start &
+        yarn test
+        yarn cypress:run
+      env:
+        CI: true
+        API_URI: http://localhost:4200/
