@@ -4,9 +4,19 @@ import { LoginComponent } from './login/login.component';
 import { RegisterTypeComponent } from './register-type/register-type.component';
 import { RegisterComponent } from './register/register.component';
 import { LandingComponent } from './landing/landing.component';
+import { AuthenticationGuard } from './core/auth/authentication.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'landing', pathMatch: 'full' },
+  {
+    path: "layout",
+    loadChildren: () =>
+      import(`./all-modules/all-modules.module`).then(
+        (m) => m.AllModulesModule
+      ),
+    canActivate: [AuthenticationGuard],
+
+  },
   { path: 'login', component: LoginComponent },
   { path: 'register-type', component: RegisterTypeComponent },
   { path: 'register', component: RegisterComponent },
@@ -14,7 +24,7 @@ const routes: Routes = [
 ]
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {})],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

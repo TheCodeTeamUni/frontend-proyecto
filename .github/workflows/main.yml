@@ -28,7 +28,7 @@ jobs:
          node-version: 14.x
 
     - name: Instalación de librerías y dependencias
-      run:  npm install --force
+      run:  npm install
 
-    - name: Correr pruebas
+    - name: Correr pruebas Unitarias
       run:  npm test -- --watch=false --browsers=ChromeHeadless
