@@ -4,20 +4,21 @@ import { CommonModule } from "@angular/common";
 import { AllModulesRoutingModule } from "./all-modules-routing.module";
 import { AllModulesComponent } from "./all-modules.component";
 import { HeaderComponent } from "../header/header.component";
-import { SidebarComponent } from "../sidebar/sidebar.component";
+import { SidebarAspirantComponent } from "../sidebar-aspirant/sidebar-aspirant.component";
 import { PerfectScrollbarModule } from "ngx-perfect-scrollbar";
 import { PERFECT_SCROLLBAR_CONFIG } from "ngx-perfect-scrollbar";
 import { PerfectScrollbarConfigInterface } from "ngx-perfect-scrollbar";
 import { HttpClientModule } from "@angular/common/http";
 // import { HttpClientInMemoryWebApiModule } from "angular-in-memory-web-api";
 import { ShareDataService } from "./share-data.service";
+import { SidebarCompanyComponent } from "../sidebar-company/sidebar-company.component";
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
 };
 
 @NgModule({
-  declarations: [AllModulesComponent, HeaderComponent, SidebarComponent],
+  declarations: [AllModulesComponent, HeaderComponent, SidebarAspirantComponent, SidebarCompanyComponent],
   imports: [
     CommonModule,
     AllModulesRoutingModule,

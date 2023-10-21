@@ -27,4 +27,20 @@ describe('DashboardMainComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  it('should render Title Welcome', () => {
+    const fixture = TestBed.createComponent(DashboardAspirantComponent);
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('h3').textContent).toContain('Welcome');
+  });
+
+
+
+  it('should render title card project', () => {
+    const fixture = TestBed.createComponent(DashboardAspirantComponent);
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('.db-info > h6').textContent).toContain('Projects');
+  });
+
 });

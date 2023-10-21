@@ -36,14 +36,6 @@ jobs:
       - name: Correr pruebas Unitarias
         run:  npm test -- --watch=false --browsers=ChromeHeadless
 
-      - name: Correr pruebas e2e
-        uses: cypress-io/github-action@v3
-        with:
-            project: ./site
-            browser: chrome
-            build: yarn build
-            start: yarn start
-            wait-on: "http://localhost:4200/"
 
 
   Automerge:

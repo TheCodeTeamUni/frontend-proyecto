@@ -26,7 +26,7 @@ export class DashboardAspirantComponent implements OnInit {
 
 
   getAspirant() {
-    this.userService.getApirant(this.token).subscribe(
+    this.userService.getUser(this.token).subscribe(
       (res) => {
 
         this.username = res.username;

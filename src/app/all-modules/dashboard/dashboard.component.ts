@@ -39,7 +39,8 @@ export class DashboardComponent implements OnInit {
         $(".page-wrapper").css("min-height", height);
       }
     });
-    this.router.navigateByUrl("/layout/dashboard/dashboard-aspirant");
+
+    /* this.router.navigateByUrl("/layout/dashboard/dashboard-aspirant"); */
   }
   onResize(event:any) {
     this.innerHeight = event.target.innerHeight + "px";

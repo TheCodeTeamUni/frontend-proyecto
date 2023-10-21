@@ -13,7 +13,7 @@ export class UsersService {
   constructor(private http: HttpClient){ }
 
 
-  getApirant(token: string): Observable<any> {
+  getUser(token: string): Observable<any> {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`,
     });

@@ -32,19 +32,30 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    localStorage.removeItem('Type');
   }
 
   submit() {
+
+
     this.loginService.login(this.form.value).subscribe(
       (res) => {
+
         if (res.token !== undefined) {
-          this.showSuccess();
-          this.router.navigate(['/layout/dashboard/dashboard-aspirant']);
-          localStorage.setItem('Token', res.token);
+          if(res.type == "1"){
+            console.log(res.type)
+            this.showSuccess();
+            this.router.navigate(['/layout/dashboard/dashboard-aspirant']);
+            localStorage.setItem('Token', res.token);
+          }else if(res.type == "2"){
+            console.log(res.type)
+            this.showSuccess();
+            this.router.navigate(['/layout/dashboard/dashboard-company']);
+            localStorage.setItem('Token', res.token);
+          }
         } else {
           this.showError();
         }
+
       },
       (error) => {
         this.showError();

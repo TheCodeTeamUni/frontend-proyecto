@@ -1,3 +1,4 @@
 <app-header></app-header>
-<app-sidebar></app-sidebar>
+<app-aspirant-sidebar *ngIf="navControllerAspirant"> </app-aspirant-sidebar>
+<app-company-sidebar *ngIf="navControllerCompany"></app-company-sidebar>
 <router-outlet></router-outlet>

@@ -6,10 +6,13 @@ import { DashboardComponent } from "./dashboard.component";
 import { DashboardAspirantComponent } from "./dashboard-aspirant/dashboard-aspirant.component";
 import { NgCircleProgressModule } from "ng-circle-progress";
 import { NgApexchartsModule } from 'ng-apexcharts';
+import { DashboardCompanyComponent } from './dashboard-company/dashboard-company.component';
+
 @NgModule({
   declarations: [
     DashboardComponent,
     DashboardAspirantComponent,
+    DashboardCompanyComponent
 
 
   ],

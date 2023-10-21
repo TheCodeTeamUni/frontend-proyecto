@@ -13,18 +13,19 @@ export class HeaderComponent implements OnInit {
   username!: string;
   type!: string;
   profile!: string;
-
   elem=document.documentElement
+  
   constructor(public router: Router, private userService: UsersService) {}
 
   ngOnInit() {
   this.token = localStorage.getItem('Token');
-  this.getAspirant();
+  this.getUser();
 
   }
 
   Logout() {
-    localStorage.removeItem("LoginData");
+    localStorage.removeItem("Token");
+    localStorage.removeItem("Type");
     this.router.navigate(["/login"]);
   }
 
@@ -37,8 +38,8 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  getAspirant() {
-    this.userService.getApirant(this.token).subscribe(
+  getUser() {
+    this.userService.getUser(this.token).subscribe(
       (res) => {
 
         this.username = res.username;
