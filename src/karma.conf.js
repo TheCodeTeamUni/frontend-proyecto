@@ -28,6 +28,9 @@ module.exports = function (config) {
     autoWatch: true,
     browsers: ['Chrome'],
     singleRun: false,
-    restartOnFileChange: true
+    restartOnFileChange: true,
+    files: [
+      './node_modules/jquery/dist/jquery.min.js',
+    ],
   });
 };

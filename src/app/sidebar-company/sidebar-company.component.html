@@ -1,0 +1,34 @@
+<!-- Sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-inner slimscroll">
+    <perfect-scrollbar [scrollIndicators]="false">
+      <div id="sidebar-menu" class="sidebar-menu">
+        <ul>
+          <li class="menu-title">
+            <span>Main Menu</span>
+          </li>
+
+          <li [ngClass]="[activeRoute === 'dashboard' ? 'active' : 'submenu']">
+            <a
+              [ngClass]="[activeRoute === 'dashboard' ? 'active' : '']"
+              (click)="setActive()"
+              ><i class="fas fa-th-large"></i> <span>Dashboard</span>
+              <span class="menu-arrow"></span
+            ></a>
+            <ul>
+              <li>
+                <a
+                  (click)="setActive()"
+                  routerLink="/layout/dashboard/dashboard-company"
+                  routerLinkActive="active"
+                  >Company Dashboard</a
+                >
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </perfect-scrollbar>
+  </div>
+</div>
+<!-- /Sidebar -->

@@ -33,8 +33,9 @@ jobs:
       - name: Instalación de librerías y dependencias
         run:  npm install
 
-      - name: Correr pruebas
+      - name: Correr pruebas Unitarias
         run:  npm test -- --watch=false --browsers=ChromeHeadless
+
 
 
   Automerge:
@@ -52,3 +53,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           source-branch: ${{ github.ref }}
           target-branch: develop
+
