@@ -31,23 +31,19 @@ export class LoginComponent implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   submit() {
-
-
     this.loginService.login(this.form.value).subscribe(
       (res) => {
-
         if (res.token !== undefined) {
-          if(res.type == "1"){
-            console.log(res.type)
+          if (res.type == '1') {
+            console.log(res.type);
             this.showSuccess();
             this.router.navigate(['/layout/dashboard/dashboard-aspirant']);
             localStorage.setItem('Token', res.token);
-          }else if(res.type == "2"){
-            console.log(res.type)
+          } else if (res.type == '2') {
+            console.log(res.type);
             this.showSuccess();
             this.router.navigate(['/layout/dashboard/dashboard-company']);
             localStorage.setItem('Token', res.token);
@@ -55,7 +51,6 @@ export class LoginComponent implements OnInit {
         } else {
           this.showError();
         }
-
       },
       (error) => {
         this.showError();
