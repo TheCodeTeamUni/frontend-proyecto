@@ -17,7 +17,7 @@ export class UsersService {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`,
     });
-    return this.http.get<any>(`${this.backUrl}users/me`, {
+    return this.http.get<any>(`${this.backUrl}abcjobs/me`, {
       headers: headers,
     });
   }

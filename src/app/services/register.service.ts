@@ -13,6 +13,6 @@ export class RegisterService {
   constructor(private http: HttpClient) {}
 
   register(user: any): Observable<Register> {
-    return this.http.post<any>(`${this.backUrl}users/signup`, user);
+    return this.http.post<any>(`${this.backUrl}abcjobs/signup`, user);
   }
 }

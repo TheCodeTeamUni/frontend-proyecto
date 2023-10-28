@@ -15,7 +15,7 @@ export class ShareDataService {
   filter(filterBy: any) {
     this._listners.next(filterBy);
   }
-  studentsList = [
+  applicantsList = [
     {
       id: 1,
       idNo: "PRE1234",
@@ -97,7 +97,7 @@ export class ShareDataService {
       address: "	86 Lamphey Road, Thelnetham",
     },
   ];
-  teachersList = [
+  companysList = [
     {
       id: 1,
       idNo: "PRE1234",
@@ -205,7 +205,7 @@ export class ShareDataService {
       name: "MCA",
       hod: "Lois A",
       startedYear: "1992",
-      noOfStudents: "200",
+      noOfapplicants: "200",
     },
     {
       id: 2,
@@ -213,7 +213,7 @@ export class ShareDataService {
       name: "Electrical Engg",
       hod: "Levell Scott",
       startedYear: "1994",
-      noOfStudents: "163",
+      noOfapplicants: "163",
     },
     {
       id: 3,
@@ -221,7 +221,7 @@ export class ShareDataService {
       name: "	BCA",
       hod: "Calvin",
       startedYear: "1992",
-      noOfStudents: "152",
+      noOfapplicants: "152",
     },
     {
       id: 4,
@@ -229,7 +229,7 @@ export class ShareDataService {
       name: "Computer Science Engg",
       hod: "Aaliyah",
       startedYear: "1995",
-      noOfStudents: "180",
+      noOfapplicants: "180",
     },
     {
       id: 5,
@@ -237,7 +237,7 @@ export class ShareDataService {
       name: "Mechanical Engg",
       hod: "Malynne",
       startedYear: "1999",
-      noOfStudents: "240",
+      noOfapplicants: "240",
     },
     {
       id: 6,
@@ -245,7 +245,7 @@ export class ShareDataService {
       name: "Civil Engg",
       hod: "Minnie",
       startedYear: "2000",
-      noOfStudents: "195",
+      noOfapplicants: "195",
     },
   ];
   subjectsList = [
@@ -1646,50 +1646,50 @@ export class ShareDataService {
       id : 1,
       images:"assets/img/profiles/avatar-03.jpg",
       username:"Malynne",
-      details:"student"
-    },  
+      details:"aspirant"
+    },
     {
       id : 2,
       images:"assets/img/profiles/avatar-04.jpg",
       username:"Levell Scott",
-      details:"student"
-    }, 
+      details:"aspirant"
+    },
     {
       id : 3,
       images:"assets/img/profiles/avatar-05.jpg",
       username:"Minnie",
-      details:"student"
-    }, 
+      details:"aspirant"
+    },
     {
       id : 4,
       images:"assets/img/profiles/avatar-06.jpg",
       username:"Lois A",
-      details:"student"
-    }, 
+      details:"aspirant"
+    },
     {
       id : 5,
       images:"assets/img/profiles/avatar-07.jpg",
       username:"Calvin",
-      details:"student"
-    }, 
+      details:"aspirant"
+    },
     {
       id : 6,
       images:"assets/img/profiles/avatar-08.jpg",
       username:"Charles Dickens",
-      details:"student"
-    }, 
+      details:"aspirant"
+    },
     {
       id : 6,
       images:"assets/img/profiles/avatar-09.jpg",
       username:"Joe Kelley",
-      details:"student"
-    }, 
+      details:"aspirant"
+    },
     {
       id : 6,
       images:"assets/img/profiles/avatar-10.jpg",
       username:"Malynne",
-      details:"student"
-    }, 
+      details:"aspirant"
+    },
   ]
   public ManageUsers2: BehaviorSubject<any> = new BehaviorSubject(this.grids);
   teachgrids = [
@@ -1697,50 +1697,50 @@ export class ShareDataService {
       id : 1,
       images:"assets/img/profiles/avatar-05.jpg",
       username:"Malynne",
-      details:"Teacher"
+      details:"company"
     },
     {
       id : 2,
       images:"assets/img/profiles/avatar-03.jpg",
       username:"Levell Scott",
-      details:"Teacher"
-    }, 
+      details:"company"
+    },
     {
       id : 3,
       images:"assets/img/profiles/avatar-07.jpg",
       username:"Minnie",
-      details:"Teacher"
-    }, 
+      details:"company"
+    },
     {
       id : 4,
       images:"assets/img/profiles/avatar-04.jpg",
       username:"Lois A",
-      details:"Teacher"
-    }, 
+      details:"company"
+    },
     {
       id : 5,
       images:"assets/img/profiles/avatar-06.jpg",
       username:"Calvin",
-      details:"Teacher"
-    }, 
+      details:"company"
+    },
     {
       id : 6,
       images:"assets/img/profiles/avatar-10.jpg",
       username:"Charles Dickens",
-      details:"Teacher"
-    }, 
+      details:"company"
+    },
     {
       id : 6,
       images:"assets/img/profiles/avatar-08.jpg",
       username:"Joe Kelley",
-      details:"Teacher"
-    }, 
+      details:"company"
+    },
     {
       id : 6,
       images:"assets/img/profiles/avatar-09.jpg",
       username:"Malynne",
-      details:"Teacher"
-    }, 
+      details:"company"
+    },
   ]
   public ManageUsers4: BehaviorSubject<any> = new BehaviorSubject(this.teachgrids);
   events = [
