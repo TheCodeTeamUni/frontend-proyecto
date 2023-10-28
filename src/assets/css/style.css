@@ -1,6 +1,6 @@
 /*
-Author       : Edwintl
-Template Name: abcjobs - Bootstrap Admin Template
+Author       : Dreamguys
+Template Name: Preskool - Bootstrap Admin Template
 Version      : 1.0
 */
 
@@ -21,13 +21,13 @@ Version      : 1.0
 12. Login
 13. Notifications
 14. Dashboard
-15. Details
+15. aspirant Details
 16. Event
 17. Inbox
 18. Error
 19. Profile
-20. Dashboard 1
-21. Dashboard 2
+20. company Dashboard
+21. aspirant Dashboard
 22. Settings
 23. Blog
 24. Blog Details
@@ -48,15 +48,12 @@ html {
 }
 body {
   background-image: url("/assets/img/wave.png");
-
 	color: #333;
 	font-family: 'Roboto', sans-serif;
 	font-size: 15px;
 	height: 100%;
 	line-height: 1.5;
-
-  /* overflow-x: hidden;*/
-
+	overflow-x: hidden;
 }
 
 h1,
@@ -708,7 +705,7 @@ table.table td h2 span {
 	display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-	justify-content: flex-end;
+	justify-content: end;
 	-webkit-justify-content: end;
 	-ms-flex-pack: end;
 }
@@ -2648,21 +2645,19 @@ footer p {
 .login-wrapper .loginbox {
     background-color: #fff;
     border-radius: 8px;
-    -webkit-box-shadow: 6px 7px 5px 2px rgba(0,0,0,0.18);
-    -moz-box-shadow: 6px 7px 5px 2px rgba(0,0,0,0.18);
-    box-shadow: 6px 7px 5px 2px rgba(0,0,0,0.18);
-	  display: flex;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	display: flex;
     margin: 1.875rem auto;
     max-width: 800px;
     min-height: 500px;
     width: 100%;
 }
 .login-wrapper .loginbox .login-left {
+  border: #18AEFA 1px solid;
 	align-items: center;
-    background: #ffffff;
-    border: #18AEFA 1px solid;
+    background: #FFf;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: end;
     width: 400px;
     display: flex;
     background-blend-mode: multiply;
@@ -2670,6 +2665,7 @@ footer p {
 	position: relative;
 }
 .login-wrapper .loginbox .login-left:before {
+
 	content: "";
 	position: absolute;
 	top: 0;
@@ -3205,7 +3201,7 @@ footer p {
 	-webkit-box-align: center;
 	-ms-flex-align: center;
 	align-items: center;
-	justify-content: flex-end;
+	justify-content: end;
 	-webkit-justify-content: end;
 	-ms-flex-pack: end;
 	margin-bottom: 0;
@@ -4093,7 +4089,7 @@ table.table-inbox tbody tr.checked {
 }
 
 /*-----------------
-	20. Dashboard 1
+	20. company Dashboard
 -----------------------*/
 
 .bg-five {
@@ -4495,7 +4491,7 @@ table.table-inbox tbody tr.checked {
 }
 
 /*-----------------
-	21. Dashboard 2
+	21. aspirant Dashboard
 -----------------------*/
 
 .dash-widget1 {
@@ -5346,7 +5342,7 @@ table.table-inbox tbody tr.checked {
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: end;
     -webkit-justify-content: end;
     -ms-flex-pack: end;
 }
@@ -6528,7 +6524,7 @@ table.table-inbox tbody tr.checked {
 	margin: 0;
 }
 .bank-details .modal-footer {
-	justify-content: flex-end;
+	justify-content: end;
 	padding: 30px;
 }
 .bank-details-btn .btn {
