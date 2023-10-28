@@ -2,7 +2,9 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-const baseUrl = 'http://jobs-app-users-env.eba-pfppdukn.us-east-1.elasticbeanstalk.com/';
+const baseUrl = 'http://jobs-app-integrator-env.eba-fmggp8g3.us-east-1.elasticbeanstalk.com/';
+
+
 export const environment = {
   production: false,
   baseUrl

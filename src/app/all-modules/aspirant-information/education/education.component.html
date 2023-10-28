@@ -1,0 +1,318 @@
+<div class="content container-fluid">
+
+  <!-- Page Header -->
+  <div class="page-header">
+    <div class="row align-items-center">
+      <div class="col-sm-12">
+        <div class="page-sub-header">
+          <h3 class="page-title">Education</h3>
+          <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a [routerLink]="'/layout/aspirant-information/personal-information'">Aspirant Information</a></li>
+            <li class="breadcrumb-item active">Education</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /Page Header -->
+
+  <div class="row">
+    <div class="col-sm-12">
+
+      <div class="card comman-shadow">
+        <div class="card-body">
+          <form (ngSubmit)="addapplicants()" [formGroup]="addapplicantsForm">
+            <div class="row">
+              <div class="col-12">
+                <h5 class="form-title aspirant-info">Education <span><a href="javascript:;"><i class="feather-more-vertical"></i></a></span></h5>
+              </div>
+              <div class="col-12 col-sm-4">
+                <div class="form-group local-forms">
+                  <label >First Name <span class="login-danger">*</span></label>
+                  <input type="text" class="form-control" [class.invalid]="addapplicantsForm.get('FirstName')?.invalid && addapplicantsForm.get('FirstName')?.touched"
+                  formControlName="FirstName" placeholder="Enter First Name">
+                  <div
+                    *ngIf="addapplicantsForm.get('FirstName')?.invalid && addapplicantsForm.get('FirstName')?.touched">
+                    <small
+                        *ngIf="addapplicantsForm.get('FirstName')?.invalid && addapplicantsForm.get('FirstName')?.touched"
+                        class="text-danger"> *First Name is required</small>
+                </div>
+                </div>
+
+              </div>
+              <div class="col-12 col-sm-4">
+                <div class="form-group local-forms">
+                  <label >Last Name <span class="login-danger">*</span></label>
+                  <input class="form-control" type="text" placeholder="Enter Last Name" >
+                </div>
+              </div>
+              <div class="col-12 col-sm-4">
+                <div class="form-group local-forms">
+                  <label >Gender <span class="login-danger">*</span></label>
+                  <select class="form-control select form-select">
+                    <option>Select Gender</option>
+                    <option>Female</option>
+                    <option>Male</option>
+                    <option>Others</option>
+                    </select>
+                </div>
+              </div>
+              <div class="col-12 col-sm-4">
+                <div class="form-group local-forms">
+                  <label >Date Of Birth  <span class="login-danger">*</span></label>
+                  <input type="date" class="form-control" [class.invalid]="addapplicantsForm.get('dob')?.invalid && addapplicantsForm.get('dob')?.touched"
+                    formControlName="dob" >
+                    <div
+                    *ngIf="addapplicantsForm.get('dob')?.invalid && addapplicantsForm.get('dob')?.touched">
+                    <small
+                        *ngIf="addapplicantsForm.get('dob')?.invalid && addapplicantsForm.get('dob')?.touched"
+                        class="text-danger"> *DOB is required</small>
+                </div>
+                </div>
+              </div>
+              <div class="col-12 col-sm-4">
+                <div class="form-group local-forms">
+                  <label >Roll </label>
+                  <input  type="text" class="form-control" [class.invalid]="addapplicantsForm.get('rollNo')?.invalid && addapplicantsForm.get('rollNo')?.touched"
+                  formControlName="rollNo" placeholder="Enter Rollno" >
+                  <div
+                    *ngIf="addapplicantsForm.get('rollNo')?.invalid && addapplicantsForm.get('rollNo')?.touched">
+                    <small
+                        *ngIf="addapplicantsForm.get('rollNo')?.invalid && addapplicantsForm.get('rollNo')?.touched"
+                        class="text-danger"> *Rollno is required</small>
+                </div>
+                </div>
+              </div>
+              <div class="col-12 col-sm-4">
+                <div class="form-group local-forms">
+                  <label >Blood Group <span class="login-danger">*</span></label>
+                  <select class="form-control select form-select">
+                    <option>Please Select Group </option>
+                    <option>B+</option>
+                    <option>A+</option>
+                    <option>O+</option>
+                    </select>
+                </div>
+              </div>
+              <div class="col-12 col-sm-4">
+                <div class="form-group local-forms">
+                  <label >Religion <span class="login-danger">*</span></label>
+                  <select class="form-control select form-select">
+                    <option>Please Select Religion  </option>
+                    <option>Hindu</option>
+                    <option>Christian</option>
+                    <option>Others</option>
+                    </select>
+                </div>
+              </div>
+              <div class="col-12 col-sm-4">
+                <div class="form-group local-forms">
+                  <label >E-Mail <span class="login-danger">*</span></label>
+                  <input type="text" class="form-control" [class.invalid]="addapplicantsForm.get('emailAddress')?.invalid && addapplicantsForm.get('rollNo')?.touched"
+                  formControlName="emailAddress" placeholder="Enter Email Address"  >
+                  <div
+                  *ngIf="addapplicantsForm.get('emailAddress')?.invalid && addapplicantsForm.get('emailAddress')?.touched">
+                  <small
+                      *ngIf="addapplicantsForm.get('emailAddress')?.invalid && addapplicantsForm.get('emailAddress')?.touched"
+                      class="text-danger"> *Email Address is required</small>
+              </div>
+                </div>
+              </div>
+              <div class="col-12 col-sm-4">
+                <div class="form-group local-forms">
+                  <label >Class <span class="login-danger">*</span></label>
+                  <select class="form-control select form-select">
+                    <option>Please Select Class  </option>
+                    <option>12</option>
+                    <option>11</option>
+                    <option>10</option>
+                    </select>
+                </div>
+              </div>
+              <div class="col-12 col-sm-4">
+                <div class="form-group local-forms">
+                  <label >Section <span class="login-danger">*</span></label>
+                  <select class="form-control select form-select">
+                    <option>Please Select Section   </option>
+                    <option>B</option>
+                    <option>A</option>
+                    <option>C</option>
+                    </select>
+                </div>
+              </div>
+              <div class="col-12 col-sm-4">
+                <div class="form-group local-forms">
+                  <label >Admission ID </label>
+                  <input class="form-control" type="text" placeholder="Enter Admission ID" >
+                </div>
+              </div>
+              <div class="col-12 col-sm-4">
+                <div class="form-group local-forms">
+                  <label >Phone </label>
+                  <input class="form-control" type="text" placeholder="Enter Phone Number" >
+                </div>
+              </div>
+              <div class="col-12 col-sm-4">
+                <div class="form-group applicants-up-files">
+                  <label>Upload aspirant Photo (150px X 150px)</label>
+                  <div class="uplod">
+                    <label class="file-upload image-upbtn mb-0">
+                      Choose File <input type="file">
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="aspirant-submit">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+              </div>
+            </div>
+          </form>
+
+          <div class="row mt-5">
+            <div class="col-xl-12 d-flex">
+              <!-- Star applicants -->
+              <div class="card flex-fill aspirant-space comman-shadow">
+                <div class="card-header d-flex align-items-center">
+                  <h5 class="card-title">Last Projects</h5>
+                  <ul class="chart-list-out aspirant-ellips">
+                    <li class="star-menus">
+                      <a href="javascript:;"><i class="fas fa-ellipsis-v"></i></a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table
+                      class="table star-aspirant table-hover table-center table-borderless table-striped"
+                    >
+                      <thead class="thead-light">
+                        <tr>
+                          <th>ID</th>
+                          <th>Project Name</th>
+                          <th class="text-center">Company</th>
+                          <th class="text-center">Performance</th>
+                          <th class="text-end">Year</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td class="text-nowrap">
+                            <div>ABC2209</div>
+                          </td>
+                          <td class="text-nowrap">
+                            <a [routerLink]="'/layout/profile/profile-main'">
+                              <img
+                                class="rounded-circle"
+                                src="assets/img/profiles/avatar-02.jpg"
+                                width="25"
+                                alt="Star applicants"
+                              />
+                              Smart Cities
+                            </a>
+                          </td>
+                          <td class="text-center">TechFusion Solutions</td>
+                          <td class="text-center">98%</td>
+                          <td class="text-end">
+                            <div>2019</div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-nowrap">
+                            <div>ABC1245</div>
+                          </td>
+                          <td class="text-nowrap">
+                            <a [routerLink]="'/layout/profile/profile-main'">
+                              <img
+                                class="rounded-circle"
+                                src="assets/img/profiles/avatar-01.jpg"
+                                width="25"
+                                alt="Star applicants"
+                              />
+                              Autonomous Vehicles
+                            </a>
+                          </td>
+                          <td class="text-center">InnoTech Innovations</td>
+                          <td class="text-center">99.5%</td>
+                          <td class="text-end">
+                            <div>2018</div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-nowrap">
+                            <div>ABC1625</div>
+                          </td>
+                          <td class="text-nowrap">
+                            <a [routerLink]="'/layout/profile/profile-main'">
+                              <img
+                                class="rounded-circle"
+                                src="assets/img/profiles/avatar-03.jpg"
+                                width="25"
+                                alt="Star applicants"
+                              />
+                              AI in Healthcare
+                            </a>
+                          </td>
+                          <td class="text-center">VeloCore Labs</td>
+                          <td class="text-center">99.6%</td>
+                          <td class="text-end">
+                            <div>2017</div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-nowrap">
+                            <div>ABC2516</div>
+                          </td>
+                          <td class="text-nowrap">
+                            <a [routerLink]="'/layout/profile/profile-main'">
+                              <img
+                                class="rounded-circle"
+                                src="assets/img/profiles/avatar-04.jpg"
+                                width="25"
+                                alt="Star applicants"
+                              />
+                              Energy Storage
+                            </a>
+                          </td>
+                          <td class="text-center">CyberNex Systems</td>
+                          <td class="text-center">98.2%</td>
+                          <td class="text-end">
+                            <div>2016</div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-nowrap">
+                            <div>ABC2209</div>
+                          </td>
+                          <td class="text-nowrap">
+                            <a [routerLink]="'/layout/profile/profile-main'">
+                              <img
+                                class="rounded-circle"
+                                src="assets/img/profiles/avatar-05.jpg"
+                                width="25"
+                                alt="Star applicants"
+                              />
+                              VR/AR Technology
+                            </a>
+                          </td>
+                          <td class="text-center">DataVista Technologies</td>
+                          <td class="text-center">98%</td>
+                          <td class="text-end">
+                            <div>2015</div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <!-- /Star applicants -->
+            </div>
+
+            <div class="col-xl-6 d-flex"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

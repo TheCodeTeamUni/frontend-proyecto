@@ -75,10 +75,10 @@ export class RegisterComponent implements OnInit {
   type() {
     if (this.typename == '1') {
       this.titleRegister = 'Aspirant';
-      this.inputName = 'Aspirant Name';
+
     } else {
       this.titleRegister = 'Company';
-      this.inputName = 'Company Name';
+     
     }
   }
 
