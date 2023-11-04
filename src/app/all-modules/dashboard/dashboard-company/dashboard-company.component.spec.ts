@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { of } from 'rxjs';
 import { DashboardCompanyComponent } from './dashboard-company.component';
 import { UsersService } from 'src/app/services/users.service';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('DashboardCompanyComponent', () => {
   let component: DashboardCompanyComponent;
@@ -25,7 +26,8 @@ describe('DashboardCompanyComponent', () => {
       providers: [
         { provide: Router, useValue: mockRouter },
         { provide: UsersService, useValue: mockUserService }
-      ]
+      ],
+      imports: [HttpClientTestingModule]
     });
 
     fixture = TestBed.createComponent(DashboardCompanyComponent);

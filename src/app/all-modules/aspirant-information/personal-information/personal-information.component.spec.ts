@@ -7,7 +7,8 @@ import { AspirantInformationService } from 'src/app/services/aspirant-informatio
 import { of } from 'rxjs';
 import Swal from 'sweetalert2';
 import { RouterTestingModule } from '@angular/router/testing';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+
 
 describe('PersonalInformationComponent', () => {
   let component: PersonalInformationComponent;
@@ -24,7 +25,7 @@ describe('PersonalInformationComponent', () => {
         DataService,
         AspirantInformationService,
       ],
-      imports: [RouterTestingModule, HttpClientModule],
+      imports: [RouterTestingModule, HttpClientTestingModule],
     });
     fixture = TestBed.createComponent(PersonalInformationComponent);
     component = fixture.componentInstance;

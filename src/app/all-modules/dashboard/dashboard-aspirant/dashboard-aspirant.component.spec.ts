@@ -5,6 +5,7 @@ import { UsersService } from 'src/app/services/users.service';
 import { of } from 'rxjs';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientModule } from '@angular/common/http';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('DashboardAspirantComponent', () => {
   let component: DashboardAspirantComponent;
@@ -16,7 +17,7 @@ describe('DashboardAspirantComponent', () => {
     TestBed.configureTestingModule({
       declarations: [DashboardAspirantComponent],
       providers: [Router, UsersService],
-      imports: [RouterTestingModule, HttpClientModule],
+      imports: [RouterTestingModule, HttpClientTestingModule],
     });
 
     fixture = TestBed.createComponent(DashboardAspirantComponent);

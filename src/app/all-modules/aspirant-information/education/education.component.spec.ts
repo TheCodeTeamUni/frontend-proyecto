@@ -6,7 +6,8 @@ import Swal from 'sweetalert2';
 import { AspirantInformationService } from 'src/app/services/aspirant-information.service';
 import { of } from 'rxjs';
 import { RouterTestingModule } from '@angular/router/testing';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+
 
 describe('EducationComponent', () => {
   let component: EducationComponent;
@@ -18,7 +19,7 @@ describe('EducationComponent', () => {
     TestBed.configureTestingModule({
       declarations: [EducationComponent],
       providers: [UntypedFormBuilder, AspirantInformationService],
-      imports: [RouterTestingModule, HttpClientModule],
+      imports: [RouterTestingModule, HttpClientTestingModule],
     });
 
     fixture = TestBed.createComponent(EducationComponent);
@@ -31,7 +32,7 @@ describe('EducationComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  
+
 
   it('should initialize the educationForm', () => {
     component.ngOnInit();

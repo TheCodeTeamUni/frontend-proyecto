@@ -5,8 +5,8 @@ import { DataService } from 'src/app/services/data.service';
 import { AspirantInformationService } from 'src/app/services/aspirant-information.service';
 import { of } from 'rxjs';
 import Swal from 'sweetalert2';
-import { HttpClientModule } from '@angular/common/http';
 import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('SkillsComponent', () => {
   let component: SkillsComponent;
@@ -23,7 +23,7 @@ describe('SkillsComponent', () => {
         DataService,
         AspirantInformationService,
       ],
-      imports: [RouterTestingModule, HttpClientModule],
+      imports: [RouterTestingModule, HttpClientTestingModule],
     });
     fixture = TestBed.createComponent(SkillsComponent);
     component = fixture.componentInstance;

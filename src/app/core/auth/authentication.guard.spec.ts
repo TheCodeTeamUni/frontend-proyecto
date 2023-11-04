@@ -2,6 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Router } from '@angular/router';
 import { AuthenticationGuard } from './authentication.guard';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('AuthenticationGuard', () => {
   let guard: AuthenticationGuard;
@@ -9,7 +10,7 @@ describe('AuthenticationGuard', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
+      imports: [RouterTestingModule, HttpClientTestingModule],
       providers: [AuthenticationGuard],
     });
     guard = TestBed.inject(AuthenticationGuard);
