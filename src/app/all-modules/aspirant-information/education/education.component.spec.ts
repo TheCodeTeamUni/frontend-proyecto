@@ -1,30 +1,59 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
-
+import { ComponentFixture, TestBed, tick, fakeAsync } from '@angular/core/testing';
 import { EducationComponent } from './education.component';
-import { ToastrModule } from 'ngx-toastr';
+import { UntypedFormBuilder } from '@angular/forms';
+import Swal from 'sweetalert2';
+import { AspirantInformationService } from 'src/app/services/aspirant-information.service';
+import { of } from 'rxjs';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('EducationComponent', () => {
   let component: EducationComponent;
   let fixture: ComponentFixture<EducationComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ EducationComponent ],
-      imports: [ToastrModule.forRoot()]
-    })
-    .compileComponents();
-  }));
+  let formBuilder: UntypedFormBuilder;
+  let aspirantInformationService: AspirantInformationService;
 
   beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [EducationComponent],
+      providers: [UntypedFormBuilder, AspirantInformationService],
+      imports: [RouterTestingModule, HttpClientModule],
+    });
+
     fixture = TestBed.createComponent(EducationComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    formBuilder = TestBed.inject(UntypedFormBuilder);
+    aspirantInformationService = TestBed.inject(AspirantInformationService);
   });
 
-  it('should create', () => {
+  it('should create the EducationComponent', () => {
     expect(component).toBeTruthy();
+  });
+
+  
+
+  it('should initialize the educationForm', () => {
+    component.ngOnInit();
+    expect(component.educationForm).toBeDefined();
+  });
+
+
+  it('should call getEducationInformation and set educations property', () => {
+    spyOn(aspirantInformationService, 'getEducation').and.returnValue(of(['Education1', 'Education2']));
+
+    component.ngOnInit();
+    component.getEducationInformation();
+
+    expect(aspirantInformationService.getEducation).toHaveBeenCalled();
+    expect(component.educations).toEqual(['Education1', 'Education2']);
+  });
+
+  it('should handle endDateChange', () => {
+    component.endDateChange('Yes');
+    expect(component.showEndDate).toBe(true);
+
+    component.endDateChange('No');
+    expect(component.showEndDate).toBe(false);
   });
 });

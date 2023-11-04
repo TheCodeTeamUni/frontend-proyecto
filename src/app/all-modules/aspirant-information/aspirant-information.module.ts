@@ -10,6 +10,8 @@ import { EducationComponent } from "./education/education.component";
 import { SkillsComponent } from "./skills/skills.component";
 import { WorkExperienceComponent } from "./work-experience/work-experience.component";
 import {MatSliderModule} from '@angular/material/slider';
+import { FormsModule } from '@angular/forms';
+import { ProfileComponent } from "./profile/profile.component";
 
 @NgModule({
   imports: [
@@ -18,6 +20,7 @@ import {MatSliderModule} from '@angular/material/slider';
     NgApexchartsModule,
     ReactiveFormsModule,
     MatSliderModule,
+    FormsModule,
     NgCircleProgressModule.forRoot({
       radius: 100,
       outerStrokeWidth: 16,
@@ -35,6 +38,8 @@ import {MatSliderModule} from '@angular/material/slider';
     EducationComponent,
     SkillsComponent,
     WorkExperienceComponent,
+    ProfileComponent
+
 
   ]
 })
