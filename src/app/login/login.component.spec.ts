@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { LoginService } from '../services/login.service';
 import { Router } from '@angular/router';
 import { of, throwError } from 'rxjs';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -25,6 +26,8 @@ describe('LoginComponent', () => {
         { provide: ToastrService, useValue: toastrServiceSpy },
         { provide: Router, useValue: routerSpy },
       ],
+      imports: [HttpClientTestingModule]
+      
     }).compileComponents();
 
     loginService = TestBed.inject(LoginService) as jasmine.SpyObj<LoginService>;

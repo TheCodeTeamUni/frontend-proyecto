@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsersService } from '../services/users.service';
+import { AspirantInformationService } from '../services/aspirant-information.service';
 
 @Component({
   selector: 'app-header',
@@ -13,12 +14,21 @@ export class HeaderComponent implements OnInit {
   type!: string;
   profile!: string;
   elem = document.documentElement;
+  photo!: string;
+  lastName!: string;
+  name!: string;
+  imagenPorDefectoUrl: string = 'assets/img/profiles/avatar-02.jpg';
 
-  constructor(public router: Router, private userService: UsersService) {}
+  constructor(
+    public router: Router,
+    private userService: UsersService,
+    private aspirantInformation: AspirantInformationService
+  ) {}
 
   ngOnInit() {
     this.token = localStorage.getItem('Token');
     this.getUser();
+    this.getPersonalInfo();
   }
 
   Logout() {
@@ -49,5 +59,17 @@ export class HeaderComponent implements OnInit {
       },
       (err) => {}
     );
+  }
+
+  getPersonalInfo() {
+    this.aspirantInformation.getPersonalInfo(this.token).subscribe((data) => {
+      this.photo = data.photo;
+      this.lastName = data.lastName;
+      this.name = data.name;
+    });
+  }
+
+  imagenNoEncontrada() {
+    this.photo = this.imagenPorDefectoUrl;
   }
 }

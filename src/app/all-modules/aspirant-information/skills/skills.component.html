@@ -1,5 +1,4 @@
 <div class="content container-fluid">
-
   <!-- Page Header -->
   <div class="page-header">
     <div class="row align-items-center">
@@ -7,7 +6,11 @@
         <div class="page-sub-header">
           <h3 class="page-title">Skills</h3>
           <ul class="breadcrumb">
-            <li class="breadcrumb-item"><a [routerLink]="'/layout/aspirant-information/personal-information'">Aspirant Information</a></li>
+            <li class="breadcrumb-item">
+              <a [routerLink]="'/layout/aspirant-information/skills'"
+                >Aspirant Information
+              </a>
+            </li>
             <li class="breadcrumb-item active">Skills</li>
           </ul>
         </div>
@@ -18,150 +21,68 @@
 
   <div class="row">
     <div class="col-sm-12">
-
       <div class="card comman-shadow">
         <div class="card-body">
           <form (ngSubmit)="addSkill()" [formGroup]="addSkillsForm">
             <div class="row">
               <div class="col-12">
-                <h5 class="form-title aspirant-info">Skills <span><a href="javascript:;"><i class="feather-more-vertical"></i></a></span></h5>
+                <h5 class="form-title aspirant-info">
+                  Skills
+                  <span
+                    ><a href="javascript:;"
+                      ><i class="feather-more-vertical"></i></a
+                  ></span>
+                </h5>
               </div>
-              <div class="col-12 col-sm-4">
-                <div class="form-group local-forms">
-                  <label >First Name <span class="login-danger">*</span></label>
-                  <input type="text" class="form-control" [class.invalid]="addSkillsForm.get('FirstName')?.invalid && addSkillsForm.get('FirstName')?.touched"
-                  formControlName="FirstName" placeholder="Enter First Name">
-                  <div
-                    *ngIf="addSkillsForm.get('FirstName')?.invalid && addSkillsForm.get('FirstName')?.touched">
-                    <small
-                        *ngIf="addSkillsForm.get('FirstName')?.invalid && addSkillsForm.get('FirstName')?.touched"
-                        class="text-danger"> *First Name is required</small>
-                </div>
-                </div>
 
-              </div>
               <div class="col-12 col-sm-4">
                 <div class="form-group local-forms">
-                  <label >Last Name <span class="login-danger">*</span></label>
-                  <input class="form-control" type="text" placeholder="Enter Last Name" >
+                  <label>Skill<span class="login-danger">*</span></label>
+                  <select
+                    class="form-control select form-select"
+                    formControlName="skill"
+                  >
+                    <option *ngFor="let item of lstSkills">
+                      {{ item }}
+                    </option>
+                  </select>
                 </div>
               </div>
+
               <div class="col-12 col-sm-4">
                 <div class="form-group local-forms">
-                  <label >Gender <span class="login-danger">*</span></label>
-                  <select class="form-control select form-select">
-                    <option>Select Gender</option>
-                    <option>Female</option>
-                    <option>Male</option>
-                    <option>Others</option>
-                    </select>
+                  <label
+                    >Level of Experience: {{ valorSeleccionado }}%
+                    <span class="login-danger">*</span></label
+                  >
+                  <mat-slider
+                    min="0"
+                    max="100"
+                    step="1"
+                    (input)="onSliderChange($event)"
+                    formControlName="level"
+                  ></mat-slider>
                 </div>
               </div>
+
               <div class="col-12 col-sm-4">
                 <div class="form-group local-forms">
-                  <label >Date Of Birth  <span class="login-danger">*</span></label>
-                  <input type="date" class="form-control" [class.invalid]="addSkillsForm.get('dob')?.invalid && addSkillsForm.get('dob')?.touched"
-                    formControlName="dob" >
-                    <div
-                    *ngIf="addSkillsForm.get('dob')?.invalid && addSkillsForm.get('dob')?.touched">
-                    <small
-                        *ngIf="addSkillsForm.get('dob')?.invalid && addSkillsForm.get('dob')?.touched"
-                        class="text-danger"> *DOB is required</small>
-                </div>
-                </div>
-              </div>
-              <div class="col-12 col-sm-4">
-                <div class="form-group local-forms">
-                  <label >Roll </label>
-                  <input  type="text" class="form-control" [class.invalid]="addSkillsForm.get('rollNo')?.invalid && addSkillsForm.get('rollNo')?.touched"
-                  formControlName="rollNo" placeholder="Enter Rollno" >
-                  <div
-                    *ngIf="addSkillsForm.get('rollNo')?.invalid && addSkillsForm.get('rollNo')?.touched">
-                    <small
-                        *ngIf="addSkillsForm.get('rollNo')?.invalid && addSkillsForm.get('rollNo')?.touched"
-                        class="text-danger"> *Rollno is required</small>
-                </div>
+                  <label
+                    >years of experience<span class="login-danger"
+                      >*</span
+                    ></label
+                  >
+                  <select
+                    class="form-control select form-select"
+                    formControlName="experience"
+                  >
+                    <option *ngFor="let item of lstYears">
+                      {{ item }}
+                    </option>
+                  </select>
                 </div>
               </div>
-              <div class="col-12 col-sm-4">
-                <div class="form-group local-forms">
-                  <label >Blood Group <span class="login-danger">*</span></label>
-                  <select class="form-control select form-select">
-                    <option>Please Select Group </option>
-                    <option>B+</option>
-                    <option>A+</option>
-                    <option>O+</option>
-                    </select>
-                </div>
-              </div>
-              <div class="col-12 col-sm-4">
-                <div class="form-group local-forms">
-                  <label >Religion <span class="login-danger">*</span></label>
-                  <select class="form-control select form-select">
-                    <option>Please Select Religion  </option>
-                    <option>Hindu</option>
-                    <option>Christian</option>
-                    <option>Others</option>
-                    </select>
-                </div>
-              </div>
-              <div class="col-12 col-sm-4">
-                <div class="form-group local-forms">
-                  <label >E-Mail <span class="login-danger">*</span></label>
-                  <input type="text" class="form-control" [class.invalid]="addSkillsForm.get('emailAddress')?.invalid && addSkillsForm.get('rollNo')?.touched"
-                  formControlName="emailAddress" placeholder="Enter Email Address"  >
-                  <div
-                  *ngIf="addSkillsForm.get('emailAddress')?.invalid && addSkillsForm.get('emailAddress')?.touched">
-                  <small
-                      *ngIf="addSkillsForm.get('emailAddress')?.invalid && addSkillsForm.get('emailAddress')?.touched"
-                      class="text-danger"> *Email Address is required</small>
-              </div>
-                </div>
-              </div>
-              <div class="col-12 col-sm-4">
-                <div class="form-group local-forms">
-                  <label >Class <span class="login-danger">*</span></label>
-                  <select class="form-control select form-select">
-                    <option>Please Select Class  </option>
-                    <option>12</option>
-                    <option>11</option>
-                    <option>10</option>
-                    </select>
-                </div>
-              </div>
-              <div class="col-12 col-sm-4">
-                <div class="form-group local-forms">
-                  <label >Section <span class="login-danger">*</span></label>
-                  <select class="form-control select form-select">
-                    <option>Please Select Section   </option>
-                    <option>B</option>
-                    <option>A</option>
-                    <option>C</option>
-                    </select>
-                </div>
-              </div>
-              <div class="col-12 col-sm-4">
-                <div class="form-group local-forms">
-                  <label >Admission ID </label>
-                  <input class="form-control" type="text" placeholder="Enter Admission ID" >
-                </div>
-              </div>
-              <div class="col-12 col-sm-4">
-                <div class="form-group local-forms">
-                  <label >Phone </label>
-                  <input class="form-control" type="text" placeholder="Enter Phone Number" >
-                </div>
-              </div>
-              <div class="col-12 col-sm-4">
-                <div class="form-group applicants-up-files">
-                  <label>Upload aspirant Photo (150px X 150px)</label>
-                  <div class="uplod">
-                    <label class="file-upload image-upbtn mb-0">
-                      Choose File <input type="file">
-                    </label>
-                  </div>
-                </div>
-              </div>
+
               <div class="col-12">
                 <div class="aspirant-submit">
                   <button type="submit" class="btn btn-primary">Submit</button>
@@ -173,4 +94,51 @@
       </div>
     </div>
   </div>
+
+  <div class="col-lg-12 mb-5 center">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title">Skills List</h5>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table
+            class="table star-aspirant table-hover table-center table-borderless table-striped"
+          >
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Skill</th>
+                <th>Level</th>
+                <th>Years of experience</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let skill of skills; index as i">
+                <td>{{ i + 1 }}</td>
+                <td>{{ skill.skill }}</td>
+                <td>{{ skill.level }} %</td>
+                <td>{{ skill.experience }}</td>
+                <td>
+                  <a class="btn btn-sm bg-danger-light">
+                    <i class="fe fe-edit-2"></i>
+                  </a>
+                  <a class="btn btn-sm bg-danger-light">
+                    <i class="feather-trash"></i>
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+<!-- Footer -->
+<footer>
+  <p>Copyright © 2023 CodeTeam</p>
+</footer>
+<!-- /Footer -->

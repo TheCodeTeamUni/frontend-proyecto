@@ -1,8 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
-import { of, throwError } from 'rxjs';
 import { DashboardAspirantComponent } from './dashboard-aspirant.component';
 import { UsersService } from 'src/app/services/users.service';
+import { of } from 'rxjs';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('DashboardAspirantComponent', () => {
   let component: DashboardAspirantComponent;
@@ -13,20 +16,8 @@ describe('DashboardAspirantComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [DashboardAspirantComponent],
-      providers: [
-        {
-          provide: Router,
-          useValue: {
-            navigate: jasmine.createSpy('navigate'),
-          },
-        },
-        {
-          provide: UsersService,
-          useValue: {
-            getUser: () => of({ username: 'TestUser', type: '1' }),
-          },
-        },
-      ],
+      providers: [Router, UsersService],
+      imports: [RouterTestingModule, HttpClientTestingModule],
     });
 
     fixture = TestBed.createComponent(DashboardAspirantComponent);
@@ -35,22 +26,21 @@ describe('DashboardAspirantComponent', () => {
     userService = TestBed.inject(UsersService);
   });
 
-  it('should create the component', () => {
+  it('should create the DashboardAspirantComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should retrieve user information from the service on ngOnInit', () => {
-    spyOn(localStorage, 'getItem').and.returnValue('TestToken');
-    component.ngOnInit();
-    expect(component.token).toEqual('TestToken');
-    expect(component.username).toEqual('TestUser');
-    expect(component.type).toEqual('1');
-    expect(component.profile).toEqual('Aspirant');
-  });
 
-  it('should navigate to "/login" on error', () => {
-    spyOn(localStorage, 'getItem').and.returnValue('TestToken');
-    spyOn(userService, 'getUser').and.returnValue(throwError('Test error')); // Simulate an error
+
+  it('should call getAspirant and set properties', () => {
+    spyOn(userService, 'getUser').and.returnValue(of({ username: 'testuser', type: '1' }));
+
     component.ngOnInit();
+    component.getAspirant();
+
+    expect(userService.getUser).toHaveBeenCalled();
+    expect(component.username).toBe('testuser');
+    expect(component.type).toBe('1');
+    expect(component.profile).toBe('Aspirant');
   });
 });

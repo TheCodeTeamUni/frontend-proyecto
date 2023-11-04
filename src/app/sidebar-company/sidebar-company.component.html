@@ -26,6 +26,80 @@
               </li>
             </ul>
           </li>
+          <!-- Personal Information -->
+          <li class="submenu">
+            <a href="#"
+              ><i class="fas fa-building"></i><span>Company Information</span>
+              <span class="menu-arrow"></span>
+            </a>
+            <ul>
+              <li>
+                <a
+                  routerLink=""
+                  routerLinkActive="active"
+                  >General information
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <!-- Projects -->
+          <li class="submenu">
+            <a href="#"
+              ><i class="fas fa-project-diagram"></i> <span>Projects</span>
+              <span class="menu-arrow"></span>
+            </a>
+            <ul>
+              <li>
+                <a [routerLink]="'#'" [class.active]="">Create Project</a>
+              </li>
+              <li>
+                <a [routerLink]="'#'" [class.active]="">Projects </a>
+              </li>
+            </ul>
+          </li>
+
+           <!-- Resources -->
+           <li class="submenu">
+            <a href="#"
+              ><i class="fas fa-users"></i> <span>Resources</span>
+              <span class="menu-arrow"></span>
+            </a>
+            <ul>
+              <li>
+                <a [routerLink]="'#'" [class.active]="">Search Resource</a>
+              </li>
+            </ul>
+          </li>
+
+          <!-- Interviews -->
+          <li class="submenu">
+            <a href="#"
+              ><i class="fas fas fa-camera"></i> <span>Interviews</span>
+              <span class="menu-arrow"></span>
+            </a>
+            <ul>
+              <li>
+                <a [routerLink]="'#'" [class.active]="">interview schedule </a>
+              </li>
+            </ul>
+          </li>
+
+          <!-- Tests -->
+          <li class="submenu">
+            <a href="#"
+              ><i class="fas fa-question"></i> <span>Tests</span>
+              <span class="menu-arrow"></span>
+            </a>
+            <ul>
+              <li>
+                <a [routerLink]="'#'" [class.active]=""> Take test </a>
+              </li>
+              <li>
+                <a [routerLink]="'#'" [class.active]="">Results </a>
+              </li>
+            </ul>
+          </li>
         </ul>
       </div>
     </perfect-scrollbar>

@@ -140,25 +140,25 @@
                     type="date"
                     class="form-control"
                     [class.invalid]="
-                      personalInformationForm.get('dob')?.invalid &&
-                      personalInformationForm.get('dob')?.touched
+                      personalInformationForm.get('birthdate')?.invalid &&
+                      personalInformationForm.get('birthdate')?.touched
                     "
                     formControlName="birthdate"
                   />
                   <div
                     *ngIf="
-                      personalInformationForm.get('dob')?.invalid &&
-                      personalInformationForm.get('dob')?.touched
+                      personalInformationForm.get('birthdate')?.invalid &&
+                      personalInformationForm.get('birthdate')?.touched
                     "
                   >
                     <small
                       *ngIf="
-                        personalInformationForm.get('dob')?.invalid &&
-                        personalInformationForm.get('dob')?.touched
+                        personalInformationForm.get('birthdate')?.invalid &&
+                        personalInformationForm.get('birthdate')?.touched
                       "
                       class="text-danger"
                     >
-                      *DOB is required</small
+                      *Birthdate is required</small
                     >
                   </div>
                 </div>
@@ -216,7 +216,7 @@
 
               <div class="col-12 col-sm-4">
                 <div class="form-group local-forms">
-                  <label>Url Photo <span class="login-danger">*</span></label>
+                  <label>Url Photo</label>
                   <input
                     class="form-control"
                     type="text"
@@ -256,3 +256,8 @@
     </div>
   </div>
 </div>
+<!-- Footer -->
+<footer>
+  <p>Copyright © 2023 CodeTeam</p>
+</footer>
+<!-- /Footer -->
