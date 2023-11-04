@@ -1,57 +1,60 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Router } from '@angular/router';
-import { of } from 'rxjs';
 import { HeaderComponent } from './header.component';
+import { RouterTestingModule } from '@angular/router/testing';
 import { UsersService } from '../services/users.service';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
-import { ToastrModule } from 'ngx-toastr';
+import { AspirantInformationService } from '../services/aspirant-information.service';
+import { of } from 'rxjs';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
   let fixture: ComponentFixture<HeaderComponent>;
-  let router: Router;
   let userService: UsersService;
+  let aspirantInformation: AspirantInformationService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [HeaderComponent],
-      imports: [ReactiveFormsModule, ToastrModule.forRoot(), HttpClientModule],
-      providers: [
-        {
-          provide: Router,
-          useValue: {
-            navigate: jasmine.createSpy('navigate'),
-          },
-        },
-        UsersService,
-      ],
+      imports: [RouterTestingModule, HttpClientModule],
+      providers: [UsersService, AspirantInformationService],
     });
 
     fixture = TestBed.createComponent(HeaderComponent);
     component = fixture.componentInstance;
-    router = TestBed.inject(Router);
     userService = TestBed.inject(UsersService);
+    aspirantInformation = TestBed.inject(AspirantInformationService);
   });
 
-  it('should create the component', () => {
+  it('should create the HeaderComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should navigate to "/login" on Logout', () => {
-    component.Logout();
-    expect(router.navigate).toHaveBeenCalledWith(['/login']);
+  it('should call getUser and getPersonalInfo on ngOnInit', () => {
+    spyOn(userService, 'getUser').and.returnValue(of({ username: 'testUser', type: '1' }));
+    spyOn(aspirantInformation, 'getPersonalInfo').and.returnValue(of({ photo: 'test.jpg', lastName: 'Doe', name: 'John' }));
+
+    component.ngOnInit();
+
+    expect(component.username).toBe('testUser');
+    expect(component.type).toBe('1');
+    expect(component.profile).toBe('Aspirant');
+    expect(component.photo).toBe('test.jpg');
+    expect(component.lastName).toBe('Doe');
+    expect(component.name).toBe('John');
   });
 
-  
+  it('should call Logout and navigate to /login', () => {
+    spyOn(component.router, 'navigate');
+    component.Logout();
+    expect(localStorage.getItem('Token')).toBeNull();
+    expect(localStorage.getItem('Type')).toBeNull();
+    expect(component.router.navigate).toHaveBeenCalledWith(['/login']);
+  });
 
-  it('should retrieve user information from the service on ngOnInit', () => {
-    spyOn(localStorage, 'getItem').and.returnValue('TestToken');
-    spyOn(userService, 'getUser').and.returnValue(of({ username: 'TestUser', type: '1' }));
-    component.ngOnInit();
-    expect(component.token).toEqual('TestToken');
-    expect(component.username).toEqual('TestUser');
-    expect(component.type).toEqual('1');
-    expect(component.profile).toEqual('Aspirant');
+
+
+  it('should set photo to imagenPorDefectoUrl in imagenNoEncontrada', () => {
+    component.imagenNoEncontrada();
+    expect(component.photo).toBe(component.imagenPorDefectoUrl);
   });
 });

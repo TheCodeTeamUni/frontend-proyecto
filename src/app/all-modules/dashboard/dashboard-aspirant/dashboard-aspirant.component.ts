@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { LocalStorageService } from 'src/app/services/localStorage.service';
 import { UsersService } from 'src/app/services/users.service';
 
 @Component({

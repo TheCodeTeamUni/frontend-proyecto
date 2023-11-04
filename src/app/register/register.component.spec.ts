@@ -6,6 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { of, throwError } from 'rxjs';
 import { Register } from '../models/register';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('RegisterComponent', () => {
   let component: RegisterComponent;
@@ -26,6 +27,7 @@ describe('RegisterComponent', () => {
         { provide: RegisterService, useValue: registerServiceSpy },
         { provide: ToastrService, useValue: toastrServiceSpy },
       ],
+      imports: [HttpClientTestingModule]
     }).compileComponents();
 
     router = TestBed.inject(Router);

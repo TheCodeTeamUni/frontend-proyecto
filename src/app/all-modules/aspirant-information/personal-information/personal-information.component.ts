@@ -25,8 +25,6 @@ export class PersonalInformationComponent implements OnInit {
 
   constructor(
     private formBuilder: UntypedFormBuilder,
-    private router: Router,
-    private toastr: ToastrService,
     private dataService: DataService,
     private aspirantInformation: AspirantInformationService
   ) {}
@@ -42,10 +40,10 @@ export class PersonalInformationComponent implements OnInit {
       birthdate: ['', [Validators.required]],
       telephone: ['', [Validators.required]],
       address: ['', [Validators.required]],
-      alterntiveEmail: ['', [Validators.required, Validators.email]],
+      alterntiveEmail: ['', [Validators.email]],
       country: ['', [Validators.required]],
       description: ['', [Validators.required]],
-      photo: ['', [Validators.required]],
+      photo: ['',],
     });
     this.loadCountries();
     this.token = localStorage.getItem('Token');
@@ -75,9 +73,9 @@ export class PersonalInformationComponent implements OnInit {
 
     this.aspirantInformation
       .addPersonalInfo(personalInformation, this.token)
-      .subscribe((data) => {});
-    console.log(personalInformation);
-    this.typeSuccess();
+      .subscribe((data) => {
+        this.typeSuccess();
+      });
   }
 
   loadCountries() {

@@ -1,5 +1,4 @@
 <div class="content container-fluid">
-
   <!-- Page Header -->
   <div class="page-header">
     <div class="row align-items-center">
@@ -7,7 +6,14 @@
         <div class="page-sub-header">
           <h3 class="page-title">Education</h3>
           <ul class="breadcrumb">
-            <li class="breadcrumb-item"><a [routerLink]="'/layout/aspirant-information/personal-information'">Aspirant Information</a></li>
+            <li class="breadcrumb-item">
+              <a
+                [routerLink]="
+                  '/layout/aspirant-information/personal-information'
+                "
+                >Aspirant Information</a
+              >
+            </li>
             <li class="breadcrumb-item active">Education</li>
           </ul>
         </div>
@@ -18,150 +24,160 @@
 
   <div class="row">
     <div class="col-sm-12">
-
       <div class="card comman-shadow">
         <div class="card-body">
-          <form (ngSubmit)="addapplicants()" [formGroup]="addapplicantsForm">
+          <form
+            (ngSubmit)="addEducationInformation()"
+            [formGroup]="educationForm"
+          >
             <div class="row">
               <div class="col-12">
-                <h5 class="form-title aspirant-info">Education <span><a href="javascript:;"><i class="feather-more-vertical"></i></a></span></h5>
+                <h5 class="form-title aspirant-info">
+                  Education
+                  <span
+                    ><a href="javascript:;"
+                      ><i class="feather-more-vertical"></i></a
+                  ></span>
+                </h5>
               </div>
-              <div class="col-12 col-sm-4">
-                <div class="form-group local-forms">
-                  <label >First Name <span class="login-danger">*</span></label>
-                  <input type="text" class="form-control" [class.invalid]="addapplicantsForm.get('FirstName')?.invalid && addapplicantsForm.get('FirstName')?.touched"
-                  formControlName="FirstName" placeholder="Enter First Name">
-                  <div
-                    *ngIf="addapplicantsForm.get('FirstName')?.invalid && addapplicantsForm.get('FirstName')?.touched">
-                    <small
-                        *ngIf="addapplicantsForm.get('FirstName')?.invalid && addapplicantsForm.get('FirstName')?.touched"
-                        class="text-danger"> *First Name is required</small>
-                </div>
-                </div>
 
-              </div>
               <div class="col-12 col-sm-4">
                 <div class="form-group local-forms">
-                  <label >Last Name <span class="login-danger">*</span></label>
-                  <input class="form-control" type="text" placeholder="Enter Last Name" >
+                  <label
+                    >Type of education<span class="login-danger">*</span></label
+                  >
+                  <select
+                    class="form-control select form-select"
+                    formControlName="typeEducation"
+                  >
+                    <option>Select</option>
+                    <option>Formal</option>
+                    <option>Informal</option>
+                  </select>
                 </div>
               </div>
+
               <div class="col-12 col-sm-4">
                 <div class="form-group local-forms">
-                  <label >Gender <span class="login-danger">*</span></label>
-                  <select class="form-control select form-select">
-                    <option>Select Gender</option>
-                    <option>Female</option>
-                    <option>Male</option>
-                    <option>Others</option>
-                    </select>
+                  <label
+                    >Level type of education<span class="login-danger"
+                      >*</span
+                    ></label
+                  >
+                  <select
+                    class="form-control select form-select"
+                    formControlName="level"
+                  >
+                    <option>Select</option>
+                    <option>Undergraduate</option>
+                    <option>Postgraduate</option>
+                    <option>Specialization</option>
+                    <option>Technical formation</option>
+                  </select>
                 </div>
               </div>
+
               <div class="col-12 col-sm-4">
                 <div class="form-group local-forms">
-                  <label >Date Of Birth  <span class="login-danger">*</span></label>
-                  <input type="date" class="form-control" [class.invalid]="addapplicantsForm.get('dob')?.invalid && addapplicantsForm.get('dob')?.touched"
-                    formControlName="dob" >
-                    <div
-                    *ngIf="addapplicantsForm.get('dob')?.invalid && addapplicantsForm.get('dob')?.touched">
-                    <small
-                        *ngIf="addapplicantsForm.get('dob')?.invalid && addapplicantsForm.get('dob')?.touched"
-                        class="text-danger"> *DOB is required</small>
-                </div>
+                  <label>Program<span class="login-danger">*</span></label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    placeholder="Enter Program"
+                    formControlName="title"
+                  />
                 </div>
               </div>
+
               <div class="col-12 col-sm-4">
                 <div class="form-group local-forms">
-                  <label >Roll </label>
-                  <input  type="text" class="form-control" [class.invalid]="addapplicantsForm.get('rollNo')?.invalid && addapplicantsForm.get('rollNo')?.touched"
-                  formControlName="rollNo" placeholder="Enter Rollno" >
+                  <label>Institution<span class="login-danger">*</span></label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    placeholder="Enter Institution Name"
+                    formControlName="institution"
+                  />
+                </div>
+              </div>
+
+              <div class="col-12 col-sm-4">
+                <div class="form-group local-forms">
+                  <label>graduate?<span class="login-danger">*</span></label>
+                  <select
+                    class="form-control select form-select"
+                    formControlName="grade"
+                    (ngModelChange)="endDateChange($event)"
+                  >
+                    <option>Select</option>
+                    <option>Yes</option>
+                    <option>No</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-12 col-sm-4">
+                <div class="form-group local-forms">
+                  <label>Start Date<span class="login-danger">*</span></label>
+                  <input
+                    type="date"
+                    class="form-control"
+                    [class.invalid]="
+                      educationForm.get('startDate')?.invalid &&
+                      educationForm.get('startDate')?.touched
+                    "
+                    formControlName="startDate"
+                  />
                   <div
-                    *ngIf="addapplicantsForm.get('rollNo')?.invalid && addapplicantsForm.get('rollNo')?.touched">
+                    *ngIf="
+                      educationForm.get('startDate')?.invalid &&
+                      educationForm.get('startDate')?.touched
+                    "
+                  >
                     <small
-                        *ngIf="addapplicantsForm.get('rollNo')?.invalid && addapplicantsForm.get('rollNo')?.touched"
-                        class="text-danger"> *Rollno is required</small>
-                </div>
-                </div>
-              </div>
-              <div class="col-12 col-sm-4">
-                <div class="form-group local-forms">
-                  <label >Blood Group <span class="login-danger">*</span></label>
-                  <select class="form-control select form-select">
-                    <option>Please Select Group </option>
-                    <option>B+</option>
-                    <option>A+</option>
-                    <option>O+</option>
-                    </select>
-                </div>
-              </div>
-              <div class="col-12 col-sm-4">
-                <div class="form-group local-forms">
-                  <label >Religion <span class="login-danger">*</span></label>
-                  <select class="form-control select form-select">
-                    <option>Please Select Religion  </option>
-                    <option>Hindu</option>
-                    <option>Christian</option>
-                    <option>Others</option>
-                    </select>
-                </div>
-              </div>
-              <div class="col-12 col-sm-4">
-                <div class="form-group local-forms">
-                  <label >E-Mail <span class="login-danger">*</span></label>
-                  <input type="text" class="form-control" [class.invalid]="addapplicantsForm.get('emailAddress')?.invalid && addapplicantsForm.get('rollNo')?.touched"
-                  formControlName="emailAddress" placeholder="Enter Email Address"  >
-                  <div
-                  *ngIf="addapplicantsForm.get('emailAddress')?.invalid && addapplicantsForm.get('emailAddress')?.touched">
-                  <small
-                      *ngIf="addapplicantsForm.get('emailAddress')?.invalid && addapplicantsForm.get('emailAddress')?.touched"
-                      class="text-danger"> *Email Address is required</small>
-              </div>
-                </div>
-              </div>
-              <div class="col-12 col-sm-4">
-                <div class="form-group local-forms">
-                  <label >Class <span class="login-danger">*</span></label>
-                  <select class="form-control select form-select">
-                    <option>Please Select Class  </option>
-                    <option>12</option>
-                    <option>11</option>
-                    <option>10</option>
-                    </select>
-                </div>
-              </div>
-              <div class="col-12 col-sm-4">
-                <div class="form-group local-forms">
-                  <label >Section <span class="login-danger">*</span></label>
-                  <select class="form-control select form-select">
-                    <option>Please Select Section   </option>
-                    <option>B</option>
-                    <option>A</option>
-                    <option>C</option>
-                    </select>
-                </div>
-              </div>
-              <div class="col-12 col-sm-4">
-                <div class="form-group local-forms">
-                  <label >Admission ID </label>
-                  <input class="form-control" type="text" placeholder="Enter Admission ID" >
-                </div>
-              </div>
-              <div class="col-12 col-sm-4">
-                <div class="form-group local-forms">
-                  <label >Phone </label>
-                  <input class="form-control" type="text" placeholder="Enter Phone Number" >
-                </div>
-              </div>
-              <div class="col-12 col-sm-4">
-                <div class="form-group applicants-up-files">
-                  <label>Upload aspirant Photo (150px X 150px)</label>
-                  <div class="uplod">
-                    <label class="file-upload image-upbtn mb-0">
-                      Choose File <input type="file">
-                    </label>
+                      *ngIf="
+                        educationForm.get('startDate')?.invalid &&
+                        educationForm.get('startDate')?.touched
+                      "
+                      class="text-danger"
+                    >
+                      *Start Date is required</small
+                    >
                   </div>
                 </div>
               </div>
+
+              <div class="col-12 col-sm-4">
+                <div class="form-group local-forms" *ngIf="showEndDate">
+                  <label>End Date<span class="login-danger">*</span></label>
+                  <input
+                    type="date"
+                    class="form-control"
+                    [class.invalid]="
+                      educationForm.get('endDate')?.invalid &&
+                      educationForm.get('endDate')?.touched
+                    "
+                    formControlName="endDate"
+                  />
+                  <div
+                    *ngIf="
+                      educationForm.get('endDate')?.invalid &&
+                      educationForm.get('endDate')?.touched
+                    "
+                  >
+                    <small
+                      *ngIf="
+                        educationForm.get('endDate')?.invalid &&
+                        educationForm.get('endDate')?.touched
+                      "
+                      class="text-danger"
+                    >
+                      *End Date is required</small
+                    >
+                  </div>
+                </div>
+              </div>
+
               <div class="col-12">
                 <div class="aspirant-submit">
                   <button type="submit" class="btn btn-primary">Submit</button>
@@ -169,150 +185,63 @@
               </div>
             </div>
           </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-12 mb-5 center">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title">Education List</h5>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table
+            class="table star-aspirant table-hover table-center table-borderless table-striped"
+          >
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Type Education</th>
+                <th>Level</th>
+                <th>Program</th>
+                <th>Graduate</th>
+                <th>institution</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Action</th>
 
-          <div class="row mt-5">
-            <div class="col-xl-12 d-flex">
-              <!-- Star applicants -->
-              <div class="card flex-fill aspirant-space comman-shadow">
-                <div class="card-header d-flex align-items-center">
-                  <h5 class="card-title">Last Projects</h5>
-                  <ul class="chart-list-out aspirant-ellips">
-                    <li class="star-menus">
-                      <a href="javascript:;"><i class="fas fa-ellipsis-v"></i></a>
-                    </li>
-                  </ul>
-                </div>
-                <div class="card-body">
-                  <div class="table-responsive">
-                    <table
-                      class="table star-aspirant table-hover table-center table-borderless table-striped"
-                    >
-                      <thead class="thead-light">
-                        <tr>
-                          <th>ID</th>
-                          <th>Project Name</th>
-                          <th class="text-center">Company</th>
-                          <th class="text-center">Performance</th>
-                          <th class="text-end">Year</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td class="text-nowrap">
-                            <div>ABC2209</div>
-                          </td>
-                          <td class="text-nowrap">
-                            <a [routerLink]="'/layout/profile/profile-main'">
-                              <img
-                                class="rounded-circle"
-                                src="assets/img/profiles/avatar-02.jpg"
-                                width="25"
-                                alt="Star applicants"
-                              />
-                              Smart Cities
-                            </a>
-                          </td>
-                          <td class="text-center">TechFusion Solutions</td>
-                          <td class="text-center">98%</td>
-                          <td class="text-end">
-                            <div>2019</div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="text-nowrap">
-                            <div>ABC1245</div>
-                          </td>
-                          <td class="text-nowrap">
-                            <a [routerLink]="'/layout/profile/profile-main'">
-                              <img
-                                class="rounded-circle"
-                                src="assets/img/profiles/avatar-01.jpg"
-                                width="25"
-                                alt="Star applicants"
-                              />
-                              Autonomous Vehicles
-                            </a>
-                          </td>
-                          <td class="text-center">InnoTech Innovations</td>
-                          <td class="text-center">99.5%</td>
-                          <td class="text-end">
-                            <div>2018</div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="text-nowrap">
-                            <div>ABC1625</div>
-                          </td>
-                          <td class="text-nowrap">
-                            <a [routerLink]="'/layout/profile/profile-main'">
-                              <img
-                                class="rounded-circle"
-                                src="assets/img/profiles/avatar-03.jpg"
-                                width="25"
-                                alt="Star applicants"
-                              />
-                              AI in Healthcare
-                            </a>
-                          </td>
-                          <td class="text-center">VeloCore Labs</td>
-                          <td class="text-center">99.6%</td>
-                          <td class="text-end">
-                            <div>2017</div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="text-nowrap">
-                            <div>ABC2516</div>
-                          </td>
-                          <td class="text-nowrap">
-                            <a [routerLink]="'/layout/profile/profile-main'">
-                              <img
-                                class="rounded-circle"
-                                src="assets/img/profiles/avatar-04.jpg"
-                                width="25"
-                                alt="Star applicants"
-                              />
-                              Energy Storage
-                            </a>
-                          </td>
-                          <td class="text-center">CyberNex Systems</td>
-                          <td class="text-center">98.2%</td>
-                          <td class="text-end">
-                            <div>2016</div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="text-nowrap">
-                            <div>ABC2209</div>
-                          </td>
-                          <td class="text-nowrap">
-                            <a [routerLink]="'/layout/profile/profile-main'">
-                              <img
-                                class="rounded-circle"
-                                src="assets/img/profiles/avatar-05.jpg"
-                                width="25"
-                                alt="Star applicants"
-                              />
-                              VR/AR Technology
-                            </a>
-                          </td>
-                          <td class="text-center">DataVista Technologies</td>
-                          <td class="text-center">98%</td>
-                          <td class="text-end">
-                            <div>2015</div>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-              <!-- /Star applicants -->
-            </div>
-
-            <div class="col-xl-6 d-flex"></div>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let edu of educations; index as i">
+                <td>{{ i + 1 }}</td>
+                <td>{{ edu.typeEducation }}</td>
+                <td>{{ edu.level }}</td>
+                <td>{{ edu.title }}</td>
+                <td>{{ edu.grade? 'Yes' : 'No'}}</td>
+                <td>{{ edu.institution }}</td>
+                <td>{{ edu.startDate | date:'yyyy-MMM-dd'}}</td>
+                <td>{{ edu.endDate | date:'yyyy-MMM-dd' }}</td>
+                <td>
+                  <a class="btn btn-sm bg-danger-light">
+                    <i class="fe fe-edit-2"></i>
+                  </a>
+                  <a class="btn btn-sm bg-danger-light">
+                    <i class="feather-trash"></i>
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<!-- Footer -->
+<footer>
+  <p>Copyright © 2023 CodeTeam</p>
+</footer>
+<!-- /Footer -->
