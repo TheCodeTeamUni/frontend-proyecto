@@ -38,7 +38,7 @@ export class EducationComponent implements OnInit {
     });
 
     this.token = localStorage.getItem('Token');
-    this.getEducationInformation()
+    this.getEducationInformation();
   }
 
   // Add education submit call
@@ -70,24 +70,15 @@ export class EducationComponent implements OnInit {
       .addEducation(eduInformation, this.token)
       .subscribe((data) => {
         this.typeSuccess();
-        this.getEducationInformation()
+        this.getEducationInformation();
       });
-
-
   }
-
 
   getEducationInformation() {
-    this.aspirantInformation
-      .getEducation(this.token)
-      .subscribe((data) => {
-        this.educations = data
-      });
+    this.aspirantInformation.getEducation(this.token).subscribe((data) => {
+      this.educations = data;
+    });
   }
-
-
-
-
 
   typeSuccess() {
     Swal.fire({
