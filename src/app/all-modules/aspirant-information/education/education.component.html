@@ -210,7 +210,6 @@
                 <th>Start Date</th>
                 <th>End Date</th>
                 <th>Action</th>
-
               </tr>
             </thead>
             <tbody>
@@ -219,10 +218,10 @@
                 <td>{{ edu.typeEducation }}</td>
                 <td>{{ edu.level }}</td>
                 <td>{{ edu.title }}</td>
-                <td>{{ edu.grade? 'Yes' : 'No'}}</td>
+                <td>{{ edu.grade ? "Yes" : "No" }}</td>
                 <td>{{ edu.institution }}</td>
-                <td>{{ edu.startDate | date:'yyyy-MMM-dd'}}</td>
-                <td>{{ edu.endDate | date:'yyyy-MMM-dd' }}</td>
+                <td>{{ edu.startDate | date : "yyyy-MMM-dd" }}</td>
+                <td>{{ edu.endDate | date : "yyyy-MMM-dd" }}</td>
                 <td>
                   <a class="btn btn-sm bg-danger-light">
                     <i class="fe fe-edit-2"></i>

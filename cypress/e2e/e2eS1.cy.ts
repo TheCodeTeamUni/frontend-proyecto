@@ -5,6 +5,12 @@ Initialization
 */
 
 describe('e2e', () => {
+  var fakeNames = faker.internet.userName();
+  var fakeCompany = faker.company.bsBuzz();
+
+  var fakeUserEmail = faker.internet.email();
+  var fakeCompanyEmail = faker.internet.email();
+
   beforeEach(() => {
     cy.visit('http://localhost:4200/');
     cy.wait(1000);
@@ -29,10 +35,8 @@ Register Aspirant
     )
       .contains(' Sign up for free ')
       .click();
-    var fakeNames = faker.internet.userName();
     cy.get('#username').type(fakeNames);
-    var fekeEmails = faker.internet.email();
-    cy.get('#email').type(fekeEmails);
+    cy.get('#email').type(fakeUserEmail);
     cy.get('#password').type('PassCumple1220');
     cy.get('#confirmPassword').type('PassCumple1220');
 
@@ -43,6 +47,27 @@ Register Aspirant
       .click();
 
     cy.url().should('include', '/login');
+    cy.wait(1000);
+  });
+
+  /*
+Login Aspirant
+*/
+
+  it('Login Aspirant and see Aspirant Dashboard', () => {
+    cy.contains('About Us');
+    cy.get('#navbarSupportedContent > ul > li:nth-child(2) > a')
+      .contains('Login')
+      .click();
+    cy.get('#email').type(fakeUserEmail);
+    cy.get('#password').type('PassCumple1220');
+    cy.get(
+      'body > div.main-wrapper > app-root > app-login > div > div > div > div > div.login-right > div > form > div:nth-child(4) > button'
+    )
+      .contains('Login')
+      .click();
+    cy.url().should('include', '/layout/dashboard/dashboard-aspirant');
+    cy.wait(1000);
   });
 
   /*
@@ -62,10 +87,8 @@ Register Company
     )
       .contains('Get started')
       .click();
-    var fakeCompany = faker.company.bsBuzz();
     cy.get('#username').type(fakeCompany);
-    var fekeEmails = faker.internet.email();
-    cy.get('#email').type(fekeEmails);
+    cy.get('#email').type(fakeCompanyEmail);
     cy.get('#password').type('PassCumple1220');
     cy.get('#confirmPassword').type('PassCumple1220');
 
@@ -76,26 +99,7 @@ Register Company
       .click();
 
     cy.url().should('include', '/login');
-  });
-
-  /*
-Login Aspirant
-*/
-
-  it('Login Aspirant and see Aspirant Dashboard', () => {
-    cy.contains('About Us');
-    cy.get('#navbarSupportedContent > ul > li:nth-child(2) > a')
-      .contains('Login')
-      .click();
-
-    cy.get('#email').type('usuarioprueba0@mail.com');
-    cy.get('#password').type('PassCumple1220');
-    cy.get(
-      'body > div.main-wrapper > app-root > app-login > div > div > div > div > div.login-right > div > form > div:nth-child(4) > button'
-    )
-      .contains('Login')
-      .click();
-    cy.url().should('include', '/layout/dashboard/dashboard-aspirant');
+    cy.wait(1000);
   });
 
   /*
@@ -108,7 +112,7 @@ Login Company
       .contains('Login')
       .click();
 
-    cy.get('#email').type('apps@gmail.com');
+    cy.get('#email').type(fakeCompanyEmail);
     cy.get('#password').type('PassCumple1220');
     cy.get(
       'body > div.main-wrapper > app-root > app-login > div > div > div > div > div.login-right > div > form > div:nth-child(4) > button'
@@ -116,5 +120,6 @@ Login Company
       .contains('Login')
       .click();
     cy.url().should('include', '/layout/dashboard/dashboard-company');
+    cy.wait(1000);
   });
 });
