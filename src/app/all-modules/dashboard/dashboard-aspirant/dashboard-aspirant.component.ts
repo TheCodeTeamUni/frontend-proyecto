@@ -13,10 +13,7 @@ export class DashboardAspirantComponent implements OnInit {
   type!: string;
   profile!: string;
 
-  constructor(
-    public router: Router,
-    private userService: UsersService,
-  ) {}
+  constructor(public router: Router, private userService: UsersService) {}
 
   ngOnInit() {
     this.token = localStorage.getItem('Token');

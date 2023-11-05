@@ -1,14 +1,14 @@
 /* tslint:disable:no-unused-variable */
-import { ComponentFixture, TestBed, tick, fakeAsync } from '@angular/core/testing';
+import {
+  ComponentFixture,
+  TestBed,
+} from '@angular/core/testing';
 import { PersonalInformationComponent } from './personal-information.component';
 import { UntypedFormBuilder } from '@angular/forms';
 import { DataService } from 'src/app/services/data.service';
 import { AspirantInformationService } from 'src/app/services/aspirant-information.service';
-import { of } from 'rxjs';
-import Swal from 'sweetalert2';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-
 
 describe('PersonalInformationComponent', () => {
   let component: PersonalInformationComponent;
@@ -20,11 +20,7 @@ describe('PersonalInformationComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [PersonalInformationComponent],
-      providers: [
-        UntypedFormBuilder,
-        DataService,
-        AspirantInformationService,
-      ],
+      providers: [UntypedFormBuilder, DataService, AspirantInformationService],
       imports: [RouterTestingModule, HttpClientTestingModule],
     });
     fixture = TestBed.createComponent(PersonalInformationComponent);
@@ -42,7 +38,6 @@ describe('PersonalInformationComponent', () => {
     component.ngOnInit();
     expect(component.personalInformationForm).toBeDefined();
   });
-
 
   it('should load countries', () => {
     component.loadCountries();

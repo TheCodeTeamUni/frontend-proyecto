@@ -4,9 +4,7 @@ import {
   UntypedFormBuilder,
   Validators,
 } from '@angular/forms';
-import { Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
-import { ToastrService } from 'ngx-toastr';
 import { DataService } from 'src/app/services/data.service';
 import Swal from 'sweetalert2';
 import { AspirantInformationService } from 'src/app/services/aspirant-information.service';
@@ -43,7 +41,7 @@ export class PersonalInformationComponent implements OnInit {
       alterntiveEmail: ['', [Validators.email]],
       country: ['', [Validators.required]],
       description: ['', [Validators.required]],
-      photo: ['',],
+      photo: [''],
     });
     this.loadCountries();
     this.token = localStorage.getItem('Token');

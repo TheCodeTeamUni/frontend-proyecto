@@ -11,7 +11,9 @@ describe('RegisterTypeComponent', () => {
 
   beforeEach(waitForAsync(() => {
     const routerSpy = jasmine.createSpyObj('Router', ['navigate']);
-    const localStorageServiceSpy = jasmine.createSpyObj('LocalStorageService', ['setItem']);
+    const localStorageServiceSpy = jasmine.createSpyObj('LocalStorageService', [
+      'setItem',
+    ]);
 
     TestBed.configureTestingModule({
       declarations: [RegisterTypeComponent],

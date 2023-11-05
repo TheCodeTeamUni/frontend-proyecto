@@ -1,28 +1,27 @@
-import { Component, OnInit } from "@angular/core";
-
+import { Component, OnInit } from '@angular/core';
 
 declare const $: any;
 @Component({
-  selector: "app-root",
-  templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.css"],
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  title = "abcjobs";
+  title = 'abcjobs';
 
   ngOnInit() {
-    $(".sidebar-overlay").on("click", function (this:any) {
-      var $wrapper = $(".main-wrapper");
-      $("html").removeClass("menu-opened");
-      $(this).removeClass("opened");
-      $wrapper.removeClass("slide-nav");
-      $(".sidebar-overlay").removeClass("opened");
-      $("#task_window").removeClass("opened");
+    $('.sidebar-overlay').on('click', function (this: any) {
+      var $wrapper = $('.main-wrapper');
+      $('html').removeClass('menu-opened');
+      $(this).removeClass('opened');
+      $wrapper.removeClass('slide-nav');
+      $('.sidebar-overlay').removeClass('opened');
+      $('#task_window').removeClass('opened');
     });
     // Summernote
 
-    if ($(".summernote").length > 0) {
-      $(".summernote").summernote({
+    if ($('.summernote').length > 0) {
+      $('.summernote').summernote({
         height: 200, // set editor height
         minHeight: null, // set minimum height of editor
         maxHeight: null, // set maximum height of editor
@@ -31,13 +30,13 @@ export class AppComponent implements OnInit {
     }
     // Small Sidebar
 
-    $(document).on("click", "#toggle_btn", function () {
-      if ($("body").hasClass("mini-sidebar")) {
-        $("body").removeClass("mini-sidebar");
-        $(".subdrop + ul").slideDown();
+    $(document).on('click', '#toggle_btn', function () {
+      if ($('body').hasClass('mini-sidebar')) {
+        $('body').removeClass('mini-sidebar');
+        $('.subdrop + ul').slideDown();
       } else {
-        $("body").addClass("mini-sidebar");
-        $(".subdrop + ul").slideUp();
+        $('body').addClass('mini-sidebar');
+        $('.subdrop + ul').slideUp();
       }
       // setTimeout(function(){
       // 	mA.redraw();
@@ -45,19 +44,19 @@ export class AppComponent implements OnInit {
       // }, 300);
       return false;
     });
-    $(document).on("mouseover", function (e:any):any {
+    $(document).on('mouseover', function (e: any): any {
       e.stopPropagation();
       if (
-        $("body").hasClass("mini-sidebar") &&
-        $("#toggle_btn").is(":visible")
+        $('body').hasClass('mini-sidebar') &&
+        $('#toggle_btn').is(':visible')
       ) {
-        var targ = $(e.target).closest(".sidebar").length;
+        var targ = $(e.target).closest('.sidebar').length;
         if (targ) {
-          $("body").addClass("expand-menu");
-          $(".subdrop + ul").slideDown();
+          $('body').addClass('expand-menu');
+          $('.subdrop + ul').slideDown();
         } else {
-          $("body").removeClass("expand-menu");
-          $(".subdrop + ul").slideUp();
+          $('body').removeClass('expand-menu');
+          $('.subdrop + ul').slideUp();
         }
         return false;
       }
@@ -65,53 +64,53 @@ export class AppComponent implements OnInit {
 
     // Page Content Height
 
-    if ($(".page-wrapper").length > 0) {
+    if ($('.page-wrapper').length > 0) {
       var height = $(window).height();
-      $(".page-wrapper").css("min-height", height);
+      $('.page-wrapper').css('min-height', height);
     }
 
     // Page Content Height Resize
 
     $(window).resize(function () {
-      if ($(".page-wrapper").length > 0) {
+      if ($('.page-wrapper').length > 0) {
         var height = $(window).height();
-        $(".page-wrapper").css("min-height", height);
+        $('.page-wrapper').css('min-height', height);
       }
     });
 
     // Select 2
 
-    if ($(".select").length > 0) {
-      $(".select").select2({
+    if ($('.select').length > 0) {
+      $('.select').select2({
         minimumResultsForSearch: -1,
-        width: "100%",
+        width: '100%',
       });
     }
 
     // Datetimepicker
 
-    if ($(".datetimepicker").length > 0) {
-      $(".datetimepicker").datetimepicker({
-        format: "DD-MM-YYYY",
+    if ($('.datetimepicker').length > 0) {
+      $('.datetimepicker').datetimepicker({
+        format: 'DD-MM-YYYY',
         icons: {
-          up: "fas fa-angle-up",
-          down: "fas fa-angle-down",
-          next: "fas fa-angle-right",
-          previous: "fas fa-angle-left",
+          up: 'fas fa-angle-up',
+          down: 'fas fa-angle-down',
+          next: 'fas fa-angle-right',
+          previous: 'fas fa-angle-left',
         },
       });
-      $(".datetimepicker")
-        .on("dp.show", function (this:any) {
+      $('.datetimepicker')
+        .on('dp.show', function (this: any) {
           $(this)
-            .closest(".table-responsive")
-            .removeClass("table-responsive")
-            .addClass("temp");
+            .closest('.table-responsive')
+            .removeClass('table-responsive')
+            .addClass('temp');
         })
-        .on("dp.hide", function (this:any) {
+        .on('dp.hide', function (this: any) {
           $(this)
-            .closest(".temp")
-            .addClass("table-responsive")
-            .removeClass("temp");
+            .closest('.temp')
+            .addClass('table-responsive')
+            .removeClass('temp');
         });
     }
 
@@ -123,25 +122,25 @@ export class AppComponent implements OnInit {
 
     // Datatable
 
-    if ($(".datatable").length > 0) {
-      $(".datatable").DataTable({
+    if ($('.datatable').length > 0) {
+      $('.datatable').DataTable({
         bFilter: false,
       });
     }
 
     // Check all email
 
-    $(document).on("click", "#check_all", function () {
-      $(".checkmail").click();
+    $(document).on('click', '#check_all', function () {
+      $('.checkmail').click();
       return false;
     });
-    if ($(".checkmail").length > 0) {
-      $(".checkmail").each(function (this:any) {
-        $(this).on("click", function (this:any) {
-          if ($(this).closest("tr").hasClass("checked")) {
-            $(this).closest("tr").removeClass("checked");
+    if ($('.checkmail').length > 0) {
+      $('.checkmail').each(function (this: any) {
+        $(this).on('click', function (this: any) {
+          if ($(this).closest('tr').hasClass('checked')) {
+            $(this).closest('tr').removeClass('checked');
           } else {
-            $(this).closest("tr").addClass("checked");
+            $(this).closest('tr').addClass('checked');
           }
         });
       });
@@ -149,14 +148,14 @@ export class AppComponent implements OnInit {
 
     // Mail important
 
-    $(document).on("click", ".mail-important", function (this:any) {
-      $(this).find("i.fa").toggleClass("fa-star").toggleClass("fa-star-o");
+    $(document).on('click', '.mail-important', function (this: any) {
+      $(this).find('i.fa').toggleClass('fa-star').toggleClass('fa-star-o');
     });
 
     // Summernote
 
-    if ($(".summernote").length > 0) {
-      $(".summernote").summernote({
+    if ($('.summernote').length > 0) {
+      $('.summernote').summernote({
         height: 200, // set editor height
         minHeight: null, // set minimum height of editor
         maxHeight: null, // set maximum height of editor
@@ -166,25 +165,25 @@ export class AppComponent implements OnInit {
 
     // Sidebar Slimscroll
 
-    var $slimScrolls = $(".slimscroll");
+    var $slimScrolls = $('.slimscroll');
     if ($slimScrolls.length > 0) {
       $slimScrolls.slimScroll({
-        height: "auto",
-        width: "100%",
-        position: "right",
-        size: "7px",
-        color: "#ccc",
+        height: 'auto',
+        width: '100%',
+        position: 'right',
+        size: '7px',
+        color: '#ccc',
         allowPageScroll: false,
         wheelStep: 10,
         touchScrollStep: 100,
       });
       var wHeight = $(window).height() - 60;
       $slimScrolls.height(wHeight);
-      $(".sidebar .slimScrollDiv").height(wHeight);
+      $('.sidebar .slimScrollDiv').height(wHeight);
       $(window).resize(function () {
         var rHeight = $(window).height() - 60;
         $slimScrolls.height(rHeight);
-        $(".sidebar .slimScrollDiv").height(rHeight);
+        $('.sidebar .slimScrollDiv').height(rHeight);
       });
     }
   }

@@ -1,11 +1,11 @@
-import { Component, OnInit,ViewChild } from "@angular/core";
-import { Router } from "@angular/router";
-import { UsersService } from "src/app/services/users.service";
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-dashboard-company',
   templateUrl: './dashboard-company.component.html',
-  styleUrls: ['./dashboard-company.component.css']
+  styleUrls: ['./dashboard-company.component.css'],
 })
 export class DashboardCompanyComponent implements OnInit {
   token!: any;
@@ -13,33 +13,26 @@ export class DashboardCompanyComponent implements OnInit {
   type!: string;
   profile!: string;
 
-
-  constructor(public router: Router, private userService: UsersService) {
-
-  }
+  constructor(public router: Router, private userService: UsersService) {}
 
   ngOnInit() {
     this.token = localStorage.getItem('Token');
     this.getAspirant();
   }
 
-
   getAspirant() {
     this.userService.getUser(this.token).subscribe(
       (res) => {
-
         this.username = res.username;
         this.type = res.type;
 
-        if (res.type=="1") {
-          this.profile= "Aspirant";
-        }else if (res.type=="2"){
-          this.profile= "Company";
+        if (res.type == '1') {
+          this.profile = 'Aspirant';
+        } else if (res.type == '2') {
+          this.profile = 'Company';
         }
       },
       (err) => {}
     );
   }
-
-
 }

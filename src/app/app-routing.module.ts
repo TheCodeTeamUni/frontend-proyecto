@@ -9,19 +9,18 @@ import { AuthenticationGuard } from './core/auth/authentication.guard';
 const routes: Routes = [
   { path: '', redirectTo: 'landing', pathMatch: 'full' },
   {
-    path: "layout",
+    path: 'layout',
     loadChildren: () =>
       import(`./all-modules/all-modules.module`).then(
         (m) => m.AllModulesModule
       ),
     canActivate: [AuthenticationGuard],
-
   },
   { path: 'login', component: LoginComponent },
   { path: 'register-type', component: RegisterTypeComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'landing', component: LandingComponent },
-]
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

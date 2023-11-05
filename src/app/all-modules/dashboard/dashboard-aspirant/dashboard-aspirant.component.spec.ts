@@ -4,7 +4,6 @@ import { DashboardAspirantComponent } from './dashboard-aspirant.component';
 import { UsersService } from 'src/app/services/users.service';
 import { of } from 'rxjs';
 import { RouterTestingModule } from '@angular/router/testing';
-import { HttpClientModule } from '@angular/common/http';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('DashboardAspirantComponent', () => {
@@ -30,10 +29,10 @@ describe('DashboardAspirantComponent', () => {
     expect(component).toBeTruthy();
   });
 
-
-
   it('should call getAspirant and set properties', () => {
-    spyOn(userService, 'getUser').and.returnValue(of({ username: 'testuser', type: '1' }));
+    spyOn(userService, 'getUser').and.returnValue(
+      of({ username: 'testuser', type: '1' })
+    );
 
     component.ngOnInit();
     component.getAspirant();

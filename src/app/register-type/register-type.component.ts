@@ -8,7 +8,10 @@ import { LocalStorageService } from '../services/localStorage.service';
   styleUrls: ['./register-type.component.css'],
 })
 export class RegisterTypeComponent implements OnInit {
-  constructor(private router: Router, private localStorageService: LocalStorageService) {}
+  constructor(
+    private router: Router,
+    private localStorageService: LocalStorageService
+  ) {}
 
   ngOnInit() {}
 
