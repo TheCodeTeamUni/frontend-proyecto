@@ -4,13 +4,11 @@ import { TestBed, async, inject } from '@angular/core/testing';
 import { RegisterService } from './register.service';
 import { HttpClient } from '@angular/common/http';
 
-
 class HttpClientMock {
   get = jasmine.createSpy('httpClient.get');
 }
 
 describe('Service: Register', () => {
-
   let service: RegisterService;
 
   beforeEach(() => {
@@ -19,9 +17,9 @@ describe('Service: Register', () => {
         RegisterService,
         {
           provide: HttpClient,
-          useClass: HttpClientMock
-        }
-      ]
+          useClass: HttpClientMock,
+        },
+      ],
     });
 
     service = TestBed.get(RegisterService);

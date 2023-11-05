@@ -173,7 +173,6 @@
                 <th>Start Date</th>
                 <th>End Date</th>
                 <th>Action</th>
-
               </tr>
             </thead>
             <tbody>
@@ -181,9 +180,9 @@
                 <td>{{ i + 1 }}</td>
                 <td>{{ work.company }}</td>
                 <td>{{ work.position }}</td>
-                <td>{{ work.actualJob? 'Yes' : 'No' }}</td>
-                <td>{{ work.startDate | date:'yyyy-MMM-dd'}}</td>
-                <td>{{ work.endDate | date:'yyyy-MMM-dd' }}</td>
+                <td>{{ work.actualJob ? "Yes" : "No" }}</td>
+                <td>{{ work.startDate | date : "yyyy-MMM-dd" }}</td>
+                <td>{{ work.endDate | date : "yyyy-MMM-dd" }}</td>
                 <td>
                   <a class="btn btn-sm bg-danger-light">
                     <i class="fe fe-edit-2"></i>
@@ -206,4 +205,3 @@
   <p>Copyright © 2023 CodeTeam</p>
 </footer>
 <!-- /Footer -->
-

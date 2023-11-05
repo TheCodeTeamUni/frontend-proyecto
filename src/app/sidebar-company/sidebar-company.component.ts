@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, Event, NavigationEnd } from '@angular/router';
 
-
 declare const $: any;
 @Component({
   selector: 'app-company-sidebar',

@@ -2,7 +2,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { WorkExperienceComponent } from './work-experience.component';
 import { ToastrModule } from 'ngx-toastr';
-import { HttpClientModule } from '@angular/common/http';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('WorkExperienceComponent', () => {
@@ -12,7 +11,7 @@ describe('WorkExperienceComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [WorkExperienceComponent],
-      imports: [ToastrModule.forRoot(), HttpClientTestingModule]
+      imports: [ToastrModule.forRoot(), HttpClientTestingModule],
     });
     fixture = TestBed.createComponent(WorkExperienceComponent);
     component = fixture.componentInstance;
@@ -69,8 +68,5 @@ describe('WorkExperienceComponent', () => {
       startDate: formattedStartDate,
       endDate: formattedEndDate,
     };
-
-
   });
-
 });

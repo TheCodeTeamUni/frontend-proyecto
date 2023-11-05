@@ -1,13 +1,14 @@
 /* tslint:disable:no-unused-variable */
-import { ComponentFixture, TestBed, tick, fakeAsync } from '@angular/core/testing';
+import {
+  ComponentFixture,
+  TestBed,
+} from '@angular/core/testing';
 import { EducationComponent } from './education.component';
 import { UntypedFormBuilder } from '@angular/forms';
-import Swal from 'sweetalert2';
 import { AspirantInformationService } from 'src/app/services/aspirant-information.service';
 import { of } from 'rxjs';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-
 
 describe('EducationComponent', () => {
   let component: EducationComponent;
@@ -32,16 +33,15 @@ describe('EducationComponent', () => {
     expect(component).toBeTruthy();
   });
 
-
-
   it('should initialize the educationForm', () => {
     component.ngOnInit();
     expect(component.educationForm).toBeDefined();
   });
 
-
   it('should call getEducationInformation and set educations property', () => {
-    spyOn(aspirantInformationService, 'getEducation').and.returnValue(of(['Education1', 'Education2']));
+    spyOn(aspirantInformationService, 'getEducation').and.returnValue(
+      of(['Education1', 'Education2'])
+    );
 
     component.ngOnInit();
     component.getEducationInformation();

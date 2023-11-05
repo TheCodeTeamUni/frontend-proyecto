@@ -30,8 +30,12 @@ describe('HeaderComponent', () => {
   });
 
   it('should call getUser and getPersonalInfo on ngOnInit', () => {
-    spyOn(userService, 'getUser').and.returnValue(of({ username: 'testUser', type: '1' }));
-    spyOn(aspirantInformation, 'getPersonalInfo').and.returnValue(of({ photo: 'test.jpg', lastName: 'Doe', name: 'John' }));
+    spyOn(userService, 'getUser').and.returnValue(
+      of({ username: 'testUser', type: '1' })
+    );
+    spyOn(aspirantInformation, 'getPersonalInfo').and.returnValue(
+      of({ photo: 'test.jpg', lastName: 'Doe', name: 'John' })
+    );
 
     component.ngOnInit();
 
@@ -50,8 +54,6 @@ describe('HeaderComponent', () => {
     expect(localStorage.getItem('Type')).toBeNull();
     expect(component.router.navigate).toHaveBeenCalledWith(['/login']);
   });
-
-
 
   it('should set photo to imagenPorDefectoUrl in imagenNoEncontrada', () => {
     component.imagenNoEncontrada();

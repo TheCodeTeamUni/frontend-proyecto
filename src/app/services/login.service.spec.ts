@@ -4,22 +4,21 @@ import { TestBed, async, inject } from '@angular/core/testing';
 import { LoginService } from './login.service';
 import { HttpClient } from '@angular/common/http';
 
-
 class HttpClientMock {
   get = jasmine.createSpy('httpClient.get');
 }
 
 describe('Service: Login', () => {
-
   let service: LoginService;
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [LoginService,
+      providers: [
+        LoginService,
         {
           provide: HttpClient,
-          useClass: HttpClientMock
-        }
-      ]
+          useClass: HttpClientMock,
+        },
+      ],
     });
   });
 

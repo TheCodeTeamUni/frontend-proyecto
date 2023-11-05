@@ -1,6 +1,5 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { LoginComponent } from './login.component';
-import { UntypedFormGroup } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { LoginService } from '../services/login.service';
 import { Router } from '@angular/router';
@@ -16,7 +15,10 @@ describe('LoginComponent', () => {
 
   beforeEach(waitForAsync(() => {
     const loginServiceSpy = jasmine.createSpyObj('LoginService', ['login']);
-    const toastrServiceSpy = jasmine.createSpyObj('ToastrService', ['success', 'error']);
+    const toastrServiceSpy = jasmine.createSpyObj('ToastrService', [
+      'success',
+      'error',
+    ]);
     const routerSpy = jasmine.createSpyObj('Router', ['navigate']);
 
     TestBed.configureTestingModule({
@@ -26,8 +28,7 @@ describe('LoginComponent', () => {
         { provide: ToastrService, useValue: toastrServiceSpy },
         { provide: Router, useValue: routerSpy },
       ],
-      imports: [HttpClientTestingModule]
-      
+      imports: [HttpClientTestingModule],
     }).compileComponents();
 
     loginService = TestBed.inject(LoginService) as jasmine.SpyObj<LoginService>;
@@ -55,13 +56,24 @@ describe('LoginComponent', () => {
     loginService.login.and.returnValue(of(fakeResponse));
 
     // Act
-    component.form.setValue({ email: 'test@example.com', password: 'password' });
+    component.form.setValue({
+      email: 'test@example.com',
+      password: 'password',
+    });
     component.submit();
 
     // Assert
-    expect(loginService.login).toHaveBeenCalledWith({ email: 'test@example.com', password: 'password' });
-    expect(toastrService.success).toHaveBeenCalledWith('Welcome to ABC Jobs', 'Login Success');
-    expect(router.navigate).toHaveBeenCalledWith(['/layout/dashboard/dashboard-aspirant']);
+    expect(loginService.login).toHaveBeenCalledWith({
+      email: 'test@example.com',
+      password: 'password',
+    });
+    expect(toastrService.success).toHaveBeenCalledWith(
+      'Welcome to ABC Jobs',
+      'Login Success'
+    );
+    expect(router.navigate).toHaveBeenCalledWith([
+      '/layout/dashboard/dashboard-aspirant',
+    ]);
     expect(localStorage.getItem('Token')).toBe(fakeResponse.token);
   });
 
@@ -71,12 +83,21 @@ describe('LoginComponent', () => {
     loginService.login.and.returnValue(of(fakeResponse));
 
     // Act
-    component.form.setValue({ email: 'test@example.com', password: 'wrongpassword' });
+    component.form.setValue({
+      email: 'test@example.com',
+      password: 'wrongpassword',
+    });
     component.submit();
 
     // Assert
-    expect(loginService.login).toHaveBeenCalledWith({ email: 'test@example.com', password: 'wrongpassword' });
-    expect(toastrService.error).toHaveBeenCalledWith('Email or password incorrect', 'Failed to login');
+    expect(loginService.login).toHaveBeenCalledWith({
+      email: 'test@example.com',
+      password: 'wrongpassword',
+    });
+    expect(toastrService.error).toHaveBeenCalledWith(
+      'Email or password incorrect',
+      'Failed to login'
+    );
   });
 
   it('should show error toast for login error', () => {
@@ -84,11 +105,20 @@ describe('LoginComponent', () => {
     loginService.login.and.returnValue(throwError('Error occurred'));
 
     // Act
-    component.form.setValue({ email: 'test@example.com', password: 'password' });
+    component.form.setValue({
+      email: 'test@example.com',
+      password: 'password',
+    });
     component.submit();
 
     // Assert
-    expect(loginService.login).toHaveBeenCalledWith({ email: 'test@example.com', password: 'password' });
-    expect(toastrService.error).toHaveBeenCalledWith('Email or password incorrect', 'Failed to login');
+    expect(loginService.login).toHaveBeenCalledWith({
+      email: 'test@example.com',
+      password: 'password',
+    });
+    expect(toastrService.error).toHaveBeenCalledWith(
+      'Email or password incorrect',
+      'Failed to login'
+    );
   });
 });

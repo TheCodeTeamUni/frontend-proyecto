@@ -1,32 +1,31 @@
-import { NgModule } from "@angular/core";
-import { Routes, RouterModule } from "@angular/router";
-import { AllModulesComponent } from "./all-modules.component";
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { AllModulesComponent } from './all-modules.component';
 
 const routes: Routes = [
   {
-    path: "",
-    redirectTo: "dashboard",
-    pathMatch: "full",
+    path: '',
+    redirectTo: 'dashboard',
+    pathMatch: 'full',
   },
   {
-    path: "",
+    path: '',
     component: AllModulesComponent,
     children: [
       {
-        path: "dashboard",
-        loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule),
+        path: 'dashboard',
+        loadChildren: () =>
+          import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
       },
       {
-        path: "aspirant-information",
-        loadChildren: () => import('./aspirant-information/aspirant-information.module').then(m => m.AspirantInformationModule),
+        path: 'aspirant-information',
+        loadChildren: () =>
+          import('./aspirant-information/aspirant-information.module').then(
+            (m) => m.AspirantInformationModule
+          ),
       },
     ],
   },
-
-
-
-
-
 ];
 
 @NgModule({
