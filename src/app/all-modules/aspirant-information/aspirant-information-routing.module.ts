@@ -12,11 +12,11 @@ const routes: Routes = [
     path: '',
     component: AspirantInformationComponent,
     children: [
-      { path: 'personal-information', component: PersonalInformationComponent},
-      { path: 'education', component: EducationComponent},
-      { path: 'work-experience', component: WorkExperienceComponent},
-      { path: 'skills', component: SkillsComponent},
-      { path: 'profile', component: ProfileComponent},
+      { path: 'personal-information', component: PersonalInformationComponent },
+      { path: 'education', component: EducationComponent },
+      { path: 'work-experience', component: WorkExperienceComponent },
+      { path: 'skills', component: SkillsComponent },
+      { path: 'profile', component: ProfileComponent },
     ],
   },
 ];

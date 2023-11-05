@@ -14,20 +14,22 @@ describe('DashboardCompanyComponent', () => {
 
   beforeEach(() => {
     mockRouter = {
-      navigate: jasmine.createSpy('navigate')
+      navigate: jasmine.createSpy('navigate'),
     };
 
     mockUserService = {
-      getUser: jasmine.createSpy('getUser').and.returnValue(of({ username: 'testuser', type: '1' }))
+      getUser: jasmine
+        .createSpy('getUser')
+        .and.returnValue(of({ username: 'testuser', type: '1' })),
     };
 
     TestBed.configureTestingModule({
       declarations: [DashboardCompanyComponent],
       providers: [
         { provide: Router, useValue: mockRouter },
-        { provide: UsersService, useValue: mockUserService }
+        { provide: UsersService, useValue: mockUserService },
       ],
-      imports: [HttpClientTestingModule]
+      imports: [HttpClientTestingModule],
     });
 
     fixture = TestBed.createComponent(DashboardCompanyComponent);
@@ -47,7 +49,9 @@ describe('DashboardCompanyComponent', () => {
   });
 
   it('should handle different user types', () => {
-    mockUserService.getUser.and.returnValue(of({ username: 'testuser', type: '2' }));
+    mockUserService.getUser.and.returnValue(
+      of({ username: 'testuser', type: '2' })
+    );
     component.ngOnInit();
     expect(component.type).toBe('2');
     expect(component.profile).toBe('Company');

@@ -23,7 +23,6 @@ export class ProfileComponent implements OnInit {
   public skills!: any[];
   public imagenPorDefectoUrl: string = 'assets/img/profiles/avatar-02.jpg';
 
-
   constructor(private aspirantInformation: AspirantInformationService) {}
 
   ngOnInit() {

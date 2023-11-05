@@ -12,12 +12,13 @@ describe('Service: Users', () => {
   let service: UsersService;
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [UsersService,
+      providers: [
+        UsersService,
         {
           provide: HttpClient,
-          useClass: HttpClientMock
-        }
-      ]
+          useClass: HttpClientMock,
+        },
+      ],
     });
 
     service = TestBed.get(UsersService);

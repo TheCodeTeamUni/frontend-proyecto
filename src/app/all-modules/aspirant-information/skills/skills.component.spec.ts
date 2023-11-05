@@ -1,4 +1,7 @@
-import { ComponentFixture, TestBed, tick, fakeAsync } from '@angular/core/testing';
+import {
+  ComponentFixture,
+  TestBed,
+} from '@angular/core/testing';
 import { SkillsComponent } from './skills.component';
 import { UntypedFormBuilder } from '@angular/forms';
 import { DataService } from 'src/app/services/data.service';
@@ -18,11 +21,7 @@ describe('SkillsComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [SkillsComponent],
-      providers: [
-        UntypedFormBuilder,
-        DataService,
-        AspirantInformationService,
-      ],
+      providers: [UntypedFormBuilder, DataService, AspirantInformationService],
       imports: [RouterTestingModule, HttpClientTestingModule],
     });
     fixture = TestBed.createComponent(SkillsComponent);
@@ -40,8 +39,6 @@ describe('SkillsComponent', () => {
     component.ngOnInit();
     expect(component.addSkillsForm).toBeDefined();
   });
-
-
 
   it('should call getSkill', () => {
     spyOn(aspirantInformationService, 'getSkill').and.returnValue(of([]));

@@ -26,22 +26,23 @@ describe('ProfileComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  
   it('should call getPersonalInfo and set properties', () => {
-    spyOn(aspirantInformationService, 'getPersonalInfo').and.returnValue(of({
-      photo: 'test.jpg',
-      birthdate: '01/01/2000',
-      address: '123 Main St',
-      alterntiveEmail: 'test@example.com',
-      country: 'USA',
-      description: 'Some description',
-      document: '12345',
-      gender: 'Male',
-      lastName: 'Doe',
-      name: 'John',
-      telephone: '123456789',
-      typeDocument: 'ID',
-    }));
+    spyOn(aspirantInformationService, 'getPersonalInfo').and.returnValue(
+      of({
+        photo: 'test.jpg',
+        birthdate: '01/01/2000',
+        address: '123 Main St',
+        alterntiveEmail: 'test@example.com',
+        country: 'USA',
+        description: 'Some description',
+        document: '12345',
+        gender: 'Male',
+        lastName: 'Doe',
+        name: 'John',
+        telephone: '123456789',
+        typeDocument: 'ID',
+      })
+    );
 
     component.ngOnInit();
     component.getPersonalInfo();
@@ -62,7 +63,9 @@ describe('ProfileComponent', () => {
   });
 
   it('should call getSkill and set skills property', () => {
-    spyOn(aspirantInformationService, 'getSkill').and.returnValue(of(['Skill1', 'Skill2']));
+    spyOn(aspirantInformationService, 'getSkill').and.returnValue(
+      of(['Skill1', 'Skill2'])
+    );
 
     component.ngOnInit();
     component.getSkill();
