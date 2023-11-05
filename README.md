@@ -1,4 +1,4 @@
-# ABC JOBS 
+# ABC JOBS 2.0
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.0.
 
@@ -25,7 +25,7 @@ Run `npm test --no-watch --code-coverage` to obtain the percentage of unit test 
 
 ## Running end-to-end tests
 
-Run `npm run e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Run `npm run e2e` to execute the end-to-end tests via Cypress. To use this command, you need to first add Cypress to implements end-to-end testing.
 
 ## Further help
 

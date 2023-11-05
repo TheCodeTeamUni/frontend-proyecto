@@ -16,8 +16,15 @@ h1 {
   );
 }
 
+.container-Header{
+padding-left: 8%;
+padding-right: 8%;
+}
+
 .text-gradient {
   background: -webkit-linear-gradient(315deg, #8078f0 0%, #12cde3 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+
