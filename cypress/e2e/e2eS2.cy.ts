@@ -62,6 +62,23 @@ describe('e2e', () => {
   it('Add Personal Information', () => {
     cy.get(':nth-child(3) > [href="#"] > :nth-child(2)').click();
     cy.get(':nth-child(3) > ul > :nth-child(1) > a').click();
+    cy.get(':nth-child(2) > .form-group > .form-control').type('Maria');
+    cy.get(':nth-child(3) > .form-group > .form-control').type('Lasso');
+    cy.get('select[formControlName="typeDocument"]').select(
+      'Identification Card'
+    );
+    cy.get(':nth-child(5) > .form-group > .form-control').type('123456789');
+    cy.get('select[formControlName="gender"]').select('Female');
+    cy.get('input[formControlName="birthdate"]').type('2023-11-04');
+    cy.get(':nth-child(8) > .form-group > .form-control').type('123456789');
+    cy.get(':nth-child(9) > .form-group > .form-control').type(
+      'prueba@uniandes.edu.co'
+    );
+    cy.get(':nth-child(10) > .form-group > .form-control').type(
+      'Calle 16 No 345'
+    );
+    cy.get('select[formControlName="country"]').select('Colombia');
+    cy.get('.col-sm-6 > .form-group > .form-control').type('Este es mi perfil');
   });
 
   /*Add Education Item*/
