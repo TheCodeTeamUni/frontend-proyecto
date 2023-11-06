@@ -4,7 +4,7 @@
 
 .main {
   background-color: #fff;
-  background-image: url("/assets/img/header2.png");
+
 }
 
 h1 {
@@ -19,6 +19,8 @@ h1 {
 .container-Header{
 padding-left: 8%;
 padding-right: 8%;
+padding-bottom: 45px;
+background: url("/assets/img/header2.png");
 }
 
 .text-gradient {
@@ -26,5 +28,11 @@ padding-right: 8%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+.header-text{
+  padding-top: 10%;
+}
+
+
 
 
