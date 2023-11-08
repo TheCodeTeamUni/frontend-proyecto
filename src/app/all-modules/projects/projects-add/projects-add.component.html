@@ -1,0 +1,217 @@
+<div class="content container-fluid">
+  <!-- Page Header -->
+  <div class="page-header">
+    <div class="row align-items-center">
+      <div class="col-sm-12">
+        <div class="page-sub-header">
+          <h3 class="page-title">Add Project</h3>
+          <ul class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a [routerLink]="'/layout/projects/projects-add'">Projects</a>
+            </li>
+            <li class="breadcrumb-item active">Add Project</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /Page Header -->
+
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card comman-shadow">
+        <div class="card-body">
+          <form (ngSubmit)="addProject()" [formGroup]="projectsAddForm">
+            <div class="row">
+              <div class="col-12">
+                <h5 class="form-title aspirant-info">
+                  Add Project
+                  <span
+                    ><a href="javascript:;"
+                      ><i class="feather-more-vertical"></i></a
+                  ></span>
+                </h5>
+              </div>
+              <div class="col-12 col-sm-4">
+                <div class="form-group local-forms">
+                  <label
+                    >Project Name <span class="login-danger">*</span></label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    [class.invalid]="
+                      projectsAddForm.get('FirstName')?.invalid &&
+                      projectsAddForm.get('FirstName')?.touched
+                    "
+                    formControlName="name"
+                    placeholder="Enter First Name"
+                  />
+                  <div
+                    *ngIf="
+                      projectsAddForm.get('FirstName')?.invalid &&
+                      projectsAddForm.get('FirstName')?.touched
+                    "
+                  >
+                    <small
+                      *ngIf="
+                        projectsAddForm.get('FirstName')?.invalid &&
+                        projectsAddForm.get('FirstName')?.touched
+                      "
+                      class="text-danger"
+                    >
+                      *First Name is required</small
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-sm-8">
+                <div class="form-group local-forms">
+                  <label
+                    >Project Description<span class="login-danger">*</span>
+                  </label>
+                  <textarea
+                    rows="5"
+                    cols="5"
+                    class="form-control"
+                    placeholder="Write your profile"
+                    formControlName="description"
+                  ></textarea>
+                </div>
+              </div>
+              <div class="col-12 col-sm-4">
+                <div class="form-group local-forms">
+                  <label>Start Date <span class="login-danger">*</span></label>
+                  <input
+                    type="date"
+                    class="form-control"
+                    [class.invalid]="
+                      projectsAddForm.get('birthdate')?.invalid &&
+                      projectsAddForm.get('birthdate')?.touched
+                    "
+                    formControlName="startDate"
+                  />
+                  <div
+                    *ngIf="
+                      projectsAddForm.get('birthdate')?.invalid &&
+                      projectsAddForm.get('birthdate')?.touched
+                    "
+                  >
+                    <small
+                      *ngIf="
+                        projectsAddForm.get('birthdate')?.invalid &&
+                        projectsAddForm.get('birthdate')?.touched
+                      "
+                      class="text-danger"
+                    >
+                      *Start Date is required</small
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-12 col-sm-4">
+                <div class="form-group local-forms">
+                  <label>End Date <span class="login-danger">*</span></label>
+                  <input
+                    type="date"
+                    class="form-control"
+                    [class.invalid]="
+                      projectsAddForm.get('birthdate')?.invalid &&
+                      projectsAddForm.get('birthdate')?.touched
+                    "
+                    formControlName="endDate"
+                  />
+                  <div
+                    *ngIf="
+                      projectsAddForm.get('birthdate')?.invalid &&
+                      projectsAddForm.get('birthdate')?.touched
+                    "
+                  >
+                    <small
+                      *ngIf="
+                        projectsAddForm.get('birthdate')?.invalid &&
+                        projectsAddForm.get('birthdate')?.touched
+                      "
+                      class="text-danger"
+                    >
+                      *End Date is required</small
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-12 col-sm-4">
+                <div class="form-group local-forms">
+                  <label
+                    >Aspirants Number <span class="login-danger">*</span>
+                  </label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    placeholder="Enter Phone Number"
+                    formControlName="aspirantsNumber"
+                  />
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="aspirant-submit">
+                  <button
+                    type="submit"
+                    class="btn btn-primary"
+                    [disabled]="projectsAddForm.invalid"
+                  >
+                    Submit
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-12 mb-5 center">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title">Projects List</h5>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table
+            class="table star-aspirant table-hover table-center table-borderless table-striped"
+          >
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Project Name</th>
+                <th>Description</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Aspirants Number</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr >
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+</div>
+<!-- Footer -->
+<footer>
+  <p>Copyright © 2023 CodeTeam</p>
+</footer>
+<!-- /Footer -->
