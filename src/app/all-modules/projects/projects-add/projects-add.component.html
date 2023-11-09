@@ -41,26 +41,26 @@
                     type="text"
                     class="form-control"
                     [class.invalid]="
-                      projectsAddForm.get('FirstName')?.invalid &&
-                      projectsAddForm.get('FirstName')?.touched
+                      projectsAddForm.get('projectName')?.invalid &&
+                      projectsAddForm.get('projectName')?.touched
                     "
-                    formControlName="name"
-                    placeholder="Enter First Name"
+                    formControlName="projectName"
+                    placeholder="Enter Project Name"
                   />
                   <div
                     *ngIf="
-                      projectsAddForm.get('FirstName')?.invalid &&
-                      projectsAddForm.get('FirstName')?.touched
+                      projectsAddForm.get('projectName')?.invalid &&
+                      projectsAddForm.get('projectName')?.touched
                     "
                   >
                     <small
                       *ngIf="
-                        projectsAddForm.get('FirstName')?.invalid &&
-                        projectsAddForm.get('FirstName')?.touched
+                        projectsAddForm.get('projectName')?.invalid &&
+                        projectsAddForm.get('projectName')?.touched
                       "
                       class="text-danger"
                     >
-                      *First Name is required</small
+                      *Project Name is required</small
                     >
                   </div>
                 </div>
@@ -74,7 +74,7 @@
                     rows="5"
                     cols="5"
                     class="form-control"
-                    placeholder="Write your profile"
+                    placeholder="Write project description"
                     formControlName="description"
                   ></textarea>
                 </div>
@@ -86,21 +86,21 @@
                     type="date"
                     class="form-control"
                     [class.invalid]="
-                      projectsAddForm.get('birthdate')?.invalid &&
-                      projectsAddForm.get('birthdate')?.touched
+                      projectsAddForm.get('startDate')?.invalid &&
+                      projectsAddForm.get('startDate')?.touched
                     "
                     formControlName="startDate"
                   />
                   <div
                     *ngIf="
-                      projectsAddForm.get('birthdate')?.invalid &&
-                      projectsAddForm.get('birthdate')?.touched
+                      projectsAddForm.get('startDate')?.invalid &&
+                      projectsAddForm.get('startDate')?.touched
                     "
                   >
                     <small
                       *ngIf="
-                        projectsAddForm.get('birthdate')?.invalid &&
-                        projectsAddForm.get('birthdate')?.touched
+                        projectsAddForm.get('startDate')?.invalid &&
+                        projectsAddForm.get('startDate')?.touched
                       "
                       class="text-danger"
                     >
@@ -117,21 +117,21 @@
                     type="date"
                     class="form-control"
                     [class.invalid]="
-                      projectsAddForm.get('birthdate')?.invalid &&
-                      projectsAddForm.get('birthdate')?.touched
+                      projectsAddForm.get('endDate')?.invalid &&
+                      projectsAddForm.get('endDate')?.touched
                     "
                     formControlName="endDate"
                   />
                   <div
                     *ngIf="
-                      projectsAddForm.get('birthdate')?.invalid &&
-                      projectsAddForm.get('birthdate')?.touched
+                      projectsAddForm.get('endDate')?.invalid &&
+                      projectsAddForm.get('endDate')?.touched
                     "
                   >
                     <small
                       *ngIf="
-                        projectsAddForm.get('birthdate')?.invalid &&
-                        projectsAddForm.get('birthdate')?.touched
+                        projectsAddForm.get('endDate')?.invalid &&
+                        projectsAddForm.get('endDate')?.touched
                       "
                       class="text-danger"
                     >
@@ -149,7 +149,7 @@
                   <input
                     class="form-control"
                     type="text"
-                    placeholder="Enter Phone Number"
+                    placeholder="Enter Aspirants Number for project"
                     formControlName="aspirantsNumber"
                   />
                 </div>
@@ -186,10 +186,8 @@
               <tr>
                 <th>#</th>
                 <th>Project Name</th>
-                <th>Description</th>
                 <th>Start Date</th>
                 <th>End Date</th>
-                <th>Aspirants Number</th>
                 <th>Action</th>
               </tr>
             </thead>

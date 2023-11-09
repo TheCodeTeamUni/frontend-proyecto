@@ -20,15 +20,18 @@ export class ProjectsAddComponent implements OnInit {
 
   ngOnInit() {
     this.projectsAddForm = this.formBuilder.group({
-      name: ['', [Validators.required]],
+      projectName: ['', [Validators.required]],
       description: ['', [Validators.required]],
       startDate: ['', [Validators.required]],
       endDate: ['', [Validators.required]],
-      aspirantsNumber: ['', [Validators.email]],
+      aspirantsNumber: ['',],
     });
   }
 
 
-  addProject(){}
+  addProject(){
+    console.log(this.projectsAddForm.value)
+
+  }
 
 }
