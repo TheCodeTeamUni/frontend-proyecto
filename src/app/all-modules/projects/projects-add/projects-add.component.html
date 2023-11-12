@@ -41,22 +41,22 @@
                     type="text"
                     class="form-control"
                     [class.invalid]="
-                      projectsAddForm.get('projectName')?.invalid &&
-                      projectsAddForm.get('projectName')?.touched
+                      projectsAddForm.get('nameProject')?.invalid &&
+                      projectsAddForm.get('nameProject')?.touched
                     "
-                    formControlName="projectName"
+                    formControlName="nameProject"
                     placeholder="Enter Project Name"
                   />
                   <div
                     *ngIf="
-                      projectsAddForm.get('projectName')?.invalid &&
-                      projectsAddForm.get('projectName')?.touched
+                      projectsAddForm.get('nameProject')?.invalid &&
+                      projectsAddForm.get('nameProject')?.touched
                     "
                   >
                     <small
                       *ngIf="
-                        projectsAddForm.get('projectName')?.invalid &&
-                        projectsAddForm.get('projectName')?.touched
+                        projectsAddForm.get('nameProject')?.invalid &&
+                        projectsAddForm.get('nameProject')?.touched
                       "
                       class="text-danger"
                     >
@@ -150,7 +150,7 @@
                     class="form-control"
                     type="text"
                     placeholder="Enter Aspirants Number for project"
-                    formControlName="aspirantsNumber"
+                    formControlName="aspirants"
                   />
                 </div>
               </div>
@@ -192,7 +192,22 @@
               </tr>
             </thead>
             <tbody>
-              <tr >
+              <tr  *ngFor="let project of lstProjects; index as i">
+                <td>{{ i + 1 }}</td>
+                <td>{{ project.nameProject }}</td>
+                <td>{{ project.startDate | date : "dd/MM/yyyy" }}</td>
+                <td>{{ project.endDate | date : "dd/MM/yyyy" }}</td>
+                <td>
+                  <a class="btn btn-sm bg-danger-light">
+                    <i class="feather-eye"></i>
+                  </a>
+                  <a class="btn btn-sm bg-danger-light">
+                    <i class="fe fe-edit-2"></i>
+                  </a>
+                  <a class="btn btn-sm bg-danger-light">
+                    <i class="feather-trash"></i>
+                  </a>
+                </td>
 
               </tr>
             </tbody>

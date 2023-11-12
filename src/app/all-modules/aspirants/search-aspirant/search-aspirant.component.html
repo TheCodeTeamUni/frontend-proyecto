@@ -1,5 +1,4 @@
 <div class="content container-fluid">
-
   <!-- Page Header -->
   <div class="page-header">
     <div class="row">
@@ -7,7 +6,9 @@
         <div class="page-sub-header">
           <h3 class="page-title">Aspirants</h3>
           <ul class="breadcrumb">
-            <li class="breadcrumb-item"><a [routerLink]="'/layout/aspirants/aspirants-list'">Aspirants</a></li>
+            <li class="breadcrumb-item">
+              <a [routerLink]="'/layout/aspirants/aspirants-list'">Aspirants</a>
+            </li>
             <li class="breadcrumb-item active">All Aspirants</li>
           </ul>
         </div>
@@ -16,35 +17,49 @@
   </div>
   <!-- /Page Header -->
 
-  <div class="aspirant-group-form">
-    <div class="row">
-      <div class="col-lg-4 col-md-6">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search by Skill ...">
+  <form [formGroup]="searchForm">
+    <div class="aspirant-group-form">
+      <div class="row">
+        <div class="col-lg-4 col-md-6">
+          <div class="form-group">
+            <select
+              class="form-control select form-select"
+              formControlName="skill"
+              placeholder="Search by Skill ..."
+              (change)="onSkillSelectionChange($event)"
+            >
+              <option *ngFor="let item of lstSkills" [value]="item">
+                {{ item }}
+              </option>
+            </select>
+          </div>
         </div>
-      </div>
-      <div class="col-lg-2">
-        <div class="search-aspirant-btn">
-          <button type="btn" class="btn btn-primary">Search</button>
+        <div class="col-lg-2">
+          <div class="search-aspirant-btn">
+            <button type="button" class="btn btn-primary" (click)="search()">
+              Search
+            </button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+
+    <!-- Rest of your template -->
+  </form>
 
   <div class="row">
     <div class="col-sm-12">
-
       <div class="card card-table comman-shadow">
         <div class="card-body">
-
           <!-- Page Header -->
           <div class="page-header">
             <div class="row align-items-center">
               <div class="col">
                 <h3 class="page-title">Aspirants</h3>
               </div>
-              <div class="col-auto text-end float-end ms-auto download-grp">
-              </div>
+              <div
+                class="col-auto text-end float-end ms-auto download-grp"
+              ></div>
             </div>
           </div>
           <!-- /Page Header -->
@@ -52,62 +67,90 @@
           <div class="row">
             <div class="col-sm-12">
               <div class="card card-table">
-                  <div class="table-responsive">
-                    <table  datatable  class="table table-hover table-center mb-0 ">
-                      <thead>
-                        <tr>
-                          <th>
-														<div class="form-check check-tables">
-															<input class="form-check-input" type="checkbox"  value="something">
-														</div>
-													</th>
-                          <th>ID</th>
-                          <th>Name</th>
-                          <th>Class</th>
-                          <th>DOB</th>
-                          <th>Parent Name</th>
-                          <th>Mobile Number</th>
-                          <th>Address</th>
-                          <th class="text-end">Action</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr *ngFor="let aspirants of lstaspirants | slice:0:10;let i = index">
-                          <td>
-														<div class="form-check check-tables">
-															<input class="form-check-input" type="checkbox"  value="something">
-														</div>
-													</td>
-                          <td>{{aspirants.idNo}}</td>
-                          <td>
-                            <h2 class="table-avatar">
-                              <a [routerLink]="'/layout/aspirants/aspirants-details'" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle" src="assets/img/profiles/avatar-0{{i+ 1}}.jpg" alt="User Image"></a>
-                              <a [routerLink]="'/layout/aspirants/aspirants-details'">{{aspirants.name}}</a>
-                            </h2>
-                          </td>
-                          <td>{{aspirants.class}}</td>
-                          <td>{{aspirants.dob}}</td>
-                          <td>{{aspirants.parentName}}</td>
-                          <td>{{aspirants.mobileNumber}}</td>
-                          <td>{{aspirants.address}}</td>
-                          <td class="text-end">
-														<div class="actions ">
-															<a href="javascript:;" class="btn btn-sm bg-success-light me-2 ">
-																<i class="feather-eye"></i>
-															</a>
-															<a [routerLink]="'/layout/aspirants/aspirants-edit'" class="btn btn-sm bg-danger-light">
-																<i class="feather-edit"></i>
-															</a>
-														</div>
-													</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
+                <div class="table-responsive">
+                  <table datatable class="table table-hover table-center mb-0">
+                    <thead>
+                      <tr>
+                        <th>
+                          <div class="form-check check-tables">
+                            <input
+                              class="form-check-input"
+                              type="checkbox"
+                              value="something"
+                            />
+                          </div>
+                        </th>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Lastname</th>
+                        <th>Skill</th>
+                        <th>Country</th>
+                        <th>Telephone</th>
+                        <th class="text-end">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr
+                        *ngFor="
+                          let aspirants of lstaspirants | slice : 0 : 10;
+                          let i = index
+                        "
+                      >
+                        <td>
+                          <div class="form-check check-tables">
+                            <input
+                              class="form-check-input"
+                              type="checkbox"
+                              value="something"
+                            />
+                          </div>
+                        </td>
+                        <td>{{ aspirants.idUser }}</td>
+                        <td>
+                          <h2 class="table-avatar">
+                            <a
+                              [routerLink]="
+                                '/layout/aspirants/aspirants-details'
+                              "
+                              class="avatar avatar-sm me-2"
+                              ><img
+                                class="avatar-img rounded-circle"
+                                src="assets/img/profiles/avatar-0{{
+                                  i + 1
+                                }}.jpg"
+                                alt="User Image"
+                            /></a>
+                            <a
+                              [routerLink]="
+                                '/layout/aspirants/aspirants-details'
+                              "
+                              >{{ aspirants.name }}</a
+                            >
+                          </h2>
+                        </td>
+                        <td>{{ aspirants.lastName }}</td>
+                        <td>{{ aspirants.skill }}</td>
+                        <td>{{ aspirants.country }}</td>
+                        <td>{{ aspirants.telephone }}</td>
+                        <td class="text-end">
+                          <div class="actions">
+                            <a
+                              routerLink="/layout/aspirants/profile-aspirant/{{
+                                aspirants.idUser
+                              }}"
+                              class="btn btn-sm bg-success-light me-2"
+                            >
+                              <i class="feather-eye"></i>
+                            </a>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </div>
@@ -116,6 +159,6 @@
 
 <!-- Footer -->
 <footer>
-  <p>Copyright © 2022 Dreamguys.</p>
+  <p>COPYRIGHT © 2023 CODETEAM</p>
 </footer>
 <!-- /Footer -->

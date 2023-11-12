@@ -1,0 +1,294 @@
+<div class="content container-fluid">
+  <div class="page-header">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="page-sub-header">
+          <h3 class="page-title">Apirant Details</h3>
+          <ul class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a [routerLink]="'/layout/aspirants/aspirants-list'">Aspirant</a>
+            </li>
+            <li class="breadcrumb-item active">Aspirant Details</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="about-info">
+            <h4>
+              Profile
+              <span
+                ><a href="javascript:;"><i class="feather-more-vertical"></i></a
+              ></span>
+            </h4>
+          </div>
+          <div class="aspirant-profile-head">
+            <div class="profile-bg-img">
+              <img src="assets/img/header-profile.png" alt="Profile" />
+            </div>
+            <div class="row">
+              <div class="col-lg-4 col-md-4">
+                <div class="profile-user-box">
+                  <div class="profile-user-img">
+                    <img
+                      [src]="this.photo"
+                      (error)="imagenNoEncontrada()"
+                      alt="Profile"
+                    />
+                  </div>
+                  <div class="names-profiles">
+                    <h4>{{ name }} {{ lastName }}</h4>
+                    <h5>ABC Jobs Aspirant</h5>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-4 d-flex align-items-center">
+                <div class="follow-group">
+                  <div class="aspirants-follows">
+                    <h5>Projects</h5>
+                    <h4>28</h4>
+                  </div>
+                  <div class="aspirants-follows">
+                    <h5>Companies</h5>
+                    <h4>7</h4>
+                  </div>
+                  <div class="aspirants-follows">
+                    <h5>Followers</h5>
+                    <h4>324</h4>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-4 d-flex align-items-center">
+                <div class="follow-btn-group">
+                  <button type="submit" class="btn btn-info follow-btns">
+                    Follow
+                  </button>
+                  <button
+                    type="submit"
+                    class="btn btn-info message-btns"
+                    data-bs-toggle="modal"
+                    data-bs-target="#con-close-modal"
+                  >
+                    Add to Project
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="aspirant-personals-grp">
+            <div class="card">
+              <div class="card-body">
+                <div class="heading-detail">
+                  <h4>Personal Details :</h4>
+                </div>
+                <div class="personal-activity">
+                  <div class="personal-icons">
+                    <i class="feather-user"></i>
+                  </div>
+                  <div class="views-personal">
+                    <h4>Name</h4>
+                    <h5>{{ name }} {{ lastName }}</h5>
+                  </div>
+                </div>
+                <div class="personal-activity">
+                  <div class="personal-icons">
+                    <i class="feather-phone-call"></i>
+                  </div>
+                  <div class="views-personal">
+                    <h4>Mobile</h4>
+                    <h5>{{ telephone }}</h5>
+                  </div>
+                </div>
+                <div class="personal-activity">
+                  <div class="personal-icons">
+                    <i class="feather-mail"></i>
+                  </div>
+                  <div class="views-personal">
+                    <h4>Email</h4>
+                    <h5>{{ email }}</h5>
+                  </div>
+                </div>
+                <div class="personal-activity">
+                  <div class="personal-icons">
+                    <i class="feather-user"></i>
+                  </div>
+                  <div class="views-personal">
+                    <h4>Gender</h4>
+                    <h5>{{ gender }}</h5>
+                  </div>
+                </div>
+                <div class="personal-activity">
+                  <div class="personal-icons">
+                    <i class="feather-calendar"></i>
+                  </div>
+                  <div class="views-personal">
+                    <h4>Date of Birth</h4>
+                    <h5>{{ birthdate | date : "dd/MM/yyyy" }}</h5>
+                  </div>
+                </div>
+                <div class="personal-activity">
+                  <div class="personal-icons">
+                    <i class="feather-italic"></i>
+                  </div>
+                  <div class="views-personal">
+                    <h4>Language</h4>
+                    <h5>English, French, Bangla</h5>
+                  </div>
+                </div>
+                <div class="personal-activity mb-0">
+                  <div class="personal-icons">
+                    <i class="feather-map-pin"></i>
+                  </div>
+                  <div class="views-personal">
+                    <h4>Address</h4>
+                    <h5>{{ address }}, {{ country }}</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="aspirant-personals-grp">
+            <div class="card mb-0">
+              <div class="card-body">
+                <div class="heading-detail">
+                  <h4>Skills:</h4>
+                </div>
+                <div class="skill-blk" *ngFor="let skill of lstSkills">
+                  <div class="skill-statistics">
+                    <div class="skills-head">
+                      <h5>{{ skill.skill }}</h5>
+                      <p>{{ skill.level }}%</p>
+                    </div>
+                    <div class="progress mb-0">
+                      <div
+                        [ngStyle]="{ 'width.%': skill.level }"
+                        [ngClass]="getColorClass(skill.level)"
+                        role="progressbar"
+                        [attr.aria-valuenow]="skill.level"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                    <p>{{ skill.experience }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-8">
+          <div class="aspirant-personals-grp">
+            <div class="card mb-0">
+              <div class="card-body">
+                <div class="heading-detail">
+                  <h4>About Me</h4>
+                </div>
+                <div class="hello-park">
+                  <h5>Hello I am {{ name }} {{ lastName }}</h5>
+                  <p>{{ description }}</p>
+
+                  <div class="hello-park">
+                    <h5>Education</h5>
+                    <div class="educate-year" *ngFor="let edu of lstEducation">
+                      <h6>
+                        {{ edu.startDate | date : "dd/MM/yyyy" }} -
+                        {{ edu.endDate | date : "dd/MM/yyyy" }}
+                      </h6>
+                      <p>
+                        {{ edu.level }}: {{ edu.title }} from the
+                        {{ edu.institution }}, {{ edu.typeEducation }}.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="hello-park">
+                    <h5>Work Experience</h5>
+                    <div class="educate-year" *ngFor="let work of lstWorks">
+                      <h6>
+                        {{ work.startDate | date : "dd/MM/yyyy" }} -
+                        {{ work.endDate | date : "dd/MM/yyyy" }}
+                      </h6>
+                      <p>{{ work.position }}: {{ work.company }}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>COPYRIGHT © 2023 CODETEAM</p>
+  </footer>
+  <!-- /Footer -->
+
+  <!-- sample modal content -->
+  <form [formGroup]="addAspirantProjectForm" (ngSubmit)="addAspirantProject()">
+    <div id="con-close-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Add Aspirant to Project</h4>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+
+      <div class="modal-body p-4">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="mb-3">
+              <label for="project" class="form-label">Select Project</label>
+              <input type="text" formControlName="project" class="form-control" id="project" placeholder="Select Project" />
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="mb-3">
+              <label for="rol" class="form-label">Select Role</label>
+              <input type="text" formControlName="rol" class="form-control" id="rol" placeholder="Select Role" />
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="">
+              <label for="note" class="form-label">Note</label>
+              <textarea formControlName="note" class="form-control" id="note" placeholder="Write something about this selection"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-info follow-btns">Add Aspirant</button>
+      </div>
+    </div>
+    </div>
+    </div>
+  </form>
+
+
+
+
+
+
+
+  <!-- /.modal -->
+</div>

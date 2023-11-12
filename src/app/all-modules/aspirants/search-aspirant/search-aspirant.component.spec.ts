@@ -4,6 +4,7 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { SearchAspirantComponent } from './search-aspirant.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('SearchAspirantComponent', () => {
   let component: SearchAspirantComponent;
@@ -11,7 +12,8 @@ describe('SearchAspirantComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SearchAspirantComponent ]
+      declarations: [ SearchAspirantComponent ],
+      imports: [HttpClientTestingModule],
     })
     .compileComponents();
   }));
