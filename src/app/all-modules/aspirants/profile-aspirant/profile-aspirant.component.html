@@ -21,7 +21,7 @@
         <div class="col-md-12">
           <div class="about-info">
             <h4>
-              Profile
+              Aspirant Details
               <span
                 ><a href="javascript:;"><i class="feather-more-vertical"></i></a
               ></span>
@@ -236,7 +236,15 @@
 
   <!-- sample modal content -->
   <form [formGroup]="addAspirantProjectForm" (ngSubmit)="addAspirantProject()">
-    <div id="con-close-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none">
+    <div
+      id="con-close-modal"
+      class="modal fade"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="myModalLabel"
+      aria-hidden="true"
+      style="display: none"
+    >
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -249,45 +257,70 @@
             ></button>
           </div>
 
-      <div class="modal-body p-4">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="mb-3">
-              <label for="project" class="form-label">Select Project</label>
-              <input type="text" formControlName="project" class="form-control" id="project" placeholder="Select Project" />
+          <div class="modal-body p-4">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="mb-3">
+                  <label for="project" class="form-label">Select Project</label>
+                  <select
+                    formControlName="project"
+                    class="form-control"
+                    id="project"
+                  >
+                    <!-- Agrega opciones para el proyecto aquí -->
+                    <option *ngFor="let item of lstProjects" value="{{item.id}}">{{item.nameProject}}</option>
+                    <!-- Añade más opciones según sea necesario -->
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="mb-3">
+                  <label for="rol" class="form-label">Select Role</label>
+                  <select
+                    formControlName="rol"
+                    class="form-control"
+                    id="rol"
+                  >
+                    <!-- Agrega opciones para el rol aquí -->
+                    <option option *ngFor="let item of lstPositions">{{item}}</option>
+
+                    <!-- Añade más opciones según sea necesario -->
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="">
+                  <label for="note" class="form-label">Note</label>
+                  <textarea
+                    formControlName="note"
+                    class="form-control"
+                    id="note"
+                    placeholder="Write something about this selection"
+                  ></textarea>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <div class="mb-3">
-              <label for="rol" class="form-label">Select Role</label>
-              <input type="text" formControlName="rol" class="form-control" id="rol" placeholder="Select Role" />
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <div class="">
-              <label for="note" class="form-label">Note</label>
-              <textarea formControlName="note" class="form-control" id="note" placeholder="Write something about this selection"></textarea>
-            </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary waves-effect"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="submit" class="btn btn-info follow-btns">
+              Add Aspirant
+            </button>
           </div>
         </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-info follow-btns">Add Aspirant</button>
-      </div>
-    </div>
-    </div>
     </div>
   </form>
-
-
-
-
-
 
 
   <!-- /.modal -->

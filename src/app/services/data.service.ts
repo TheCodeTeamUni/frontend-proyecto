@@ -7,7 +7,7 @@ export class DataService {
   constructor() {}
 
   countries = [
-    'Select Country',
+    'Select Country...',
     'Afghanistan',
     'Albania',
     'Algeria',
@@ -216,7 +216,7 @@ export class DataService {
   ];
 
   positions = [
-    'Select Position',
+    'Select Position ...',
     'Chief Technology Officer (CTO)',
     'Chief Information Officer (CIO)',
     'IT Project Manager',
@@ -240,7 +240,7 @@ export class DataService {
   ];
 
   skills = [
-    'Select skill',
+    'Select skill...',
     'Python',
     'Java',
     'JavaScript',
@@ -316,6 +316,7 @@ export class DataService {
   ];
 
   yearsOfExperience = [
+    'select experience...',
     'Menos de 1 año de experiencia',
     '1 año de experiencia',
     '2 años de experiencia',

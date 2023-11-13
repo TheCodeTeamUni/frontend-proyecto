@@ -34,7 +34,7 @@ export class SearchAspirantComponent implements OnInit {
 
   ngOnInit() {
     this.searchForm = this.formBuilder.group({
-      skill: ['', [Validators.required]],
+      skill: ['Select skill...', [Validators.required]],
     });
 
     this.dtOptions = {
