@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AspirantsService } from 'src/app/services/aspirants.service';
-import {
-  UntypedFormGroup,
-  UntypedFormBuilder,
-  Validators,
-} from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
+import { DataService } from 'src/app/services/data.service';
+import { ProjectsService } from 'src/app/services/projects.service';
 
 @Component({
   selector: 'app-profile-aspirant',
@@ -37,24 +35,29 @@ export class ProfileAspirantComponent implements OnInit {
   public lstEducation!: any[];
   public lstWorks!: any[];
   public lstSkills!: any[];
+  public lstPositions!: any[];
+  public lstProjects!: any[];
 
   constructor(
     private route: ActivatedRoute,
     private aspirantService: AspirantsService,
     private formBuilder: UntypedFormBuilder,
+    private dataService: DataService,
+    private projectInfo: ProjectsService
   ) {}
 
   ngOnInit() {
-
     this.addAspirantProjectForm = this.formBuilder.group({
-      project: ['', [Validators.required]],
-      rol: ['', [Validators.required]],
+      project: ['Select...', [Validators.required]],
+      rol: ['Select...', [Validators.required]],
       note: ['', [Validators.required]],
     });
 
     this.token = localStorage.getItem('Token');
     this.userId = this.route.snapshot.paramMap.get('id')!;
     this.getAspirant();
+    this.loadPositions();
+    this.getProject();
   }
 
   getAspirant() {
@@ -93,9 +96,27 @@ export class ProfileAspirantComponent implements OnInit {
       return 'bg-illustrator';
     } else {
       return 'bg-red';
-    }}
-
-    addAspirantProject(){
-      console.log('Formulario enviado:', this.addAspirantProjectForm.value);
     }
+  }
+
+  addAspirantProject() {
+    let aspirantProject = {
+      userId: this.userId,
+      project: this.addAspirantProjectForm.value.project,
+      rol: this.addAspirantProjectForm.value.rol,
+      note: this.addAspirantProjectForm.value.note,
+    };
+
+    console.log('Formulario enviado:', aspirantProject);
+  }
+
+  loadPositions() {
+    this.lstPositions = this.dataService.positions;
+  }
+
+  getProject() {
+    this.projectInfo.getProject(this.token).subscribe((data) => {
+      this.lstProjects = data;
+    });
+  }
 }

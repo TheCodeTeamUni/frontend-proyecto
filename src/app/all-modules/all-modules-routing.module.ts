@@ -25,6 +25,13 @@ const routes: Routes = [
           ),
       },
       {
+        path: 'company-information',
+        loadChildren: () =>
+          import('./company-information/company-information.module').then(
+            (m) => m.CompanyInformationModule
+          ),
+      },
+      {
         path: 'projects',
         loadChildren: () =>
           import('./projects/projects.module').then((m) => m.ProjectsModule),

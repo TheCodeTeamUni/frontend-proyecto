@@ -4,10 +4,10 @@
     <div class="row">
       <div class="col-sm-12">
         <div class="page-sub-header">
-          <h3 class="page-title">Aspirants</h3>
+          <h3 class="page-title">Search Aspirants</h3>
           <ul class="breadcrumb">
             <li class="breadcrumb-item">
-              <a [routerLink]="'/layout/aspirants/aspirants-list'">Aspirants</a>
+              <a [routerLink]="'/layout/aspirants/aspirants-list'">Search Aspirants</a>
             </li>
             <li class="breadcrumb-item active">All Aspirants</li>
           </ul>
@@ -18,12 +18,13 @@
   <!-- /Page Header -->
 
   <form [formGroup]="searchForm">
-    <div class="aspirant-group-form">
+    <div>
       <div class="row">
         <div class="col-lg-4 col-md-6">
           <div class="form-group">
+            <label>Search aspirant for skill<span class="login-danger">*</span></label>
             <select
-              class="form-control select form-select"
+              class="form-control select form-select align-items-center"
               formControlName="skill"
               placeholder="Search by Skill ..."
               (change)="onSkillSelectionChange($event)"
@@ -34,18 +35,18 @@
             </select>
           </div>
         </div>
-        <div class="col-lg-2">
-          <div class="search-aspirant-btn">
-            <button type="button" class="btn btn-primary" (click)="search()">
+        <div class="col-lg-2 col-md-6">
+          <div class="form-group search-aspirant-btn">
+            <button type="button" class="btn btn-primary align-self-end" (click)="search()">
               Search
             </button>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- Rest of your template -->
+    </div>
   </form>
+
 
   <div class="row">
     <div class="col-sm-12">
@@ -55,7 +56,7 @@
           <div class="page-header">
             <div class="row align-items-center">
               <div class="col">
-                <h3 class="page-title">Aspirants</h3>
+                <h3 class="page-title">Aspirants List</h3>
               </div>
               <div
                 class="col-auto text-end float-end ms-auto download-grp"

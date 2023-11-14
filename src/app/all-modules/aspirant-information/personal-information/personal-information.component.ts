@@ -32,9 +32,9 @@ export class PersonalInformationComponent implements OnInit {
     this.personalInformationForm = this.formBuilder.group({
       name: ['', [Validators.required]],
       lastName: ['', [Validators.required]],
-      typeDocument: ['Select ID Type', [Validators.required]],
+      typeDocument: ['Select...', [Validators.required]],
       document: ['', [Validators.required]],
-      gender: ['Select Gender', [Validators.required]],
+      gender: ['Select...', [Validators.required]],
       birthdate: ['', [Validators.required]],
       telephone: ['', [Validators.required]],
       address: ['', [Validators.required]],
