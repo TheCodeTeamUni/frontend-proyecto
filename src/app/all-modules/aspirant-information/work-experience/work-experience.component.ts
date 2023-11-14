@@ -37,8 +37,8 @@ export class WorkExperienceComponent implements OnInit {
     // Add applicants form validation
     this.workInformationForm = this.formBuilder.group({
       company: ['', [Validators.required]],
-      position: ['Select Position', [Validators.required]],
-      actualJob: ['Select', [Validators.required]],
+      position: ['Select...', [Validators.required]],
+      actualJob: ['Select...', [Validators.required]],
       startDate: ['', [Validators.required]],
       endDate: ['',],
     });

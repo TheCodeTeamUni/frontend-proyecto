@@ -28,10 +28,10 @@ export class EducationComponent implements OnInit {
   ngOnInit() {
     // Add applicants form validation
     this.educationForm = this.formBuilder.group({
-      typeEducation: ['Select', [Validators.required]],
-      level: ['Select', [Validators.required]],
+      typeEducation: ['Select...', [Validators.required]],
+      level: ['Select...', [Validators.required]],
       title: ['', [Validators.required]],
-      grade: ['Select', [Validators.required]],
+      grade: ['Select...', [Validators.required]],
       institution: ['', [Validators.required]],
       startDate: ['', [Validators.required]],
       endDate: [''],

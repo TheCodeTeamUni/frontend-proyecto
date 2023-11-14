@@ -48,8 +48,8 @@ export class ProfileAspirantComponent implements OnInit {
 
   ngOnInit() {
     this.addAspirantProjectForm = this.formBuilder.group({
-      project: ['', [Validators.required]],
-      rol: ['', [Validators.required]],
+      project: ['Select...', [Validators.required]],
+      rol: ['Select...', [Validators.required]],
       note: ['', [Validators.required]],
     });
 

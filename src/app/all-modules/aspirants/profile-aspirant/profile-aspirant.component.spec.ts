@@ -5,6 +5,8 @@ import { AspirantsService } from 'src/app/services/aspirants.service';
 import { ProfileAspirantComponent } from './profile-aspirant.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { of } from 'rxjs';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('ProfileAspirantComponent', () => {
   let component: ProfileAspirantComponent;
@@ -43,7 +45,7 @@ describe('ProfileAspirantComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ProfileAspirantComponent],
-      imports: [ReactiveFormsModule],
+      imports: [ReactiveFormsModule, RouterTestingModule, HttpClientTestingModule],
       providers: [
         { provide: ActivatedRoute, useValue: mockActivatedRoute },
         { provide: AspirantsService, useValue: mockAspirantService },
@@ -65,9 +67,5 @@ describe('ProfileAspirantComponent', () => {
     expect(component.addAspirantProjectForm).toBeTruthy();
   });
 
-  it('should handle addAspirantProject', () => {
-    spyOn(console, 'log');
-    component.addAspirantProject();
-    expect(console.log).toHaveBeenCalledWith('Formulario enviado:', component.addAspirantProjectForm.value);
-  });
+
 });

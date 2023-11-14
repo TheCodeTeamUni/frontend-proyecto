@@ -3,12 +3,12 @@
   <div class="page-header">
     <div class="row">
       <div class="col">
-        <h3 class="page-title">Profile</h3>
+        <h3 class="page-title">Aspirant Profile</h3>
         <ul class="breadcrumb">
           <li class="breadcrumb-item">
             <a routerLink="/layout/dashboard/dashboard-main">Dashboard</a>
           </li>
-          <li class="breadcrumb-item active">Profile</li>
+          <li class="breadcrumb-item active">Aspirant Profile</li>
         </ul>
       </div>
     </div>
@@ -30,7 +30,7 @@
             </a>
           </div>
           <div class="col ml-md-n2 profile-user-info">
-            <h4 class="user-name mb-0">{{ name }}{{ lastName }}</h4>
+            <h4 class="user-name mb-0">{{ name }} {{ lastName }}</h4>
             <h6 class="text-muted">ABC Jobs Aspirant</h6>
             <div class="user-Location">
               <i class="fas fa-map-marker-alt"></i> {{ address }}
@@ -78,7 +78,7 @@
                     <p class="col-sm-3 text-muted text-sm-right mb-0 mb-sm-3">
                       Name
                     </p>
-                    <p class="col-sm-9">{{ name }}{{ lastName }}</p>
+                    <p class="col-sm-9">{{ name }} {{ lastName }}</p>
                   </div>
                   <div class="row">
                     <p class="col-sm-3 text-muted text-sm-right mb-0 mb-sm-3">
@@ -99,11 +99,18 @@
                     <p class="col-sm-9">{{ telephone }}</p>
                   </div>
                   <div class="row">
-                    <p class="col-sm-3 text-muted text-sm-right mb-0">
+                    <p class="col-sm-3 text-muted text-sm-right mb-3">
                       Address
                     </p>
                     <p class="col-sm-9 mb-0">
-                      {{ address }}<br />
+                      {{ address }}
+                    </p>
+                  </div>
+                  <div class="row">
+                    <p class="col-sm-3 text-muted text-sm-right mb-0">
+                      Country
+                    </p>
+                    <p class="col-sm-9 mb-0">
                       {{ country }}
                     </p>
                   </div>
@@ -185,3 +192,6 @@
     </div>
   </div>
 </div>
+<footer>
+  <p>Copyright © 2023 CodeTeam</p>
+</footer>
