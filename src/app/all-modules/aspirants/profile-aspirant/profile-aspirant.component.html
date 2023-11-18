@@ -32,7 +32,7 @@
               <img src="assets/img/header-profile.png" alt="Profile" />
             </div>
             <div class="row">
-              <div class="col-lg-4 col-md-4">
+              <div class="col-lg-6 col-md-6">
                 <div class="profile-user-box">
                   <div class="profile-user-img">
                     <img
@@ -63,16 +63,22 @@
                   </div>
                 </div>
               </div>
-              <div class="col-lg-4 col-md-4 d-flex align-items-center">
+              <div class="col-lg-12 col-md-12 d-flex align-items-right pb-3">
                 <div class="follow-btn-group">
                   <button type="submit" class="btn btn-info follow-btns">
                     Follow
+                  </button>
+                  <button type="submit"
+                  class="btn btn-info follow-btns"
+                  data-bs-toggle="modal"
+                  data-bs-target="#add-interview">
+                    Add Interview
                   </button>
                   <button
                     type="submit"
                     class="btn btn-info message-btns"
                     data-bs-toggle="modal"
-                    data-bs-target="#con-close-modal"
+                    data-bs-target="#add-aspirant-project"
                   >
                     Add to Project
                   </button>
@@ -234,27 +240,14 @@
   </footer>
   <!-- /Footer -->
 
-  <!-- sample modal content -->
+  <!-- Add Aspirant to project -->
   <form [formGroup]="addAspirantProjectForm" (ngSubmit)="addAspirantProject()">
-    <div
-      id="con-close-modal"
-      class="modal fade"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="myModalLabel"
-      aria-hidden="true"
-      style="display: none"
-    >
+    <div id="add-aspirant-project" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
             <h4 class="modal-title">Add Aspirant to Project</h4>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
 
           <div class="modal-body p-4">
@@ -262,15 +255,9 @@
               <div class="col-md-12">
                 <div class="mb-3">
                   <label for="project" class="form-label">Select Project</label>
-                  <select
-                    formControlName="project"
-                    class="form-control"
-                    id="project"
-                  >
-                    <!-- Agrega opciones para el proyecto aquí -->
-                    <option >Select...</option>
-                    <option *ngFor="let item of lstProjects" value="{{item.id}}">{{item.nameProject}}</option>
-                    <!-- Añade más opciones según sea necesario -->
+                  <select formControlName="project" class="form-control" id="project" (change)="projectSelectionChange($event)">
+                    <option>Select...</option>
+                    <option *ngFor="let item of lstProjects" [value]="item.id">{{ item.nameProject }}</option>
                   </select>
                 </div>
               </div>
@@ -279,44 +266,77 @@
               <div class="col-md-12">
                 <div class="mb-3">
                   <label for="rol" class="form-label">Select Role</label>
-                  <select
-                    formControlName="rol"
-                    class="form-control"
-                    id="rol"
-                  >
-                    <!-- Agrega opciones para el rol aquí -->
-                    <option option *ngFor="let item of lstPositions">{{item}}</option>
-
-                    <!-- Añade más opciones según sea necesario -->
+                  <select formControlName="rol" class="form-control" id="rol">
+                    <option *ngFor="let item of lstPositions">{{ item }}</option>
                   </select>
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col-md-12">
-                <div class="">
+                <div class="mb-3">
                   <label for="note" class="form-label">Note</label>
-                  <textarea
-                    formControlName="note"
-                    class="form-control"
-                    id="note"
-                    placeholder="Write something about this selection"
-                  ></textarea>
+                  <textarea formControlName="note" class="form-control" id="note" placeholder="Write something about this selection"></textarea>
                 </div>
               </div>
             </div>
           </div>
           <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary waves-effect"
-              data-bs-dismiss="modal"
-            >
-              Close
-            </button>
-            <button type="submit" class="btn btn-info follow-btns">
-              Add Aspirant
-            </button>
+            <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-info follow-btns">Add Aspirant</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+
+
+  <!-- /.modal -->
+
+  <!-- Add Interview-->
+  <form [formGroup]="addInterviewForm" (ngSubmit)="addInterview()">
+    <div id="add-interview" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Add Interview</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <div class="modal-body p-4">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label for="date" class="form-label">Select Date</label>
+                  <input type="date" class="form-control" [class.invalid]="addInterviewForm.get('date')?.invalid && addInterviewForm.get('date')?.touched" formControlName="date" />
+                  <div *ngIf="addInterviewForm.get('date')?.invalid && addInterviewForm.get('date')?.touched">
+                    <small class="text-danger">*Start Date is required</small>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label for="time" class="form-label">Select Time</label>
+                  <input type="time" class="form-control" [class.invalid]="addInterviewForm.get('time')?.invalid && addInterviewForm.get('time')?.touched" formControlName="time" />
+                  <div *ngIf="addInterviewForm.get('time')?.invalid && addInterviewForm.get('time')?.touched">
+                    <small class="text-danger">*Start Time is required</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="mb-3">
+                  <label for="note" class="form-label">Note</label>
+                  <textarea formControlName="note" class="form-control" id="note" placeholder="Write something about this selection"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-info follow-btns">Add Aspirant</button>
           </div>
         </div>
       </div>

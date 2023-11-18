@@ -32,4 +32,30 @@ export class ProjectsService {
       headers: headers,
     });
   }
+
+
+  addAspirantToProject(info: any, token: string, projectId:string,): Observable<any> {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+    return this.http.post<any>(
+      `${this.backUrl}abcjobs/company/project/${projectId}`,
+      info,
+      {
+        headers: headers,
+      }
+    );
+  }
+
+
+  getAspirantToProject(token: string, projectId:string,): Observable<any> {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+    return this.http.get<any>(`${this.backUrl}abcjobs/company/project/${projectId}`, {
+      headers: headers,
+    });
+  }
+
+
 }

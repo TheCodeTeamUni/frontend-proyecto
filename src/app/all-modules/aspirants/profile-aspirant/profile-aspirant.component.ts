@@ -1,9 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AspirantsService } from 'src/app/services/aspirants.service';
-import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
+import {
+  UntypedFormGroup,
+  UntypedFormBuilder,
+  Validators,
+} from '@angular/forms';
 import { DataService } from 'src/app/services/data.service';
 import { ProjectsService } from 'src/app/services/projects.service';
+import Swal from 'sweetalert2';
+import { ToastrService } from 'ngx-toastr';
+import { HttpErrorResponse } from '@angular/common/http';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-profile-aspirant',
@@ -29,6 +37,9 @@ export class ProfileAspirantComponent implements OnInit {
   public photo!: string;
   imagenPorDefectoUrl: string = 'assets/img/profile-user.jpg';
   public addAspirantProjectForm!: UntypedFormGroup;
+  public addInterviewForm!: UntypedFormGroup;
+  public selectedProject!: string;
+  public pipe = new DatePipe('en-US');
 
   //Lists
 
@@ -43,13 +54,21 @@ export class ProfileAspirantComponent implements OnInit {
     private aspirantService: AspirantsService,
     private formBuilder: UntypedFormBuilder,
     private dataService: DataService,
-    private projectInfo: ProjectsService
+    private projectInfo: ProjectsService,
+    private router: Router,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit() {
     this.addAspirantProjectForm = this.formBuilder.group({
       project: ['Select...', [Validators.required]],
       rol: ['Select...', [Validators.required]],
+      note: ['', [Validators.required]],
+    });
+
+    this.addInterviewForm = this.formBuilder.group({
+      date: ['', [Validators.required]],
+      time: ['', [Validators.required]],
       note: ['', [Validators.required]],
     });
 
@@ -101,13 +120,56 @@ export class ProfileAspirantComponent implements OnInit {
 
   addAspirantProject() {
     let aspirantProject = {
-      userId: this.userId,
-      project: this.addAspirantProjectForm.value.project,
-      rol: this.addAspirantProjectForm.value.rol,
-      note: this.addAspirantProjectForm.value.note,
+      idUser: this.userId,
+      name: this.name,
+      lastName: this.lastName,
+      role: this.addAspirantProjectForm.value.rol,
+      notes: this.addAspirantProjectForm.value.note,
     };
 
-    console.log('Formulario enviado:', aspirantProject);
+    console.log(aspirantProject);
+
+    this.projectInfo
+      .addAspirantToProject(aspirantProject, this.token, this.selectedProject)
+      .subscribe(
+        (data) => {
+          this.typeSuccess();
+          this.router.navigate([
+            '/layout/projects/projects-detail/' + this.selectedProject,
+          ]);
+        },
+        (error) => {
+          if (error instanceof HttpErrorResponse && error.status === 400) {
+            const errorMessage = error.error.error; // Obtiene el mensaje de error del backend
+            this.toastr.error(errorMessage, 'Error del backend');
+          }
+          // Aquí puedes manejar el error que proviene del backend
+
+          // Puedes mostrar un mensaje de error al usuario
+          // Por ejemplo, asignando el mensaje de error a una variable y mostrándolo en el frontend
+          // this.errorMessage = 'Se produjo un error al asignar el aspirante al proyecto. Por favor, inténtelo de nuevo.';
+          // O bien, mostrarlo en un modal, o cualquier otra lógica de manejo de errores
+        }
+      );
+  }
+
+
+  addInterview() {
+
+    let date = this.pipe.transform(
+      this.addInterviewForm.value.date,
+      'd/MM/y'
+    );
+
+    let aspirantProject = {
+      idUser:   this.userId,
+      date:     date,
+      time:     this.addInterviewForm.value.time,
+      notes:    this.addInterviewForm.value.note,
+    };
+
+    console.log(aspirantProject);
+
   }
 
   loadPositions() {
@@ -117,6 +179,21 @@ export class ProfileAspirantComponent implements OnInit {
   getProject() {
     this.projectInfo.getProject(this.token).subscribe((data) => {
       this.lstProjects = data;
+    });
+  }
+
+  projectSelectionChange(event: any) {
+    // Esta función se llamará cuando cambie la selección del skill
+    const selectedProject = event.target.value;
+    this.selectedProject = selectedProject;
+    console.log(selectedProject);
+    // Puedes almacenar selectedSkill en una variable de clase si lo necesitas para otras operaciones
+  }
+
+  typeSuccess() {
+    Swal.fire({
+      title: 'Success Record',
+      text: 'Your data has been successfully saved in ABC JOBS!',
     });
   }
 }

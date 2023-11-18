@@ -1,6 +1,4 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { DataTableDirective } from 'angular-datatables';
-import { Subject } from 'rxjs';
 import { DataService } from 'src/app/services/data.service';
 import {
   UntypedFormGroup,
@@ -15,16 +13,13 @@ import { SearchService } from 'src/app/services/search.service';
   styleUrls: ['./search-aspirant.component.css'],
 })
 export class SearchAspirantComponent implements OnInit {
-  @ViewChild(DataTableDirective, { static: true })
-  public dtElement!: DataTableDirective;
-  public dtOptions: DataTables.Settings = {};
-  public dtTrigger: Subject<any> = new Subject();
   public lstSkills!: any[];
-  public url: any = 'aspirantsList';
   public searchForm!: UntypedFormGroup;
   public lstaspirants!: any[];
   public selectedSkill!: string;
   public token!: any;
+  photo!: string;
+  imagenPorDefectoUrl: string = 'assets/img/profiles/avatar-02.jpg';
 
   constructor(
     private dataService: DataService,
@@ -34,14 +29,8 @@ export class SearchAspirantComponent implements OnInit {
 
   ngOnInit() {
     this.searchForm = this.formBuilder.group({
-      skill: ['Select...', [Validators.required]],
+      skill: ['Search aspirant for skill...', [Validators.required]],
     });
-
-    this.dtOptions = {
-      // ... skipped ...
-      pageLength: 10,
-      dom: 'lrtip',
-    };
     this.loadSkills();
     this.token = localStorage.getItem('Token');
   }
@@ -63,5 +52,9 @@ export class SearchAspirantComponent implements OnInit {
       .subscribe((data) => {
         this.lstaspirants = data;
       });
+  }
+
+  imagenNoEncontrada() {
+    this.photo = this.imagenPorDefectoUrl;
   }
 }

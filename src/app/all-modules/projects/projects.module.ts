@@ -5,6 +5,7 @@ import { ProjectsRoutingModule } from './projects-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSliderModule } from '@angular/material/slider';
 import { ProjectsAddComponent } from './projects-add/projects-add.component';
+import { ProjectsDetailComponent } from './projects-detail/projects-detail.component';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { ProjectsAddComponent } from './projects-add/projects-add.component';
   ],
   declarations: [
     ProjectsComponent,
-    ProjectsAddComponent
+    ProjectsAddComponent,
+    ProjectsDetailComponent
 
   ]
 })

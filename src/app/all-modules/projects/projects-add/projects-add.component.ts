@@ -73,7 +73,6 @@ export class ProjectsAddComponent implements OnInit {
     });
   }
 
-
   typeSuccess() {
     Swal.fire({
       title: 'Success Record',

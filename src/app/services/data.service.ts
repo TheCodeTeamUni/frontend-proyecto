@@ -240,7 +240,6 @@ export class DataService {
   ];
 
   skills = [
-    'Select...',
     'Python',
     'Java',
     'JavaScript',
