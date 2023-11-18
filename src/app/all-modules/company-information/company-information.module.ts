@@ -5,10 +5,20 @@ import { CompanyInformationRoutingModule } from './company-information-routing.m
 import { ProfileComponent } from './profile/profile.component';
 import { BasicDataComponent } from './basic-data/basic-data.component';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { FormsModule } from '@angular/forms';
+
 @NgModule({
   imports: [
     CommonModule,
-    CompanyInformationRoutingModule
+    CompanyInformationRoutingModule,
+    FormsModule,
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory,
+    }),
   ],
   declarations: [
     CompanyInformationComponent,

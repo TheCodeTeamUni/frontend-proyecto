@@ -14,9 +14,9 @@ export class HeaderComponent implements OnInit {
   type!: string;
   profile!: string;
   elem = document.documentElement;
-  photo!: string;
   lastName!: string;
   name!: string;
+  photo!: string;
   imagenPorDefectoUrl: string = 'assets/img/profiles/avatar-02.jpg';
   profileRoute!: string;
 

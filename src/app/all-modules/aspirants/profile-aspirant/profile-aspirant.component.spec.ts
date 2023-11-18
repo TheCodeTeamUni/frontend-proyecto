@@ -7,6 +7,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { of } from 'rxjs';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { ToastrModule } from 'ngx-toastr';
 
 describe('ProfileAspirantComponent', () => {
   let component: ProfileAspirantComponent;
@@ -45,7 +46,7 @@ describe('ProfileAspirantComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ProfileAspirantComponent],
-      imports: [ReactiveFormsModule, RouterTestingModule, HttpClientTestingModule],
+      imports: [ReactiveFormsModule, RouterTestingModule, HttpClientTestingModule,  ToastrModule.forRoot(),],
       providers: [
         { provide: ActivatedRoute, useValue: mockActivatedRoute },
         { provide: AspirantsService, useValue: mockAspirantService },

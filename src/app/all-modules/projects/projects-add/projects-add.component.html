@@ -198,7 +198,11 @@
                 <td>{{ project.startDate | date : "dd/MM/yyyy" }}</td>
                 <td>{{ project.endDate | date : "dd/MM/yyyy" }}</td>
                 <td>
-                  <a class="btn btn-sm bg-danger-light">
+                  <a
+                  routerLink="/layout/projects/projects-detail/{{
+                    project.id
+                  }}"
+                  class="btn btn-sm bg-danger-light">
                     <i class="feather-eye"></i>
                   </a>
                   <a class="btn btn-sm bg-danger-light">
