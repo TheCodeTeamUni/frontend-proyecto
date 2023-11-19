@@ -6,6 +6,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { SearchService } from 'src/app/services/search.service';
+import { AspirantsService } from 'src/app/services/aspirants.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-search-aspirant',
@@ -18,21 +20,23 @@ export class SearchAspirantComponent implements OnInit {
   public lstaspirants!: any[];
   public selectedSkill!: string;
   public token!: any;
-  photo!: string;
+  public show!: Boolean;
   imagenPorDefectoUrl: string = 'assets/img/profiles/avatar-02.jpg';
 
   constructor(
     private dataService: DataService,
     private formBuilder: UntypedFormBuilder,
-    private searchService: SearchService
+    private searchService: SearchService,
+    private aspirantsService: AspirantsService
   ) {}
 
   ngOnInit() {
     this.searchForm = this.formBuilder.group({
-      skill: ['Search aspirant for skill...', [Validators.required]],
+      skill: ['All aspirants', [Validators.required]],
     });
     this.loadSkills();
     this.token = localStorage.getItem('Token');
+    this.search()
   }
 
   loadSkills() {
@@ -47,14 +51,33 @@ export class SearchAspirantComponent implements OnInit {
   }
 
   search() {
-    this.searchService
-      .getSearch(this.selectedSkill, this.token)
-      .subscribe((data) => {
-        this.lstaspirants = data;
-      });
+    if (this.searchForm.value.skill === "All aspirants") {
+      this.aspirantsService.getAllAspirants(this.token)
+        .subscribe((data) => {
+          this.lstaspirants = data;
+          this.show = false
+        });
+    } else {
+
+      this.searchService.getSearch(this.selectedSkill, this.token)
+        .subscribe((data) => {
+          this.lstaspirants = data;
+          this.show = true
+          if (data.length === 0){
+            this.typeSuccess(this.selectedSkill)
+          }
+
+        });
+    }
   }
 
-  imagenNoEncontrada() {
-    this.photo = this.imagenPorDefectoUrl;
+
+  
+
+  typeSuccess(skill: string) {
+    Swal.fire({
+      title: 'There are No applicants',
+      text: 'There are no applicants with the skill ' + skill + ' in ABC JOBS',
+    });
   }
 }

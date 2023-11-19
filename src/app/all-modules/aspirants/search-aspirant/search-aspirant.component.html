@@ -27,10 +27,10 @@
             <select
               class="form-control select form-select align-items-center"
               formControlName="skill"
-              placeholder="Search by Skill ..."
+              placeholder="All aspirants"
               (change)="onSkillSelectionChange($event)"
             >
-              <option>Search aspirant for skill...</option>
+              <option>All aspirants</option>
               <option *ngFor="let item of lstSkills" [value]="item">
                 {{ item }}
               </option>
@@ -73,7 +73,7 @@
             <div class="col-sm-12">
               <div class="card card-table">
                 <div class="table-responsive">
-                  <table datatable class="table table-hover table-center mb-0">
+                  <table datatable class="table table-hover table-center mb-0" *ngIf="lstaspirants?.length">
                     <thead>
                       <tr>
                         <th>
@@ -88,8 +88,8 @@
                         <th>#</th>
                         <th>Name</th>
                         <th>Lastname</th>
-                        <th>Skill</th>
-                        <th>Level</th>
+                        <th *ngIf="show">Skill</th>
+                        <th *ngIf="show">Level</th>
                         <th>Country</th>
                         <th>Telephone</th>
                         <th class="text-end">Action</th>
@@ -122,7 +122,7 @@
                               class="avatar avatar-sm me-2"
                               ><img
                                 class="avatar-img rounded-circle"
-                                [src]="aspirants.photo || imagenPorDefectoUrl"
+                                [src]=" aspirants.photo ||imagenPorDefectoUrl"
                                 alt="aspirants.name"
                               />
                             </a>
@@ -135,8 +135,8 @@
                           </h2>
                         </td>
                         <td>{{ aspirants.lastName }}</td>
-                        <td>{{ aspirants.skill }}</td>
-                        <td>{{ aspirants.level }} %</td>
+                        <td *ngIf="show">{{ aspirants.skill }}</td>
+                        <td *ngIf="show">{{ aspirants.level }} %</td>
                         <td>{{ aspirants.country }}</td>
                         <td>{{ aspirants.telephone }}</td>
                         <td class="text-end">

@@ -38,12 +38,11 @@ export class LoginComponent implements OnInit {
       (res) => {
         if (res.token !== undefined) {
           if (res.type == '1') {
-            console.log(res.type);
+
             this.showSuccess();
             this.router.navigate(['/layout/dashboard/dashboard-aspirant']);
             localStorage.setItem('Token', res.token);
           } else if (res.type == '2') {
-            console.log(res.type);
             this.showSuccess();
             this.router.navigate(['/layout/dashboard/dashboard-company']);
             localStorage.setItem('Token', res.token);
