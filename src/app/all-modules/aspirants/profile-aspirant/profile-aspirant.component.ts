@@ -12,6 +12,8 @@ import Swal from 'sweetalert2';
 import { ToastrService } from 'ngx-toastr';
 import { HttpErrorResponse } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
+import { UsersService } from 'src/app/services/users.service';
+import { InterviewsService } from 'src/app/services/interviews.service';
 
 @Component({
   selector: 'app-profile-aspirant',
@@ -40,6 +42,8 @@ export class ProfileAspirantComponent implements OnInit {
   public addInterviewForm!: UntypedFormGroup;
   public selectedProject!: string;
   public pipe = new DatePipe('en-US');
+  public user!: string;
+
 
   //Lists
 
@@ -56,7 +60,10 @@ export class ProfileAspirantComponent implements OnInit {
     private dataService: DataService,
     private projectInfo: ProjectsService,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private usersService: UsersService,
+    private interviewService: InterviewsService
+
   ) {}
 
   ngOnInit() {
@@ -69,6 +76,7 @@ export class ProfileAspirantComponent implements OnInit {
     this.addInterviewForm = this.formBuilder.group({
       date: ['', [Validators.required]],
       time: ['', [Validators.required]],
+      rol: ['Select...', [Validators.required]],
       note: ['', [Validators.required]],
     });
 
@@ -77,6 +85,7 @@ export class ProfileAspirantComponent implements OnInit {
     this.getAspirant();
     this.loadPositions();
     this.getProject();
+    this.getUser()
   }
 
   getAspirant() {
@@ -127,7 +136,7 @@ export class ProfileAspirantComponent implements OnInit {
       notes: this.addAspirantProjectForm.value.note,
     };
 
-    console.log(aspirantProject);
+
 
     this.projectInfo
       .addAspirantToProject(aspirantProject, this.token, this.selectedProject)
@@ -161,14 +170,39 @@ export class ProfileAspirantComponent implements OnInit {
       'd/MM/y'
     );
 
-    let aspirantProject = {
-      idUser:   this.userId,
-      date:     date,
-      time:     this.addInterviewForm.value.time,
+    let aspirantInterview = {
+      nameCompany: this.user,
+      idAspirant:   this.userId,
+      nameAspirant: this.name,
+      lastNameAspirant: this.lastName,
+      role: this.addInterviewForm.value.rol,
+      date:  date +" "+ this.addInterviewForm.value.time,
       notes:    this.addInterviewForm.value.note,
     };
 
-    console.log(aspirantProject);
+    console.log(aspirantInterview)
+
+
+    this.interviewService
+    .addInterview(aspirantInterview, this.token)
+    .subscribe(
+      (data) => {
+        this.typeSuccess();
+      },
+      (error) => {
+        if (error instanceof HttpErrorResponse && error.status === 400) {
+          const errorMessage = error.error.error; // Obtiene el mensaje de error del backend
+          this.toastr.error(errorMessage, 'Error del backend');
+        }
+        // Aquí puedes manejar el error que proviene del backend
+
+        // Puedes mostrar un mensaje de error al usuario
+        // Por ejemplo, asignando el mensaje de error a una variable y mostrándolo en el frontend
+        // this.errorMessage = 'Se produjo un error al asignar el aspirante al proyecto. Por favor, inténtelo de nuevo.';
+        // O bien, mostrarlo en un modal, o cualquier otra lógica de manejo de errores
+      }
+    );
+
 
   }
 
@@ -186,7 +220,6 @@ export class ProfileAspirantComponent implements OnInit {
     // Esta función se llamará cuando cambie la selección del skill
     const selectedProject = event.target.value;
     this.selectedProject = selectedProject;
-    console.log(selectedProject);
     // Puedes almacenar selectedSkill en una variable de clase si lo necesitas para otras operaciones
   }
 
@@ -196,4 +229,12 @@ export class ProfileAspirantComponent implements OnInit {
       text: 'Your data has been successfully saved in ABC JOBS!',
     });
   }
+
+  getUser() {
+    this.usersService. getUser(this.token).subscribe((data) => {
+      this.user = data.username;
+    });
+  }
+
+
 }

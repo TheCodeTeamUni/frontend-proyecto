@@ -21,4 +21,13 @@ export class AspirantsService {
 
     return this.http.get<any>(url, { headers });
   }
+
+  getAllAspirants(token: string): Observable<any> {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+    return this.http.get<any>(`${this.backUrl}abcjobs/aspirantes`, {
+      headers: headers,
+    });
+  }
 }
