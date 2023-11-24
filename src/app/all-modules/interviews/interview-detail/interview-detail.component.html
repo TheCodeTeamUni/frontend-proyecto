@@ -1,0 +1,158 @@
+<div class="content container-fluid">
+  <!-- Page Header -->
+  <div class="page-header">
+    <div class="row align-items-center">
+      <div class="col-sm-12">
+        <div class="page-sub-header">
+          <h3 class="page-title">Interview Detail</h3>
+          <ul class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a [routerLink]="'/layout/interviews/company-interviews'"
+                >Interviews</a
+              >
+            </li>
+            <li class="breadcrumb-item active">Interview Detail</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card comman-shadow">
+        <div class="card-header">
+          <h5 class="card-title">Interview Detail</h5>
+        </div>
+        <div class="card-body">
+          <!--  -->
+          <div class="row">
+            <p class="col-sm-3 text-muted text-sm-right mb-0 mb-sm-3">
+              Aspirant Name:
+            </p>
+            <p class="col-sm-9">{{ nameAspirant }} {{ lastNameAspirant }}</p>
+          </div>
+          <div class="row">
+            <p class="col-sm-3 text-muted text-sm-right mb-0 mb-sm-3">Role:</p>
+            <p class="col-sm-9">{{ role }}</p>
+          </div>
+          <div class="row">
+            <p class="col-sm-3 text-muted text-sm-right mb-0 mb-sm-3">Date:</p>
+            <p class="col-sm-9">{{ date | date : "dd/MM/yyyy" }}</p>
+          </div>
+          <div class="row">
+            <p class="col-sm-3 text-muted text-sm-right mb-0 mb-sm-3">Notes:</p>
+            <p class="col-sm-9">{{ notes }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card comman-shadow">
+        <div class="card-header">
+          <h5 class="card-title">Interview Results:</h5>
+        </div>
+        <div class="card-body">
+          <!--  -->
+          <div class="row">
+            <p class="col-sm-3 text-muted text-sm-right mb-0 mb-sm-3">
+              Result:
+            </p>
+            <p class="col-sm-9">{{ result || "No result yet"}}</p>
+          </div>
+          <div class="row">
+            <p class="col-sm-3 text-muted text-sm-right mb-0 mb-sm-3">Notes:</p>
+            <p class="col-sm-9">{{ resultNotes || "No note on this result yet" }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- /Form -->
+
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card comman-shadow">
+        <div class="card-header">
+          <h5 class="card-title">Add Interview Result</h5>
+        </div>
+        <div class="card-body">
+          <!-- /Form -->
+
+          <form
+            (ngSubmit)="addInterviewResult()"
+            [formGroup]="InterviewResultForm"
+          >
+            <div class="row">
+              <div class="col-12"></div>
+              <div class="col-12 col-sm-4">
+                <div class="form-group local-forms">
+                  <label>Result <span class="login-danger">*</span></label>
+                  <select
+                    class="form-control select form-select"
+                    formControlName="result"
+                  >
+                    <option>Select...</option>
+                    <option>Approved</option>
+                    <option>Not approved</option>
+                  </select>
+                  <div
+                    *ngIf="
+                      InterviewResultForm.get('nameProject')?.invalid &&
+                      InterviewResultForm.get('nameProject')?.touched
+                    "
+                  >
+                    <small
+                      *ngIf="
+                        InterviewResultForm.get('nameProject')?.invalid &&
+                        InterviewResultForm.get('nameProject')?.touched
+                      "
+                      class="text-danger"
+                    >
+                      *Project Name is required</small
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-sm-12">
+                <div class="form-group local-forms">
+                  <label>Notes<span class="login-danger">*</span> </label>
+                  <textarea
+                    rows="5"
+                    cols="5"
+                    class="form-control"
+                    placeholder="write some notes about this result"
+                    formControlName="notes"
+                  ></textarea>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="aspirant-submit">
+                  <button
+                    type="submit"
+                    class="btn btn-primary"
+                    [disabled]="InterviewResultForm.invalid"
+                  >
+                    Submit
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+
+          <!-- /Form -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <p>Copyright © 2023 CodeTeam</p>
+</footer>
+<!-- /Footer -->

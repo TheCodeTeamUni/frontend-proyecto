@@ -41,6 +41,7 @@
                           <th>Last Name</th>
                           <th>Role</th>
                           <th>Date</th>
+                          <th>Action</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -50,6 +51,21 @@
                           <td>{{interview.lastNameAspirant}}</td>
                           <td>{{interview.role}}</td>
                           <td>{{interview.date }}</td>
+                          <td>
+                            <a
+                            routerLink="/layout/interviews/interview/{{
+                              interview.id
+                            }}"
+                            class="btn btn-sm bg-danger-light">
+                              <i class="feather-eye"></i>
+                            </a>
+                            <a class="btn btn-sm bg-danger-light">
+                              <i class="fe fe-edit-2"></i>
+                            </a>
+                            <a class="btn btn-sm bg-danger-light">
+                              <i class="feather-trash"></i>
+                            </a>
+                          </td>
                         </tr>
                       </tbody>
                     </table>

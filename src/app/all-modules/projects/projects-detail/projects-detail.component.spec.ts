@@ -18,7 +18,7 @@ describe('ProjectsDetailComponent', () => {
   };
 
   const projectsServiceMock = {
-    getAspirantToProject: () => {
+    getAspirantProject: () => {
       return of({
         aspirants: [
           // Define aquí tu lista simulada de aspirantes

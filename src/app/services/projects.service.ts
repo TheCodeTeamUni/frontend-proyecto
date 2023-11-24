@@ -48,7 +48,7 @@ export class ProjectsService {
   }
 
 
-  getAspirantToProject(token: string, projectId:string,): Observable<any> {
+  getAspirantProject(token: string, projectId:string,): Observable<any> {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`,
     });

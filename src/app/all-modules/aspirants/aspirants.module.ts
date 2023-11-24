@@ -14,6 +14,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
 
 
+
   ],
   declarations: [
     AspirantsComponent,

@@ -27,12 +27,12 @@ export class ProjectsDetailComponent implements OnInit {
   ngOnInit() {
     this.projectId = this.route.snapshot.paramMap.get('id')!;
     this.token = localStorage.getItem('Token');
-    this.getAspirantToProject();
+    this.getAspirantProject();
   }
 
-  getAspirantToProject() {
+  getAspirantProject() {
     this.projectInfo
-      .getAspirantToProject(this.token, this.projectId)
+      .getAspirantProject(this.token, this.projectId)
       .subscribe((data) => {
         this.lstAspirants = data.aspirants;
         this.nameProject=data.project.nameProject

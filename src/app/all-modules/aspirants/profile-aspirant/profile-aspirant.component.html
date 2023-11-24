@@ -57,9 +57,9 @@
                     <h5>Companies</h5>
                     <h4>7</h4>
                   </div>
-                  <div class="aspirants-follows">
-                    <h5>Followers</h5>
-                    <h4>324</h4>
+                  <div class="">
+                    <h5>Performance</h5>
+                    <h4>{{performance || "0"}}</h4>
                   </div>
                 </div>
               </div>
@@ -231,214 +231,275 @@
               </div>
             </div>
           </div>
+          <div class="aspirant-personals-grp mt-3">
+            <div class="card mb-0">
+              <div class="card-body">
+                <div class="heading-detail">
+                  <h4>Rating</h4>
+                </div>
+
+                <div class="rating">
+                  <input
+                    type="radio"
+                    id="star5"
+                    name="rating"
+                    value="5"
+                  /><label for="star5"></label>
+                  <input
+                    type="radio"
+                    id="star4"
+                    name="rating"
+                    value="4"
+                  /><label for="star4"></label>
+                  <input
+                    type="radio"
+                    id="star3"
+                    name="rating"
+                    value="3"
+                  /><label for="star3"></label>
+                  <input
+                    type="radio"
+                    id="star2"
+                    name="rating"
+                    value="2"
+                  /><label for="star2"></label>
+                  <input
+                    type="radio"
+                    id="star1"
+                    name="rating"
+                    value="1"
+                  /><label for="star1"></label>
+                </div>
+                <button id="enviar" type="submit" class="btn btn-primary">
+                  Enviar
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+
+    <!-- Footer -->
+    <footer>
+      <p>COPYRIGHT © 2023 CODETEAM</p>
+    </footer>
+    <!-- /Footer -->
+
+    <!-- Add Aspirant to project -->
+    <form
+      [formGroup]="addAspirantProjectForm"
+      (ngSubmit)="addAspirantProject()"
+    >
+      <div
+        id="add-aspirant-project"
+        class="modal fade"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="myModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Add Aspirant to Project</h4>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+
+            <div class="modal-body p-4">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="mb-3">
+                    <label for="project" class="form-label"
+                      >Select Project</label
+                    >
+                    <select
+                      formControlName="project"
+                      class="form-control"
+                      id="project"
+                      (change)="projectSelectionChange($event)"
+                    >
+                      <option>Select...</option>
+                      <option
+                        *ngFor="let item of lstProjects"
+                        [value]="item.id"
+                      >
+                        {{ item.nameProject }}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="mb-3">
+                    <label for="rol" class="form-label">Select Role</label>
+                    <select formControlName="rol" class="form-control" id="rol">
+                      <option *ngFor="let item of lstPositions">
+                        {{ item }}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="mb-3">
+                    <label for="note" class="form-label">Note</label>
+                    <textarea
+                      formControlName="note"
+                      class="form-control"
+                      id="note"
+                      placeholder="Write something about this selection"
+                    ></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary waves-effect"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button
+                type="submit"
+                class="btn btn-info follow-btns"
+                data-bs-dismiss="modal"
+              >
+                Add Aspirant
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <!-- /.modal -->
+
+    <!-- Add Interview-->
+    <form [formGroup]="addInterviewForm" (ngSubmit)="addInterview()">
+      <div
+        id="add-interview"
+        class="modal fade"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="myModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Add Interview</h4>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+
+            <div class="modal-body p-4">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="mb-3">
+                    <label for="date" class="form-label">Select Date</label>
+                    <input
+                      type="date"
+                      class="form-control"
+                      [class.invalid]="
+                        addInterviewForm.get('date')?.invalid &&
+                        addInterviewForm.get('date')?.touched
+                      "
+                      formControlName="date"
+                    />
+                    <div
+                      *ngIf="
+                        addInterviewForm.get('date')?.invalid &&
+                        addInterviewForm.get('date')?.touched
+                      "
+                    >
+                      <small class="text-danger">*Start Date is required</small>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="mb-3">
+                    <label for="time" class="form-label">Select Time</label>
+                    <input
+                      type="time"
+                      class="form-control"
+                      [class.invalid]="
+                        addInterviewForm.get('time')?.invalid &&
+                        addInterviewForm.get('time')?.touched
+                      "
+                      formControlName="time"
+                    />
+                    <div
+                      *ngIf="
+                        addInterviewForm.get('time')?.invalid &&
+                        addInterviewForm.get('time')?.touched
+                      "
+                    >
+                      <small class="text-danger">*Time is required</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="mb-3">
+                    <label for="rol" class="form-label">Select Role</label>
+                    <select formControlName="rol" class="form-control" id="rol">
+                      <option *ngFor="let item of lstPositions">
+                        {{ item }}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="mb-3">
+                    <label for="note" class="form-label">Note</label>
+                    <textarea
+                      formControlName="note"
+                      class="form-control"
+                      id="note"
+                      placeholder="Write something about this selection"
+                    ></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary waves-effect"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button
+                type="submit"
+                class="btn btn-info follow-btns"
+                data-bs-dismiss="modal"
+              >
+                Add Interview
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <!-- /.modal -->
   </div>
-
-  <!-- Footer -->
-  <footer>
-    <p>COPYRIGHT © 2023 CODETEAM</p>
-  </footer>
-  <!-- /Footer -->
-
-  <!-- Add Aspirant to project -->
-  <form [formGroup]="addAspirantProjectForm" (ngSubmit)="addAspirantProject()">
-    <div
-      id="add-aspirant-project"
-      class="modal fade"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="myModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title">Add Aspirant to Project</h4>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-
-          <div class="modal-body p-4">
-            <div class="row">
-              <div class="col-md-12">
-                <div class="mb-3">
-                  <label for="project" class="form-label">Select Project</label>
-                  <select
-                    formControlName="project"
-                    class="form-control"
-                    id="project"
-                    (change)="projectSelectionChange($event)"
-                  >
-                    <option>Select...</option>
-                    <option *ngFor="let item of lstProjects" [value]="item.id">
-                      {{ item.nameProject }}
-                    </option>
-                  </select>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <div class="mb-3">
-                  <label for="rol" class="form-label">Select Role</label>
-                  <select formControlName="rol" class="form-control" id="rol">
-                    <option *ngFor="let item of lstPositions">
-                      {{ item }}
-                    </option>
-                  </select>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <div class="mb-3">
-                  <label for="note" class="form-label">Note</label>
-                  <textarea
-                    formControlName="note"
-                    class="form-control"
-                    id="note"
-                    placeholder="Write something about this selection"
-                  ></textarea>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary waves-effect"
-              data-bs-dismiss="modal"
-            >
-              Close
-            </button>
-            <button type="submit" class="btn btn-info follow-btns" data-bs-dismiss="modal">
-              Add Aspirant
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </form>
-
-  <!-- /.modal -->
-
-  <!-- Add Interview-->
-  <form [formGroup]="addInterviewForm" (ngSubmit)="addInterview()">
-    <div
-      id="add-interview"
-      class="modal fade"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="myModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title">Add Interview</h4>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-
-          <div class="modal-body p-4">
-            <div class="row">
-              <div class="col-md-6">
-                <div class="mb-3">
-                  <label for="date" class="form-label">Select Date</label>
-                  <input
-                    type="date"
-                    class="form-control"
-                    [class.invalid]="
-                      addInterviewForm.get('date')?.invalid &&
-                      addInterviewForm.get('date')?.touched
-                    "
-                    formControlName="date"
-                  />
-                  <div
-                    *ngIf="
-                      addInterviewForm.get('date')?.invalid &&
-                      addInterviewForm.get('date')?.touched
-                    "
-                  >
-                    <small class="text-danger">*Start Date is required</small>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="mb-3">
-                  <label for="time" class="form-label">Select Time</label>
-                  <input
-                    type="time"
-                    class="form-control"
-                    [class.invalid]="
-                      addInterviewForm.get('time')?.invalid &&
-                      addInterviewForm.get('time')?.touched
-                    "
-                    formControlName="time"
-                  />
-                  <div
-                    *ngIf="
-                      addInterviewForm.get('time')?.invalid &&
-                      addInterviewForm.get('time')?.touched
-                    "
-                  >
-                    <small class="text-danger">*Time is required</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <div class="mb-3">
-                  <label for="rol" class="form-label">Select Role</label>
-                  <select formControlName="rol" class="form-control" id="rol">
-                    <option *ngFor="let item of lstPositions">
-                      {{ item }}
-                    </option>
-                  </select>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <div class="mb-3">
-                  <label for="note" class="form-label">Note</label>
-                  <textarea
-                    formControlName="note"
-                    class="form-control"
-                    id="note"
-                    placeholder="Write something about this selection"
-                  ></textarea>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary waves-effect"
-              data-bs-dismiss="modal"
-            >
-              Close
-            </button>
-            <button type="submit" class="btn btn-info follow-btns" data-bs-dismiss="modal">
-              Add Interview
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </form>
-
-  <!-- /.modal -->
 </div>
