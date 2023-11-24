@@ -1,1 +1,253 @@
-<p>basic data estoy trabajando</p>
+<div class="content container-fluid">
+  <!-- Page Header -->
+  <div class="page-header">
+    <div class="row align-items-center">
+      <div class="col-sm-12">
+        <div class="page-sub-header">
+          <h3 class="page-title">Company Information</h3>
+          <ul class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a
+                [routerLink]="
+                  '/layout/aspirant-information/personal-information'
+                "
+                >Company Information</a
+              >
+            </li>
+            <li class="breadcrumb-item active">General Information</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /Page Header -->
+
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card comman-shadow">
+        <div class="card-body">
+          <form
+            (ngSubmit)="addCompanyformation()"
+            [formGroup]="companyInformationForm"
+          >
+            <div class="row">
+              <div class="col-12">
+                <h5 class="form-title aspirant-info">
+                  General Information
+                  <span
+                    ><a href="javascript:;"
+                      ><i class="feather-more-vertical"></i></a
+                  ></span>
+                </h5>
+              </div>
+              <div class="col-12 col-sm-4">
+                <div class="form-group local-forms">
+                  <label>Company Name <span class="login-danger">*</span></label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    [class.invalid]="
+                      companyInformationForm.get('FirstName')?.invalid &&
+                      companyInformationForm.get('FirstName')?.touched
+                    "
+                    formControlName="name"
+                    placeholder="Enter Company Name"
+                  />
+                  <div
+                    *ngIf="
+                      companyInformationForm.get('FirstName')?.invalid &&
+                      companyInformationForm.get('FirstName')?.touched
+                    "
+                  >
+                    <small
+                      *ngIf="
+                        companyInformationForm.get('FirstName')?.invalid &&
+                        companyInformationForm.get('FirstName')?.touched
+                      "
+                      class="text-danger"
+                    >
+                      *Company Name is required</small
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-sm-4">
+                <div class="form-group local-forms">
+                  <label
+                    >Economic activity<span class="login-danger"
+                      >*</span
+                    ></label
+                  >
+                  <select
+                    class="form-control select form-select"
+                    formControlName="typeDocument"
+                  >
+                    <option>Select...</option>
+                    <option>Identification Card</option>
+                    <option>Identity Card for Minors</option>
+                    <option>Passport</option>
+                    <option>Foreigner Identification Card</option>
+                    <option>Others</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-12 col-sm-4">
+                <div class="form-group local-forms">
+                  <label
+                    >Tax identification number<span class="login-danger"
+                      >*</span
+                    ></label
+                  >
+                  <input
+                    class="form-control"
+                    type="text"
+                    placeholder="Enter identification Number"
+                    formControlName="document"
+                  />
+                </div>
+              </div>
+              <div class="col-12 col-sm-4">
+                <div class="form-group local-forms">
+                  <label>Company type<span class="login-danger">*</span></label>
+                  <select
+                    class="form-control select form-select"
+                    formControlName="gender"
+                  >
+                    <option>Select...</option>
+                    <option>Female</option>
+                    <option>Male</option>
+                    <option>Others</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-12 col-sm-4">
+                <div class="form-group local-forms">
+                  <label
+                    >Foundation date <span class="login-danger">*</span></label
+                  >
+                  <input
+                    type="date"
+                    class="form-control"
+                    [class.invalid]="
+                      companyInformationForm.get('birthdate')?.invalid &&
+                      companyInformationForm.get('birthdate')?.touched
+                    "
+                    formControlName="birthdate"
+                  />
+                  <div
+                    *ngIf="
+                      companyInformationForm.get('birthdate')?.invalid &&
+                      companyInformationForm.get('birthdate')?.touched
+                    "
+                  >
+                    <small
+                      *ngIf="
+                        companyInformationForm.get('birthdate')?.invalid &&
+                        companyInformationForm.get('birthdate')?.touched
+                      "
+                      class="text-danger"
+                    >
+                      *Birthdate is required</small
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-12 col-sm-4">
+                <div class="form-group local-forms">
+                  <label>Phone <span class="login-danger">*</span> </label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    placeholder="Enter Phone Number"
+                    formControlName="telephone"
+                  />
+                </div>
+              </div>
+
+              <div class="col-12 col-sm-4">
+                <div class="form-group local-forms">
+                  <label>Alterntive Email</label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    placeholder="Enter Alterntive Email"
+                    formControlName="alterntiveEmail"
+                  />
+                </div>
+              </div>
+
+              <div class="col-12 col-sm-4">
+                <div class="form-group local-forms">
+                  <label>Address <span class="login-danger">*</span></label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    placeholder="Enter Address"
+                    formControlName="address"
+                  />
+                </div>
+              </div>
+
+              <div class="col-12 col-sm-4">
+                <div class="form-group local-forms">
+                  <label>Country<span class="login-danger">*</span></label>
+                  <select
+                    class="form-control select form-select"
+                    formControlName="country"
+                  >
+                    <option *ngFor="let item of lstCountries">
+                      {{ item }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-12 col-sm-4">
+                <div class="form-group local-forms">
+                  <label>Url Logo</label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    placeholder="Enter Url Logo"
+                    formControlName="photo"
+                  />
+                </div>
+              </div>
+              <div class="col-12 col-sm-6">
+                <div class="form-group local-forms">
+                  <label>Company Profile<span class="login-danger">*</span> </label>
+                  <textarea
+                    rows="5"
+                    cols="5"
+                    class="form-control"
+                    placeholder="Write Company Profile"
+                    formControlName="description"
+                  ></textarea>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="aspirant-submit">
+                  <button
+                    type="submit"
+                    class="btn btn-primary"
+                    [disabled]="companyInformationForm.invalid"
+                  >
+                    Submit
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Footer -->
+<footer>
+  <p>Copyright © 2023 CodeTeam</p>
+</footer>
+<!-- /Footer -->
+

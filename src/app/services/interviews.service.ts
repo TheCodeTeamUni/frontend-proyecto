@@ -47,5 +47,40 @@ getAspirantInterviews(token: string): Observable<any> {
 }
 
 
+getInterview(token: string, interviewId:string,): Observable<any> {
+  const headers = new HttpHeaders({
+    Authorization: `Bearer ${token}`,
+  });
+  return this.http.get<any>(`${this.backUrl}abcjobs/interview/${interviewId}`, {
+    headers: headers,
+  });
+}
+
+
+addResultInterview(info: any, token: string, interviewId:string): Observable<any> {
+  const headers = new HttpHeaders({
+    Authorization: `Bearer ${token}`,
+  });
+  return this.http.post<any>(
+    `${this.backUrl}abcjobs/interview/result/${interviewId}`,
+    info,
+    {
+      headers: headers,
+    }
+  );
+}
+
+
+getInterviewResult(token: string, interviewId:string,): Observable<any> {
+  const headers = new HttpHeaders({
+    Authorization: `Bearer ${token}`,
+  });
+  return this.http.get<any>(`${this.backUrl}abcjobs/interview/result/${interviewId}`, {
+    headers: headers,
+  });
+}
+
+
+
 
 }

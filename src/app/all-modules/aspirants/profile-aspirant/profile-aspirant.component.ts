@@ -14,6 +14,8 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
 import { UsersService } from 'src/app/services/users.service';
 import { InterviewsService } from 'src/app/services/interviews.service';
+import { PerformanceService } from 'src/app/services/performance.service';
+declare var $: any; // Declaración para jQuery si no estás utilizando typings
 
 @Component({
   selector: 'app-profile-aspirant',
@@ -23,6 +25,7 @@ import { InterviewsService } from 'src/app/services/interviews.service';
 export class ProfileAspirantComponent implements OnInit {
   public userId!: string;
   public token!: any;
+  ratingValue: number = 0;
 
   //Personal information
   public name!: string;
@@ -43,7 +46,10 @@ export class ProfileAspirantComponent implements OnInit {
   public selectedProject!: string;
   public pipe = new DatePipe('en-US');
   public user!: string;
+  public performance!: string;
 
+  stars: number[] = [1, 2, 3, 4, 5]; // Cantidad de estrellas disponibles
+  selectedValue: number = 0; // Valor seleccionado por el usuario
 
   //Lists
 
@@ -62,8 +68,8 @@ export class ProfileAspirantComponent implements OnInit {
     private router: Router,
     private toastr: ToastrService,
     private usersService: UsersService,
-    private interviewService: InterviewsService
-
+    private interviewService: InterviewsService,
+    private performanceService: PerformanceService
   ) {}
 
   ngOnInit() {
@@ -85,7 +91,15 @@ export class ProfileAspirantComponent implements OnInit {
     this.getAspirant();
     this.loadPositions();
     this.getProject();
-    this.getUser()
+    this.getUser();
+    this.getRating()
+  }
+
+  enviarVoto() {
+    // Aquí podrías enviar el voto a través de una solicitud HTTP, guardar en una base de datos, etc.
+    console.log('Voto enviado:', this.selectedValue);
+    // También podrías resetear el valor seleccionado después de enviar el voto
+    this.selectedValue = 0;
   }
 
   getAspirant() {
@@ -136,8 +150,6 @@ export class ProfileAspirantComponent implements OnInit {
       notes: this.addAspirantProjectForm.value.note,
     };
 
-
-
     this.projectInfo
       .addAspirantToProject(aspirantProject, this.token, this.selectedProject)
       .subscribe(
@@ -162,30 +174,22 @@ export class ProfileAspirantComponent implements OnInit {
       );
   }
 
-
   addInterview() {
-
-    let date = this.pipe.transform(
-      this.addInterviewForm.value.date,
-      'd/MM/y'
-    );
+    let date = this.pipe.transform(this.addInterviewForm.value.date, 'd/MM/y');
 
     let aspirantInterview = {
       nameCompany: this.user,
-      idAspirant:   this.userId,
+      idAspirant: this.userId,
       nameAspirant: this.name,
       lastNameAspirant: this.lastName,
       role: this.addInterviewForm.value.rol,
-      date:  date +" "+ this.addInterviewForm.value.time,
-      notes:    this.addInterviewForm.value.note,
+      date: date + ' ' + this.addInterviewForm.value.time,
+      notes: this.addInterviewForm.value.note,
     };
 
-    console.log(aspirantInterview)
+    console.log(aspirantInterview);
 
-
-    this.interviewService
-    .addInterview(aspirantInterview, this.token)
-    .subscribe(
+    this.interviewService.addInterview(aspirantInterview, this.token).subscribe(
       (data) => {
         this.typeSuccess();
       },
@@ -202,8 +206,6 @@ export class ProfileAspirantComponent implements OnInit {
         // O bien, mostrarlo en un modal, o cualquier otra lógica de manejo de errores
       }
     );
-
-
   }
 
   loadPositions() {
@@ -231,8 +233,40 @@ export class ProfileAspirantComponent implements OnInit {
   }
 
   getUser() {
-    this.usersService. getUser(this.token).subscribe((data) => {
+    this.usersService.getUser(this.token).subscribe((data) => {
       this.user = data.username;
+    });
+  }
+
+  ngAfterViewInit() {
+    this.setupRating();
+  }
+
+  setupRating() {
+    $('.rating input').on('click', (e: any) => {
+      this.ratingValue = parseInt($(e.target).val() as string);
+    });
+
+    $('#enviar').on('click', () => {
+      let rating = {
+        performance: this.ratingValue,
+      };
+
+      console.log(rating);
+
+      this.performanceService
+        .addPerformance(rating, this.token, this.userId)
+        .subscribe((data) => {
+          this.typeSuccess();
+          this.getRating()
+        });
+      // Aquí podrías enviar el rating a través de una solicitud HTTP o realizar alguna acción con el número de estrellas seleccionadas
+    });
+  }
+
+  getRating() {
+    this.performanceService.getPerformance(this.token, this.userId).subscribe((data) => {
+      this.performance = data["Promedio desempeño aspirante"]
     });
   }
 

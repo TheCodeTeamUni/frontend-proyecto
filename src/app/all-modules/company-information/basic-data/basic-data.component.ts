@@ -4,6 +4,11 @@ import { CalendarEvent, CalendarView } from 'angular-calendar';
 import { startOfDay, endOfDay } from 'date-fns';
 import { MonthViewDay } from 'calendar-utils';
 import { es } from 'date-fns/locale';  // Importa el locale español
+import {
+  UntypedFormGroup,
+  UntypedFormBuilder,
+  Validators,
+} from '@angular/forms';
 
 
 
@@ -15,11 +20,30 @@ import { es } from 'date-fns/locale';  // Importa el locale español
 })
 export class BasicDataComponent implements OnInit {
 
-  constructor() {
+  public companyInformationForm!: UntypedFormGroup;
+  public lstCountries!: any[];
+
+  constructor(  private formBuilder: UntypedFormBuilder,) {
   }
 
   ngOnInit() {
+
+    this.companyInformationForm = this.formBuilder.group({
+      name: ['', [Validators.required]],
+      lastName: ['', [Validators.required]],
+      typeDocument: ['Select...', [Validators.required]],
+      document: ['', [Validators.required]],
+      gender: ['Select...', [Validators.required]],
+      birthdate: ['', [Validators.required]],
+      telephone: ['', [Validators.required]],
+      address: ['', [Validators.required]],
+      alterntiveEmail: ['', [Validators.email]],
+      country: ['', [Validators.required]],
+      description: ['', [Validators.required]],
+      photo: [''],
+    });
   }
 
+  addCompanyformation(){}
 
 }

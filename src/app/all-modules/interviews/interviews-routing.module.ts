@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { InterviewsComponent } from './interviews.component';
 import { CompanyInterviewsComponent } from './company-interviews/company-interviews.component';
 import { AspirantsInterviewsComponent } from './aspirants-interviews/aspirants-interviews.component';
+import { InterviewDetailComponent } from './interview-detail/interview-detail.component';
 
 const routes: Routes = [
   {
@@ -11,6 +12,7 @@ const routes: Routes = [
     children: [
       { path: 'company-interviews', component: CompanyInterviewsComponent},
       { path: 'aspirant-interviews', component: AspirantsInterviewsComponent},
+      { path: 'interview/:id', component: InterviewDetailComponent},
     ],
   },
 ];
