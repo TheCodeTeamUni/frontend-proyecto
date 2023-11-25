@@ -3,24 +3,23 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { InterviewDetailComponent } from './interview-detail.component';
+import { AspirantTestComponent } from './aspirant-test.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { RouterTestingModule } from '@angular/router/testing';
 
-describe('InterviewDetailComponent', () => {
-  let component: InterviewDetailComponent;
-  let fixture: ComponentFixture<InterviewDetailComponent>;
+describe('AspirantTestComponent', () => {
+  let component: AspirantTestComponent;
+  let fixture: ComponentFixture<AspirantTestComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ InterviewDetailComponent ],
-      imports: [RouterTestingModule, HttpClientTestingModule],
+      declarations: [ AspirantTestComponent ],
+      imports: [HttpClientTestingModule],
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(InterviewDetailComponent);
+    fixture = TestBed.createComponent(AspirantTestComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

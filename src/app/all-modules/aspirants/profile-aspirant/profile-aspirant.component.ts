@@ -46,7 +46,7 @@ export class ProfileAspirantComponent implements OnInit {
   public selectedProject!: string;
   public pipe = new DatePipe('en-US');
   public user!: string;
-  public performance!: string;
+  public performance!: any;
 
   stars: number[] = [1, 2, 3, 4, 5]; // Cantidad de estrellas disponibles
   selectedValue: number = 0; // Valor seleccionado por el usuario
@@ -266,7 +266,8 @@ export class ProfileAspirantComponent implements OnInit {
 
   getRating() {
     this.performanceService.getPerformance(this.token, this.userId).subscribe((data) => {
-      this.performance = data["Promedio desempeño aspirante"]
+
+      this.performance= Number(data["Promedio desempeño aspirante"].toFixed(2));
     });
   }
 
