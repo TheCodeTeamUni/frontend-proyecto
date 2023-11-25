@@ -1,0 +1,180 @@
+<div class="content container-fluid">
+  <!-- Page Header -->
+  <div class="page-header">
+    <div class="row align-items-center">
+      <div class="col-sm-12">
+        <div class="page-sub-header">
+          <h3 class="page-title">Tests</h3>
+          <ul class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a
+                [routerLink]="
+                  '/layout/aspirant-information/personal-information'
+                "
+                >Tests</a
+              >
+            </li>
+            <li class="breadcrumb-item active">Add Test</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /Page Header -->
+
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card comman-shadow">
+        <div class="card-body">
+          <form (ngSubmit)="addTest()" [formGroup]="addTestForm">
+            <div class="row">
+              <div class="col-12">
+                <h5 class="form-title aspirant-info">
+                  Add Test
+                  <span
+                    ><a href="javascript:;"
+                      ><i class="feather-more-vertical"></i></a
+                  ></span>
+                </h5>
+              </div>
+
+              <div class="col-12 col-sm-4">
+                <div class="form-group local-forms">
+                  <label>Aspirant<span class="login-danger">*</span></label>
+                  <select
+                    class="form-control select form-select"
+                    formControlName="idAspirant"
+                  >
+                    <option>Select...</option>
+                    <option
+                      *ngFor="let item of lstaspirants"
+                      [value]="item.idUser"
+                    >
+                      {{ item.name }} {{ item.lastName }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-12 col-sm-4">
+                <div class="form-group local-forms">
+                  <label>Test Name<span class="login-danger">*</span></label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    placeholder="Enter test name"
+                    formControlName="nameTest"
+                  />
+                </div>
+              </div>
+
+              <div class="col-12 col-sm-4">
+                <div class="form-group local-forms">
+                  <label>Date<span class="login-danger">*</span></label>
+                  <input
+                    type="date"
+                    class="form-control"
+                    [class.invalid]="
+                      addTestForm.get('date')?.invalid &&
+                      addTestForm.get('date')?.touched
+                    "
+                    formControlName="date"
+                  />
+                  <div
+                    *ngIf="
+                      addTestForm.get('date')?.invalid &&
+                      addTestForm.get('date')?.touched
+                    "
+                  >
+                    <small
+                      *ngIf="
+                        addTestForm.get('date')?.invalid &&
+                        addTestForm.get('date')?.touched
+                      "
+                      class="text-danger"
+                    >
+                      *Date is required</small
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-12 col-sm-4">
+                <div class="form-group local-forms">
+                  <label>Result<span class="login-danger">*</span></label>
+                  <select
+                    class="form-control select form-select"
+                    formControlName="result"
+                  >
+                    <option>Select...</option>
+                    <option>Excelente</option>
+                    <option>Muy Bueno</option>
+                    <option>Bueno</option>
+                    <option>Aceptable</option>
+                    <option>Insatisfactorio</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-12 col-sm-8">
+                <div class="form-group local-forms">
+                  <label for="note" class="form-label">Note</label>
+                  <textarea
+                    formControlName="notes"
+                    class="form-control"
+                    id="notes"
+                    placeholder="Write something about this selection"
+                  ></textarea>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="aspirant-submit">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-12 mb-5 center">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title">Test List</h5>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table
+            class="table star-aspirant table-hover table-center table-borderless table-striped"
+          >
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Test Name</th>
+                <th>Date</th>
+                <th>Result</th>
+                <th>Observations</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let test of companyTests; index as i">
+                <td>{{ i + 1 }}</td>
+                <td>{{ test.nameTest }}</td>
+                <td>{{ test.date | date : "dd/MM/yyyy"}}</td>
+                <td>{{ test.result }}</td>
+                <td>{{ test.notes }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <p>Copyright © 2023 CodeTeam</p>
+</footer>
+<!-- /Footer -->

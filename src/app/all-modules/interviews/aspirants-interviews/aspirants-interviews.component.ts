@@ -8,7 +8,7 @@ import { InterviewsService } from 'src/app/services/interviews.service';
 })
 export class AspirantsInterviewsComponent implements OnInit {
 
-  public lstInterviews!: any[];
+  public lstInterviews: any[] = [];
   public token!: any;
 
   constructor(private interviewsService: InterviewsService) { }
@@ -20,14 +20,23 @@ export class AspirantsInterviewsComponent implements OnInit {
 
 
   getAspirantInterviews() {
-    this.interviewsService
-      .getAspirantInterviews(this.token)
-      .subscribe((data) => {
-        this.lstInterviews = data;
-        this.formatDates(); // Llamamos a la función para formatear las fechas después de obtener los datos
-      });
+    this.interviewsService.getAspirantInterviews(this.token)
+      .subscribe(
+        (data) => {
+          if (data) {
+            console.log('Datos de entrevistas de aspirantes:', data);
+            this.lstInterviews = data;
+            this.formatDates();
+          } else {
+            console.error('Error: Datos de entrevistas de aspirantes indefinidos.');
+          }
+        },
+        (error) => {
+          console.error('Error obteniendo entrevistas de aspirantes:', error);
+        }
+      );
   }
-
+  
   formatDates() {
     if (this.lstInterviews) {
       this.lstInterviews.forEach(interview => {
