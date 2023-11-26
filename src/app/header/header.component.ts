@@ -14,10 +14,11 @@ export class HeaderComponent implements OnInit {
   type!: string;
   profile!: string;
   elem = document.documentElement;
-  photo!: string;
   lastName!: string;
   name!: string;
+  photo!: string;
   imagenPorDefectoUrl: string = 'assets/img/profiles/avatar-02.jpg';
+  profileRoute!: string;
 
   constructor(
     public router: Router,
@@ -28,7 +29,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     this.token = localStorage.getItem('Token');
     this.getUser();
-    this.getPersonalInfo();
+    this.getInfo();
   }
 
   Logout() {
@@ -53,20 +54,30 @@ export class HeaderComponent implements OnInit {
 
         if (res.type == '1') {
           this.profile = 'Aspirant';
+          this.profileRoute = "/layout/aspirant-information/profile"
         } else if (res.type == '2') {
           this.profile = 'Company';
+          this.profileRoute = "/layout/company-information/profile"
         }
       },
       (err) => {}
     );
   }
 
-  getPersonalInfo() {
-    this.aspirantInformation.getPersonalInfo(this.token).subscribe((data) => {
+  getInfo() {
+    if(this.profile = 'Aspirant'){
+      this.aspirantInformation.getPersonalInfo(this.token).subscribe((data) => {
       this.photo = data.photo;
       this.lastName = data.lastName;
       this.name = data.name;
-    });
+
+    })} else if (this.profile = 'Company'){
+
+
+
+
+
+    }
   }
 
   imagenNoEncontrada() {

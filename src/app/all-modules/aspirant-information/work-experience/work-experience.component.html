@@ -75,7 +75,7 @@
                     formControlName="actualJob"
                     (ngModelChange)="endDateChange($event)"
                   >
-                    <option>Select</option>
+                    <option>Select...</option>
                     <option>Yes</option>
                     <option>No</option>
                   </select>
@@ -181,8 +181,8 @@
                 <td>{{ work.company }}</td>
                 <td>{{ work.position }}</td>
                 <td>{{ work.actualJob ? "Yes" : "No" }}</td>
-                <td>{{ work.startDate | date : "yyyy-MMM-dd" }}</td>
-                <td>{{ work.endDate | date : "yyyy-MMM-dd" }}</td>
+                <td>{{ work.startDate | date : "dd/MM/yyyy" }}</td>
+                <td>{{ work.endDate | date : "dd/MM/yyyy" }}</td>
                 <td>
                   <a class="btn btn-sm bg-danger-light">
                     <i class="fe fe-edit-2"></i>

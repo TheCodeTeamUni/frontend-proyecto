@@ -24,6 +24,33 @@ const routes: Routes = [
             (m) => m.AspirantInformationModule
           ),
       },
+      {
+        path: 'company-information',
+        loadChildren: () =>
+          import('./company-information/company-information.module').then(
+            (m) => m.CompanyInformationModule
+          ),
+      },
+      {
+        path: 'projects',
+        loadChildren: () =>
+          import('./projects/projects.module').then((m) => m.ProjectsModule),
+      },
+      {
+        path: 'aspirants',
+        loadChildren: () =>
+          import('./aspirants/aspirants.module').then((m) => m.AspirantsModule),
+      },
+      {
+        path: 'interviews',
+        loadChildren: () =>
+          import('./interviews/interviews.module').then((m) => m.InterviewsModule),
+      },
+      {
+        path: 'tests',
+        loadChildren: () =>
+          import('./tests/tests.module').then((m) => m.TestsModule),
+      },
     ],
   },
 ];

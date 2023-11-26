@@ -34,7 +34,7 @@ export class SkillsComponent implements OnInit {
   ngOnInit() {
     // Add applicants form validation
     this.addSkillsForm = this.formBuilder.group({
-      skill: ['select skill', [Validators.required]],
+      skill: ['select...', [Validators.required]],
       level: ['', [Validators.required]],
       experience: ['Menos de 1 año de experiencia', [Validators.required]],
     });

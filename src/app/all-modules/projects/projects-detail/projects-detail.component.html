@@ -1,0 +1,124 @@
+<div class="content container-fluid">
+  <!-- Page Header -->
+  <div class="page-header">
+    <div class="row align-items-center">
+      <div class="col-sm-12">
+        <div class="page-sub-header">
+          <h3 class="page-title">Project Detail</h3>
+          <ul class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a [routerLink]="'/layout/projects/projects-add'">Projects</a>
+            </li>
+            <li class="breadcrumb-item active">Project Detail</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card comman-shadow">
+        <div class="card-header">
+          <h5 class="card-title">Project Detail</h5>
+        </div>
+        <div class="card-body">
+          <!--  -->
+          <div class="row">
+            <p class="col-sm-3 text-muted text-sm-right mb-0 mb-sm-3">
+              Project Name
+            </p>
+            <p class="col-sm-9">{{nameProject}}</p>
+          </div>
+          <div class="row">
+            <p class="col-sm-3 text-muted text-sm-right mb-0 mb-sm-3">
+              Start Date
+            </p>
+            <p class="col-sm-9">{{startDate | date : "dd/MM/yyyy"}}</p>
+          </div>
+          <div class="row">
+            <p class="col-sm-3 text-muted text-sm-right mb-0 mb-sm-3">
+              End Date
+            </p>
+            <p class="col-sm-9">{{endDate | date : "dd/MM/yyyy"}}</p>
+          </div>
+          <div class="row">
+            <p class="col-sm-3 text-muted text-sm-right mb-0 mb-sm-3">
+              Aspirants Number
+            </p>
+            <p class="col-sm-9">{{aspirants}}</p>
+          </div>
+          <div class="row">
+            <p class="col-sm-3 text-muted text-sm-right mb-0 mb-sm-3">
+              Description
+            </p>
+            <p class="col-sm-9">{{description}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- /Page Header -->
+
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card comman-shadow">
+        <div class="card-header">
+          <h5 class="card-title">Aspirants List In Project</h5>
+        </div>
+        <div class="card-body">
+          <!-- /table -->
+          <table
+            class="table star-aspirant table-hover table-center table-borderless table-striped"
+          >
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>LastName</th>
+                <th>Rol</th>
+                <th>Note</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let aspirant of lstAspirants; index as i">
+                <td>{{ i + 1 }}</td>
+                <td>{{ aspirant.name }}</td>
+                <td>{{ aspirant.lastName }}</td>
+                <td>{{ aspirant.role }}</td>
+                <td>{{ aspirant.notes }}</td>
+                <td>
+                  <a
+                              routerLink="/layout/aspirants/profile-aspirant/{{
+                                aspirant.idUser
+                              }}"
+                              class="btn btn-sm bg-success-light me-2"
+                            >
+                              <i class="feather-eye"></i>
+                            </a>
+                  <a class="btn btn-sm bg-danger-light">
+                    <i class="fe fe-edit-2"></i>
+                  </a>
+                  <a class="btn btn-sm bg-danger-light">
+                    <i class="feather-trash"></i>
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- /table -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <p>Copyright © 2023 CodeTeam</p>
+</footer>
+<!-- /Footer -->
