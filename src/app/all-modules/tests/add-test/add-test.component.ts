@@ -6,9 +6,7 @@ import {
 } from '@angular/forms';
 
 import { DatePipe } from '@angular/common';
-import { AspirantInformationService } from 'src/app/services/aspirant-information.service';
 import Swal from 'sweetalert2';
-import { DataService } from 'src/app/services/data.service';
 import { AspirantsService } from 'src/app/services/aspirants.service';
 import { TestsService } from 'src/app/services/tests.service';
 
